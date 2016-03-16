@@ -28,10 +28,10 @@
 \section{Introduction}
 
 \textbf{Scaling and scalable devices}: in this report it will be analyzed how technology should be modified to allow scaling of devices and deeper integration.
-In figure xxx a comparison between a very old process (3 um channel length) with a newer one (250 nm channel length) is shown and it's possible to notice that device dimensions become smaller and this fact introduces a lot of issues.
+In figure xxx a comparison between a very old process (3 um channel length) with a relatively newer one (250 nm channel length) is shown and it is possible to notice that device dimensions have become smaller and this fact introduces a lot of issues.
 First it's important to say that devices have been scaled much more than interconnections; in other words, interconnects cannot be scaled with the same policy used for electronic devices. This could be a problem since in a technology where devices and interconnects have comparable dimensions, interconnects parasitics do not have influence on the overall performance; on the contrary, in a technology where the devices and the interconnections are not scaled with the same rate, as in this case (devices smaller than interconnects), \textbf{parasitics have a significant influence on the perfomance}. This is one of the consequences of scaling that can only be partially solved by technology, so it is essential to act from the design point of view in order to limit the effect of parasitics. The other consequence of the scaling is related to \textbf{Short Channel Effects (SCE)}. Short channel effect is a phenomenon that is attributable to short channel devices, in other words when the channel length is of the same order of magnitude as the depletion-layer widths (xdD, xdS) of the source and drain junction. One of the most important consequences of this effect is a change of the threshold voltage and so a less strong electrostatic control of the channel. The SCE can be strongly limited by appropriate technological choices (this is the main target of integrated technologies); \\
 
-The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifies technologies in the following way (2013 edition):
+The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifies technologies in the following way (2011 edition):
 
 	\begin{itemize}
 	\item \textbf{HP}: High Performace processes have as main aim to reduce the gate delay even if the power dissipation can be high; it is clear that this kind of processes cannot be used to produce portable devices, they can be used only for mainframes or data centers; in the last years HP processes have reached the natural end;
@@ -39,15 +39,80 @@ The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifi
 	\item \textbf{LSTP}: Low STandby Power processes have as main aim to reduce the static power for low performance and low battery capacity applications (for example mobile phones); so, LSTP processes try to reduce the power consumption when the device is in standby mode, paying in terms of performance (reduced clock frequency).
 	\end{itemize}
 
-It's useful to say that nowadays HP is becoming marginal in respect to the other process families, because modern tehnology tends to pay attention in particoular to the reduction of leakage (by avoiding to reduce to much the threshold voltage) and because the supply voltage has been reduced more and more over the years. For these reasons LOP technology is playing a very important role and in fact it is becoming more popular. \\ The ITRS does previsions on what the directions of research into different areas of technology, including time-lines up to about 15 years into the future, will be. Until now, this previsions have been really accurate.
-Here we report three different tables, one for each technological process, in which are shown the values of different parameters characterizing a transistor in different years.\\
+Nowadays, HP is becoming marginal with respect to the other process families, because modern technology tends to pay attention in particular to the reduction of leakage (by avoiding to reduce too much the threshold voltage), since the supply voltage has been scaled more and more over the years. For these reasons, LOP technology is playing a key role: it has become the new HP family in \textbf{ITRS} (2013 edition), which will be used throughout this chapter for technological parameters. As a consequence, the old LSTP has become the new LP family. In conclusion, from now on this chapter will refer to two different technological families:
+
+\begin{itemize}
+\item \textbf{HP}: High Performace processes have as main goal to improve perfomance even though power consumption increases.
+\item \textbf{LP}: Low Power processes have aims at reducing the static power for low performance and low battery capacity applications.
+\end{itemize}
+
+The \textbf{ITRS} makes previsions on which direction research will proceed regarding to different areas of technology up to about 12 years into the future. Until now, these previsions have been really accurate. In the following four tables, two per each technological family, there are all predicted parameters. For some of them the manufacturable solutions are known and they are being optimized, some others already have manufacturable solution, whereas for a few parameters there are not any manufacturable solutions available so far. A color legend will be used to distinguish among the different cases:
+
+%%INSERIRE LEGENDA A COLORI CON QUADRATINI
+
+As already stated above, there are two tables per technological family. That is due to different technological processes that can be exploited to implement both HP and LP families, which consist of Bulk technology and Multi-Gate (MG) technology. The former is going to disappear by the end of 2017 and the latter has become dominant in the last few years, whereas SOI technology has already become out-of-date. As a matter of fact, all the major foundaries in the world have already switched to MG technology, focusing their production on finFET-on-Bulk devices.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c||}\hline
+Year&2013&2014&2015&2016&2017&2018&2019&2020&2021&2022&2023&2024\\
+\hline
+Physical gate length: Lg [nm]&23&21&19&18&16&14.6&13.3&12.2&11.1&10.1&9.3&8.5\\
+\hline
+Effective channl length: Lch [nm]&18.4&16.8&15.2&14.4&12.8&11.7&10.6&9.8&8.9&8.1&7.4&6.8\\
+\hline
+Power supply voltage: Vdd [V]&0.86&0.85&0.83&0.81&0.8&0.78&0.77&0.75&0.74&0.72&0.71&0.69\\
+\hline
+Equivalent oxide thickness: EOT [nm]&0.8&0.77&0.73&0.7&0.67&0.64&0.61&0.59&0.56&0.54&0.51&0.49\\
+\hline
+Dielectric constant (K) of gate dielectric&12.5&13&13.5&14&14.5&15&15.5&16&16.5&17&17.5&18\\
+\hline
+Physical gate oxide thickness [nm]&2.56&2.57&2.53&2.51&2.49&2.46&2.42&2.42&2.37&2.35&2.29&2.26\\
+\hline
+Channel doping [$10^{18}$/$cm^{3}$]&5&6&7&7.7&8.4&&&&&&&\\
+\hline
+Body thickness [nm]&&&&&&&&&&&&\\
+\hline
+Tbox (for SOI) [nm]&&&&&&&&&&&&\\
+\hline
+CET (capacitance equivalent thickness) [nm]&1.1&1.07&1.03&1&0.97&0.94&0.91&0.89&0.86&0.84&0.81&0.79\\
+\hline
+Cch (ideal gate capacitance over channel portion without parasitics) [fF/$\mu$m]&0.577&0.542&0.509&0.497&0.455&0.429&0.404&0.379&0.356&0.332&0.317&0.297\\
+\hline
+Mobility [$cm^{2}$/V*s]&400&400&400&400&400&&&&&&&\\
+\hline
+Ioff [pA/$\mu$m]&10&10&20&20&50&&&&&&&\\
+\hline
+Id,sat [$\mu$A/$\mu$m]&490&459&456&485&422&&&&&&&\\
+\hline
+Vt, lin [V]&0.619&0.639&0.636&0.676&0.647&&&&&&&\\
+\hline
+Vt,sat [V]&0.528&0.543&0.533&0.54&0.53&&&&&&&\\
+\hline
+Rsd [$\omega$*$\mu$m]&188&179&171&162&156&&&&&&&\\
+\hline
+Gate fringing capacitance &&&&&&&&&&&&\\
+\hline
+Ratio of fringing capacitance to intrinsic&1.1&1.2&1.3&1.4&1.5&1.6&1.7&1.8&1.9&2&2&2\\
+\hline
+Fringing capacitance [fF/um]&0.64&0.65&0.66&0.7&0.68&0.69&0.69&0.68&0.68&0.66&0.63&0.59\\
+\hline
+Cg,total [fF/$\mu$m]&1.21&1.19&1.17&1.19&1.14&1.12&1.09&1.06&1.03&1&0.95&0.89\\
+\hline
+Dynamic power indicator CV^2 [fJ/$\mu$m]&0.9&0.86&0.81&0.78&0.73&0.68&0.65&0.6&0.57&0.52&0.48&0.42\\
+\hline
+Intrisic delay τ [ps]&2.128&2.08&2.132&1.992&2.159&&&&&&&\\
+\hline
+1/τ [1/ps]&0.47&0.45&0.47&0.5&0.46&&&&&&&\\
+\hline
+Id,satn/Id,satp&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14\\
+\hline
+\end{tabular}
+\caption{\textbf{Bulk process for HP \@ ITRS 2013}}
+\end{table}
 
 
 
- 
-   \begin{table}[h]
-   \centering
-     \begin{tabular}{||l||c|c|c|c|c|c||}\hline
       Year          & 2003 & 2005 & 2007 & 2009 & 2012 & 2015\\
       \hline
              
@@ -69,9 +134,7 @@ Here we report three different tables, one for each technological process, in wh
       \hline
       Igate (A/cm$^2$)   &220 &520 &930 &1200 &2400 &10000\\
       \hline
-     \end{tabular}
-     \caption{\textbf{HP Logic Roadmap (Bulk)}}
-   \end{table}
+
 
   
    \begin{table}[H]
