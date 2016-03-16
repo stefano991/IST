@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, twoside, openright]{report}
+ \documentclass[a4paper, 12pt, twoside, openright]{report}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -54,60 +54,60 @@ As already stated above, there are two tables per technological family. That is 
 
 \begin{table}[h]
 \centering
-\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c||}\hline
+\resizebox{\textwidth}{!}{\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c||}\hline
 Year&2013&2014&2015&2016&2017&2018&2019&2020&2021&2022&2023&2024\\
 \hline
-Physical gate length: Lg [nm]&23&21&19&18&16&14.6&13.3&12.2&11.1&10.1&9.3&8.5\\
+Lg [nm]&23&21&19&18&16&14.6&13.3&12.2&11.1&10.1&9.3&8.5\\
 \hline
-Effective channl length: Lch [nm]&18.4&16.8&15.2&14.4&12.8&11.7&10.6&9.8&8.9&8.1&7.4&6.8\\
+Lch [nm]&18.4&16.8&15.2&14.4&12.8&11.7&10.6&9.8&8.9&8.1&7.4&6.8\\
 \hline
-Power supply voltage: Vdd [V]&0.86&0.85&0.83&0.81&0.8&0.78&0.77&0.75&0.74&0.72&0.71&0.69\\
+Vdd [V]&0.86&0.85&0.83&0.81&0.8&0.78&0.77&0.75&0.74&0.72&0.71&0.69\\
 \hline
-Equivalent oxide thickness: EOT [nm]&0.8&0.77&0.73&0.7&0.67&0.64&0.61&0.59&0.56&0.54&0.51&0.49\\
+EOT [nm]&0.8&0.77&0.73&0.7&0.67&0.64&0.61&0.59&0.56&0.54&0.51&0.49\\
 \hline
-Dielectric constant (K) of gate dielectric&12.5&13&13.5&14&14.5&15&15.5&16&16.5&17&17.5&18\\
+$\epsilon_{HK}$&12.5&13&13.5&14&14.5&15&15.5&16&16.5&17&17.5&18\\
 \hline
-Physical gate oxide thickness [nm]&2.56&2.57&2.53&2.51&2.49&2.46&2.42&2.42&2.37&2.35&2.29&2.26\\
+$T_{HK}$ [nm]&2.56&2.57&2.53&2.51&2.49&2.46&2.42&2.42&2.37&2.35&2.29&2.26\\
 \hline
-Channel doping [$10^{18}$/$cm^{3}$]&5&6&7&7.7&8.4&&&&&&&\\
+$Doping_{ch}$ [$10^{18}$/$cm^{3}$]&5&6&7&7.7&8.4&&&&&&&\\
 \hline
-Body thickness [nm]&&&&&&&&&&&&\\
+$T_{body}$ (for SOI) [nm]&&&&&&&&&&&&\\
 \hline
-Tbox (for SOI) [nm]&&&&&&&&&&&&\\
+$T_{BOX}$ (for SOI) [nm]&&&&&&&&&&&&\\
 \hline
-CET (capacitance equivalent thickness) [nm]&1.1&1.07&1.03&1&0.97&0.94&0.91&0.89&0.86&0.84&0.81&0.79\\
+CET [nm]&1.1&1.07&1.03&1&0.97&0.94&0.91&0.89&0.86&0.84&0.81&0.79\\
 \hline
-Cch (ideal gate capacitance over channel portion without parasitics) [fF/$\mu$m]&0.577&0.542&0.509&0.497&0.455&0.429&0.404&0.379&0.356&0.332&0.317&0.297\\
+$C_{ch}$ [fF/$\mu$m]&0.577&0.542&0.509&0.497&0.455&0.429&0.404&0.379&0.356&0.332&0.317&0.297\\
 \hline
-Mobility [$cm^{2}$/V*s]&400&400&400&400&400&&&&&&&\\
+$\mu$ [$cm^{2}$/V*s]&400&400&400&400&400&&&&&&&\\
 \hline
-Ioff [pA/$\mu$m]&10&10&20&20&50&&&&&&&\\
+$I_{off}$ [pA/$\mu$m]&10&10&20&20&50&&&&&&&\\
 \hline
-Id,sat [$\mu$A/$\mu$m]&490&459&456&485&422&&&&&&&\\
+$I_{d,sat}$ [$\mu$A/$\mu$m]&490&459&456&485&422&&&&&&&\\
 \hline
-Vt, lin [V]&0.619&0.639&0.636&0.676&0.647&&&&&&&\\
+$V_{t,lin}$ [V]&0.619&0.639&0.636&0.676&0.647&&&&&&&\\
 \hline
-Vt,sat [V]&0.528&0.543&0.533&0.54&0.53&&&&&&&\\
+$V_{t,sat}$ [V]&0.528&0.543&0.533&0.54&0.53&&&&&&&\\
 \hline
-Rsd [$\omega$*$\mu$m]&188&179&171&162&156&&&&&&&\\
+S/D $R_{s}$ [$\omega$*$\mu$m]&188&179&171&162&156&&&&&&&\\
 \hline
-Gate fringing capacitance &&&&&&&&&&&&\\
+Gate $C_{fringing}$ &&&&&&&&&&&&\\
 \hline
-Ratio of fringing capacitance to intrinsic&1.1&1.2&1.3&1.4&1.5&1.6&1.7&1.8&1.9&2&2&2\\
+$C_{fringing}/C_{intrinsic}$ &1.1&1.2&1.3&1.4&1.5&1.6&1.7&1.8&1.9&2&2&2\\
 \hline
-Fringing capacitance [fF/um]&0.64&0.65&0.66&0.7&0.68&0.69&0.69&0.68&0.68&0.66&0.63&0.59\\
+$C_{fringing}$ [fF/$\mu$m]&0.64&0.65&0.66&0.7&0.68&0.69&0.69&0.68&0.68&0.66&0.63&0.59\\
 \hline
-Cg,total [fF/$\mu$m]&1.21&1.19&1.17&1.19&1.14&1.12&1.09&1.06&1.03&1&0.95&0.89\\
+$C_{g,total}$ [fF/$\mu$m]&1.21&1.19&1.17&1.19&1.14&1.12&1.09&1.06&1.03&1&0.95&0.89\\
 \hline
-Dynamic power indicator CV^2 [fJ/$\mu$m]&0.9&0.86&0.81&0.78&0.73&0.68&0.65&0.6&0.57&0.52&0.48&0.42\\
+$CV^{2}$ [fJ/$\mu$m]&0.9&0.86&0.81&0.78&0.73&0.68&0.65&0.6&0.57&0.52&0.48&0.42\\
 \hline
-Intrisic delay τ [ps]&2.128&2.08&2.132&1.992&2.159&&&&&&&\\
+$\tau$ [ps]&2.128&2.08&2.132&1.992&2.159&&&&&&&\\
 \hline
-1/τ [1/ps]&0.47&0.45&0.47&0.5&0.46&&&&&&&\\
+1/$\tau$ [1/ps]&0.47&0.45&0.47&0.5&0.46&&&&&&&\\
 \hline
-Id,satn/Id,satp&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14\\
+$I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14\\
 \hline
-\end{tabular}
+\end{tabular}}
 \caption{\textbf{Bulk process for HP \@ ITRS 2013}}
 \end{table}
 
