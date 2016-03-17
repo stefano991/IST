@@ -28,7 +28,15 @@
 \section{Introduction}
 
 \textbf{Scaling and scalable devices}: in this report it will be analyzed how technology should be modified to allow scaling of devices and deeper integration.
-In figure xxx a comparison between a very old process (3 um channel length) with a relatively newer one (250 nm channel length) is shown and it is possible to notice that device dimensions have become smaller and this fact introduces a lot of issues.
+In figure \label{confronto} a comparison between a very old process (3 um channel length) with a relatively newer one (250 nm channel length) is shown and it is possible to notice that device dimensions have become smaller and this fact introduces a lot of issues.
+
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Immagine}
+	\caption{Conparison between two technological processes.}
+	\label{confronto}
+	\end{figure}
+
 First it's important to say that devices have been scaled much more than interconnections; in other words, interconnects cannot be scaled with the same policy used for electronic devices. This could be a problem since in a technology where devices and interconnects have comparable dimensions, interconnects parasitics do not have influence on the overall performance; on the contrary, in a technology where the devices and the interconnections are not scaled with the same rate, as in this case (devices smaller than interconnects), \textbf{parasitics have a significant influence on the perfomance}. This is one of the consequences of scaling that can only be partially solved by technology, so it is essential to act from the design point of view in order to limit the effect of parasitics. The other consequence of the scaling is related to \textbf{Short Channel Effects (SCE)}. Short channel effect is a phenomenon that is attributable to short channel devices, in other words when the channel length is of the same order of magnitude as the depletion-layer widths (xdD, xdS) of the source and drain junction. One of the most important consequences of this effect is a change of the threshold voltage and so a less strong electrostatic control of the channel. The SCE can be strongly limited by appropriate technological choices (this is the main target of integrated technologies); \\
 
 The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifies technologies in the following way (2011 edition):
@@ -272,9 +280,10 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 \caption{\textbf{MG process for LP (ITRS 2013)}}
 \end{table}
 
-\noindent Let's compare the values that we have in the three tables.
+\noindent Let's compare the values that we have in the four tables.
 
-\paragraph{Gate Length~:} The gate length is defined as the distance between the source and drain terminals. Taking, for example, the 2012 node, we can observe that the gate length is 14 nm for the HP logic and it increases in the LOP logic (18 nm), reaching a higher value for the LSTP logic (20 nm). What we can understand is that to get high performance it is necessary to reduce the channel length. First of all, reducing the channel length allows to have \emph{smaller parasitic capacitances} and, above all, we get a \emph{higher current}. So, generally a higher speed is the result of two main components: smaller capacitances and greater current.
+\paragraph{Gate Length~:} The gate length is defined as the distance between the source and drain terminals. Taking, for example the actual node (i.e.2016 year), we can observe that the gate length is 15.2 nm for the HP logic, while in the LOP logic reaches an higher value 18 nm. What we can understand is that to get high performance it is necessary to reduce the channel length. First of all, reducing the channel length allows to have \emph{smaller parasitic capacitances} and, above all, we get a \emph{higher current}. So, generally a higher speed is the result of two main components: smaller  parasitic capacitances and greater current.
+This is true taking into account the near-term period, defined from 2013 up to 2020 approximately in the Roadmap \textbf{PIDS} \footnote{\emph{Process Integration, devices and Structure}}chapter. Since it is coming to an end very soon, technology going to move to a new direction: fabrication of advanced non-planar multi-gate and nanowire MOSFETs to below 10 nm gate length, with all related issues: effective scaling of the device; control of the short channel effects and of the parasitic components.
 
 
 
