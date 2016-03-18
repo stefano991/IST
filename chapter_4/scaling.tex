@@ -88,7 +88,7 @@ $\mu$ [$cm^{2}$/V*s]&400&400&400&400&400&&&&&&&\\
 \hline
 $I_{off}$ [pA/$\mu$m]&100&100&100&100&100&100&100&100&100&100&100&100\\
 \hline
-$I_{d,sat}$ [$\mu$A/$\mu$m]&1348&1355&1340&1295&1267&&&&&&&\\
+$I_{on}$ [$\mu$A/$\mu$m]&1348&1355&1340&1295&1267&&&&&&&\\
 \hline
 $V_{t,lin}$ [V]&0.306&0.327&0.334&0.357&0.378&&&&&&&\\
 \hline
@@ -144,7 +144,7 @@ $\mu$ [$cm^{2}$/V*s]&250&250&250&250&250&200&200&200&200&200&200&150\\
 \hline
 $I_{off}$ [pA/$\mu$m]&100&100&100&100&100&100&100&100&100&100&100&100\\
 \hline
-$I_{d,sat}$ [$\mu$A/$\mu$m]&1670&1680&1700&1660&1660&1610&1600&1480&1450&1350&1330&1170\\
+$I_{on}$ [$\mu$A/$\mu$m]&1670&1680&1700&1660&1660&1610&1600&1480&1450&1350&1330&1170\\
 \hline
 $V_{t,lin}$ [V]&0.219&0.225&0.231&0.239&0.264&0.266&0.265&0.276&0.295&0.303&0.306&0.319\\
 \hline
@@ -198,7 +198,7 @@ $\mu$ [$cm^{2}$/V*s]&400&400&400&400&400&&&&&&&\\
 \hline
 $I_{off}$ [pA/$\mu$m]&10&10&20&20&50&&&&&&&\\
 \hline
-$I_{d,sat}$ [$\mu$A/$\mu$m]&490&459&456&485&422&&&&&&&\\
+$I_{on}$ [$\mu$A/$\mu$m]&490&459&456&485&422&&&&&&&\\
 \hline
 $V_{t,lin}$ [V]&0.619&0.639&0.636&0.676&0.647&&&&&&&\\
 \hline
@@ -254,7 +254,7 @@ $\mu$ [$cm^{2}$/V*s]&375&375&375&375&375&375&375&300&300&300&300&300\\
 \hline
 $I_{off}$ [pA/$\mu$m]&10&10&10&10&10&10&10&20&20&20&20&20\\
 \hline
-$I_{d,sat}$ [$\mu$A/$\mu$m]&643&610&618&589&574&556&550&533&537&461&458&395\\
+$I_{on}$ [$\mu$A/$\mu$m]&643&610&618&589&574&556&550&533&537&461&458&395\\
 \hline
 $V_{t,lin}$ [V]&0.483&0.492&0.492&0.496&0.507&0.507&0.51&0.501&0.507&0.521&0.511&0.52\\
 \hline
@@ -282,74 +282,99 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 
 \noindent Let's compare the values that we have in the four tables.
 
-\paragraph{Gate Length~:} The gate length is defined as the distance between the source and drain terminals. For example, taking into account the actual node (i.e.2016 year) for analysis, we can observe that the gate length is 15.2 nm for the HP logic, while in the LP logic reaches an higher value 18 nm. What we can understand is that in order to get high performance it is necessary to reduce the channel length. First of all, reducing the channel length allows to have \emph{smaller parasitic capacitances} and, above all, we get a \emph{higher current}. So, generally a faster device is the combination of two main factors: smaller  parasitic capacitances and greater $I_{ON}$ current.
-This is true when considering the near-term period, defined from 2013 up to 2020 approximately in the Roadmap \textbf{PIDS} \footnote{\emph{Process Integration, devices and Structure}} chapter. Since it is coming to an end very soon, technology is going to move towards a new direction consisitng of fabrication of advanced non-planar multi-gate and nanowire FETs below 10-nm gate length, with all the related issues: effective scaling of the device, control of the short channel effects and of the parasitic components.
+\paragraph{Gate Length~:}The gate length is defined as the distance between the source and drain terminals. For example, taking into account the actual node (i.e.2016 year) for analysis, we can observe that the gate length is 15.2 nm for the HP logic, while in the LP logic reaches an higher value 18 nm. What we can understand is that in order to get high performance it is necessary to reduce the channel length. First of all, reducing the channel length allows to have \emph{smaller parasitic capacitances} and, above all, we get a \emph{higher current}. So, generally a faster device is the combination of two main factors: smaller  parasitic capacitances and greater $I_{ON}$ current.
+This is true when considering the near-term period, defined from 2013 up to 2020 approximately in the Roadmap \textbf{PIDS} \footnote{\emph{Process Integration, devices and Structure}} chapter. Since it is coming to an end very soon, technology is going to move towards a new direction consisting of fabrication of advanced non-planar multi-gate and nanowire FETs below 10-nm gate length, with all the related issues: effective scaling of the device, control of the short channel effects and of the parasitic components.
+Notice that in all the tables it is possible to distinguish also the effective channel length $L_{ch}$ defined as the distance between metallurgical source/drain junctions, and it is assumed equal to 80\% of the gate length so the gate/source and gate/drain overlaps are 10\% of gate length at each side. This parameter is used in the computation of some quantities listed in the previous tables.
 
-\paragraph{Power Supply Voltage $V_{DD}$~:}
-It is well known that $V_{dd}$ is more difficult to scale than other parameters, mainly because of the fundamental limit of the subthreshold slope 
 
-What we can expect is that  $V_{DD}$ should be more scaled in LP than in HP since, in the former case, we want to have low operating power consumption. 
-Speaking of which, we recall that the dynamic power is $P_{D} = C_L \ \alpha \  f_{CK} \ V_{DD}^2$, so, reducing $V_{DD}$ we strongly reduce the dynamic power. Regarding LSTP, we need to have a higher $V_{DD}$ in order to increase $V_{TH}$ and reduce leakages (drain-source junction leakages and channel leakages, $I_{OFF}$). 
+\paragraph{Power Supply Voltage $V_{DD}$~:}It is well known that $V_{dd}$ is more difficult to scale than other parameters, mainly because of the fundamental limit of the subthreshold slope $SS\simeq60 mV/decade$. This trend will continue and become more severe when it approaches the regime of 0.6 V. This fact, along with the continuing increase of current density (per area) causes the dynamic power density to climb with scaling, soon to an unacceptable level \footnote{Although power per transistor is dropping, due to scaling of the device.}.
+For high-performance logic, in the trend of increasing chip complexity and increasing transistor on-current with scaling to reach high speed, dynamic power dissipation is expected to become particularly difficult to control. The main indicator for it is reported in the table as $CV^{2}$:
 
-Now we focus on the channel leakages, represented by $I_{OFF}$. If we want to transform an HP process in an LSTP one, we need to \textbf{reduce} $I_{OFF}$. When, in an nMOS, $V_G = 0$, $I_{OFF}$ should be zero. How can we reduce this leakage current? The solution is to \textbf{increase}$ V_{TH}$: in this way, when $V_{G} = 0$, we are sure that the transistor is really off. But, increasing $V_{TH}$ means reducing $I_{D}$. In order to compensate this reduction we need to increase $V_{DD}$. Infact:
+\begin{itemize}
+\item \textbf{C}: it is the total gate capacitance per micron device width in inversion ($C_{g,total}$). This is the sum of $C_{ch}$ and the gate fringing capacitance above.
+\item \textbf{V}: here it is assumed equal to $V_{dd}$.
+\end{itemize}
+
+In the low-power families, devoted to the reduction of the allowable power dissipation and hence the off-currents, the main indicator was historically the $I_{off}$ current: it is much lower than that of the HP technology. But here also the previous parameter is used to characterize the low-power families. A comparison between those ones tell us that in the first case (HP family) the obtained value are lower w.r.t. the second case (LP family) due to lower value of total gate capacitance and a scaling on power supply voltage not so different from low-power case. To understand better, we refer to the following picture \label{CV^2}:
+
+%inserire grafico CV^2 HPvsLP
+%	\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{}
+%	\caption{Dynamic power $CV^{2}$ analysis.}
+%	\label{CV^2}
+%	\end{figure}
+
+
+\paragraph{Parameters $I_{on}$, $I_{off}$, $\tau$~:}These three important parameters are usually used to compare technologies and their main properties.
+
+$I_{on}$ [$\mu A/\mu m$] is the maximum drive current per unit width of a transistor. It is defined by connecting MOSFET in saturation configuration: gate and drain terminals are tied to $V_{dd}$, while source and body ones are connected to the lowest potential (i.e. ground). Then, considering a $1 \mu m$ width transistor \footnote{In the following sections we refer it as $W_{ref}$}, we are able to measure the maximum saturation current flowing through the drain node:
 
 \begin{equation}
-I_{DS,\ sat} = \frac{\mu_n C_{OX} W}{2 L} (V_{DD} - V_{TH})^2
-\label{ids_sat}
-\end{equation}
+I_{on} = I_{ds}(V_{gs}=V_{dd}, V_{ds}=V_{dd}, W=W_{ref})
+\label{}
+\end{equation} 
 
-Looking at the equation (\ref{ids_sat}) it is clear that increasing $V_{DD}$ and $V_{TH}$ by the same amount allows to maintain constant the value of $I_{D}$.
-
-
-
-\paragraph{Parameters $I_{on}$, $I_{off}$, $\tau$~:} These three important parameters are usually used to compare technologies. 
-
-$I_{on}$ ($\mu A/\mu m$) is the maximum drive current per unit of width of a transistor. $I_{on}$ can be measured connecting gate and drain so that the transistor is in saturation. Then, considering a $1 \mu m$ width transistor, we measure the maximum saturation current flowing through the drain node.
-
+%%AGGIORNARE FIGURA
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figIon}
-	\caption{Ion current in function of time.}
+	\caption{Ion current as a function of time.}
 	\label{}
 	\end{figure}
 
-Analizing the line related to $I_{on}$, for each technology, we can see that scaling gives better values of this current. Moreover, what we can observe comparing the three tables is that $I_{on}$ is higher in HP, while in LOP and in LSTP it is scaled. Today, an acceptable value for $I_{on}$ is approximately 1 $mA/\mu m$.
+Let's analyse the line in the table related to $I_{on}$ values, for the two technologies HP and LP. For the first one, the n-channel MOSFET saturation drive current is found to increase only for a few years and then starts to drop. This is drastically different from the previous projections where the current continued to rise with year. The reason for the drop of current is mainly due to $V_{dd}$ scaling and significant source-drain tunneling for channel lengths below 10 nm.
+Also for the second one this trend is kept, with values of on-current almost equal to 35\% of the same HP node in the table: recall that the main features or the LP transistor is low DC power with reasonably reduced speed.
 
-$I_{off}$ ($nA/\mu m$) is the current flowing in the transistor while it is open; in an ideal transistor $I_{off}$ should be zero. However, in HP technology $I_{off}$ has been characterized by a significant increase year per year.\\
-$I_{off}$ can be measured, for a 1$\mu m$ width transistor, connecting gate and source to GND and drain to $V_{DD}$.
+$I_{off}$ ($nA/\mu m$) is the current flowing in the source node of the n-MOSFET when the gate is connected to ground and the drain to $V_{DD}$, as defined in the following equation:
+
+\begin{equation}
+I_{off} = I_{ds}(V_{gs}=0, V_{ds}=V_{dd}, W=W_{ref})
+\label{}
+\end{equation}
 
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figIoff}
-	\caption{Ioff current in function of time.}
+	\caption{Ioff current as a function of time.}
 	\label{}
 	\end{figure}
 
-We can notice that, differently from $I_{on}$, the graph that represents the trend of the subthreshold current in time is in semi-logarithmic scale which means that the range of variation of $I_{off}$ is larger than the range of $I_{on}$. Analyzing the above graph, it can be seen that in LSTP the subthreshold current is reduced, approximately, of three order of magnitude with respect to HP.
+To appreciate this small value, we refer to the in-out characteristic with semi-logarithmic scale which means that the range of variation of $I_{off}$ is larger than the $I_{on}$ one. Let's take a look at the above graph.
+In an ideal transistor $I_{off}$ should be zero. However the source-drain tunnelling, mentioned before, makes the device harder to turn off and increases the subthreshold swing slope (SS). Since for the HP family transistor off-current is fixed to 100 nA/$\mu$m for all years, the tunnelling current requires the threshold voltage to be higher in order to maintain the fixed $I_{off}$, and consequently leads to a reduction in the inversion charge.
+In the case of low power devices this current is set to be four decades lower than that of HP, specifically 10 pA/$\mu$m. Note that to meet the leakage current requirement, the gate length scaling of LP logic lags behind that of HP logic.
 
-An important parameter is the ratio between $I_{on}$ and $I_{off}$. In an ideal technology this ratio should be infinite. For the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$. In the LOP logic it is roughly $10^5$. Finally for the LSTP tech. it is approximately $10^7$. It is clear that the higher is the ratio, the higher is $I_{on}$ and this is equivalent to higher performances.
+An important parameter is the ratio between $I_{on}$ and $I_{off}$: it tells us how good is the electrostatic control of the channel performed by the gate. In an ideal technology this ratio should be infinite. Referring to the data so far analysed, for the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$, while in the LOP logic it is roughly $10^7$. It is clear that the higher the ratio the higher is $I_{on}$, leading to higher performances, and the lower is $I_{off}$, leading to low DC power.
 
-An efficient method to \textbf{measure the performance of a process} is to evaluate $\tau$, the \textbf{intrinsic time}. $\tau$ can be seen as the time required to remove the charge stored in the gate capacitance (of a transistor with W = 1$\mu m$) by mean of the $I_{on}$ current.
+An efficient method to measure the performance of a process is to evaluate the intrinsic time $\tau$: it can be seen as the time required to remove the charge stored in the gate capacitance of a transistor with W=W_{ref} by mean of the $I_{on}$ current.
+The value listed in the tables are computed applying the following equation:
+
+\begin{equation}
+$\tau$ = $\frac{$C_{g,total}$*$V_{dd}$}{$I_{on}$}
+\label{}
+\end{equation}
+
 
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figtau}
-	\caption{Intrinsic delay in function of time.}
+	\caption{Intrinsic delay as a function of time.}
 	\label{tau}
 	\end{figure}
 
-The dotted capacitor is the equivalent input capacitance of the transistor and it acts as load capacitance for the other transistor (the one of which we want to measure $\tau$). $\tau$ can be evaluated (this is an \emph{approximation}) as the constant current transient (see the equation of $\tau$ in the figure above). This expression is just an approximation (useful to easily estimate $\tau$) since in a real transient the current varies during the discharge of the capacitor, it is not constant. What we can say is that $\tau$ can be reduced:
+The dotted capacitor is the total gate capacitance per micron device width in inversion, as defined above in this chapter. It acts as load capacitance for the other transistor (the one of which we want to measure $\tau$). This expression is just an approximation since in a real transient the current varies during the discharge of the capacitor, and it is not constant. What we can say is that the intrinsic transistor delay can be reduced:
 
 	\begin{enumerate}
-		\item reducing parasitics since C is the gate capacitance (that is a parasitic cap.);
-		\item increasing $I_{on}$.
+		\item Reducing parasitics since in the gate capacitance, apart from $C_{ch}$, also the fringing value is considered;
+		\item Increasing $I_{on}$: capacitor will be discharged faster.
 	\end{enumerate}
 
-Since the input capacitance depends only on the geometries, generally, if we want to improve the intrinsic time we have to act on $I_{on}$. This is another reason why, in advanced processes, the main aim is to increase $I_{on}$ as much as possible. $\tau$ and the clock frequency are \emph{not} the same thing but, increasing the former can lead, probably, to an improvement of the latter.\\
-Observing the graph in figure \ref{tau}, it can been seen that the ratio between $\tau$ in these three technology is kept node by node: $\tau_{HP} \approx \frac{1}{3} \tau_{LSTP}$.
+Since the input capacitance depends mainly on the geometries, generally, if we want to improve the intrinsic time we have to act on $I_{on}$. This is another reason why, in advanced processes, the main aim is to increase $I_{on}$ as much as possible. $\tau$ and the clock frequency are not the same thing but, increasing the former, it can probably leads to an improvement of the latter.
+In generating the roadmap projection for logic technology, the guiding metric has been the transistor intrinsic speed, the inverse of$\tau$. Even if some new transitor delay metric has been developed, also in the 2013 edition original metric will be used, because it is sufficiently accurate to follow the key scaling trends, and for consistency with previous Roadmap too.
+Observing the graph in figure \ref{tau}, it can been seen that, for high-performance transistor, the intrinsic speed\footnote{It is the inverse of $\tau$ for a speed unit.} improves initially with a slope of 4\% per year, while in low-power family increases only at a slope of roughly 2\% per year. 
 
 
-\paragraph{Threshold voltage~  $V_{T}$~:} To define a good technology the threshold voltage can be considered as target: on $V_{T}$ depends all the other choices that can be taken. Starting from the HP technlogy, we can observe that the value of $V_{T}$ is quite low (it is around or under 200 mV).\\
+\paragraph{Threshold voltage~  $V_{T}$~:} To define a good technology the threshold voltage can be considered as target: on $V_{T}$ depends all the other choices that can be taken. Starting from the HP technology, we can observe that the value of $V_{T}$ is quite low (it is around or under 200 mV).\\
 What has been kept constant during the years is the ratio $V_{DD}/V_{T}$. This ratio is the fundamental parameter to \textbf{distinguish a technological process} from another.
 
 	\begin{figure}[H]
