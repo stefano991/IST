@@ -445,12 +445,33 @@ For the sake of completeness, the main steps that lead to the $I_{subV_{th}$ exp
 \item Write $Q_{n}(y)$ as a function of the channel potential.
 \item Find an expression to evaluate $\Psi(0)$ as a function of $V_{GS}$.
 \item Write 
-\begin{equation}
-I_{DS}=-I_{diff_{n}}=-\frac{\partial Q_{y}(y)}{\partial y}
+\begin{equation}\label{punto4}
+I_{DS}=-I_{diff_{n}}=-\frac{\partial Q_{n}(y)}{\partial y}
 \end{equation}
 \end{enumerate}
 
-At the end we will get:
+The inversion charge expression in WI will be:
+\begin{eqnarray}
+Q_n(y)&\approx& -C_{dep} V_T \left(e^{\displaystyle \frac{\Psi_S(y)-2\Phi_P}{V_T}}\right)
+\end{eqnarray}
+
+The inversion charge at source and drain will be respectively:
+\begin{eqnarray*}
+Q_n(0)&\approx&-C_{dep} V_T
+\left(e^{\displaystyle \frac{\Psi_S(0)-2\Phi_P}{V_T}}
+\right)\\[2ex]
+Q_n(L)&\approx&-C_{dep} V_T
+\left(e^{\displaystyle \frac{\Psi_S(0)- {V_{DS}}-2\Phi_P}{V_T}}
+\right)
+\end{eqnarray*}
+
+The gradient can be expressed through an approximation:
+
+\begin{eqnarray*}
+\frac{\partial Q_n(y)}{\partial y} &\approx& - \frac{Q_n(L)-Q_n(0)}{L}
+\end{eqnarray*}
+
+Finally, by applying the equation \ref{punto4} we get the following expression for the subthreshold current:
 
 \begin{eqnarray}
 I_{DS}&=&\frac{W \mu_n C_{dep} {V_T}^2}{L}
@@ -459,6 +480,7 @@ I_{DS}&=&\frac{W \mu_n C_{dep} {V_T}^2}{L}
 \end{eqnarray}
 
 The expression above can be further simplified by making two more assumptions:
+
 \begin{itemize}
 \item Let us define the parameter $m=1+\frac{C_{dep}}{C_{ox}}$.
 \item For $V_{DS}>5V_{T}$ we can consider 
@@ -473,7 +495,42 @@ Therefore, we finally obtain
 I_{DS} \approx \frac{\mu_n W C_{dep} V_T^2}{L} e^{\frac{V_GS - V_T}{m V_T}}
 \end{equation}
 
-The expression \ref{final_Ids} is the one that will be used to evaluate the effects of scaling on the subthreshold current and $I_{off}$ in particular.
+The expression \ref{final_Ids} is the one that will be used to evaluate the effects of scaling on the subthreshold current and $I_{off}$ in particular. \\
+Even though the subthreshold current is an important parameter for any device family, it is not sufficient to determine whether a certain technological process is a good process or not. A more reliable parameter is represented by the subthreshold swing (SS) that tells us how easily a transistor can be switched off. How we can evaluate SS? We can apply the definition of slope which is the inverse of the derivative of the $log_{10}I_{DS}$ curve:
+
+	\begin{equation}
+	SS = \left( \frac{d(log_{10}I_{subV_{th})}{dV_G} \right)^{-1}
+	\end{equation}
+	
+	\begin{equation}
+	SS = \left \{ \frac{d}{dV_G} \left[ log_{10} \left( \frac{\mu_n W C_{dep} V_T^2}{L} e^{\frac{V_G - V_T}{m V_T}} \right) 	\right] \right \}^{-1}
+	\end{equation}
+	
+	\begin{equation}
+	SS = \left \{ \frac{d}{dV_G} \left[ log_{10} \left( \frac{\mu_n W C_{dep} V_T^2}{L} \right) + \frac{V_G - V_T}{m V_T} 		\cdot \frac{1}{ln10} \right] \right \}^{-1}
+	\end{equation}
+	
+	\begin{equation}
+	SS = \left( \frac{1}{m V_T} \cdot \frac{1}{ln10} \right)^{-1} = m V_T ln10
+	\end{equation}
+	
+	\begin{equation}
+	SS = 2,3 \cdot V_T \cdot m
+	\end{equation}
+	
+	\begin{equation}
+	SS|_{300K}  = 2,3 \cdot 26mV \cdot m \approx 59.8 mV \cdot m
+	\end{equation}
+
+SS is measured in \textbf{mV/dec}, since it tells us how many milliVolts the gate voltage must change in order to decrease/increase the $I_{subV_{th}}$ by one order of magnitude. The lower is the value of SS the better is the technological process. \textbf{The minimum reachable value for SS is 59.8 mV/dec}, when $m = 1$. So, from the technological point of view, all the efforts are focused towards the direction that allows to have $m \approx 1$. Typical SS values for the bulk CMOS technology are in the range 80 - 100 $mV/dec$. More advanced technologies have a lower SS and in some cases it is possible to reach values near the theoretical limit. A good example is provided by the \textbf{Fully-Depleted Silicon-On-Insulator (FD-SOI)} process, where $SS=60mV/dec$. FD-SOI has a very good value of the SS due to the extremely reduced thickness of the silicon overlay, which reduces $C_{dep}$.\\
+As a matter of fact, $m = 1+ \frac{C_{dep}}{C_{OX}}$ and its value can be minimized by lowering the ratio $C_{dep}/C_{OX}$ in two possible ways:
+
+\begin{enumerate}
+\item $C_{dep} \rightarrow 0$ (best choice from the technological point of view);
+\item $C_{OX} \rightarrow \infty$.
+\end{enumerate}
+
+In the graph below are shown different curves related to SS: %%METTERE ALMENO UN GRAFICO SU BULK vs FD-SOI (o MG)
 
 %It is very important to understand which are the physical mechanisms that produce $I_{subV_{th}}$.
 %
@@ -1188,7 +1245,7 @@ The \textbf{maximum drive current} (saturation current) can be obtained imposing
 
 Again, this equation is equal equal to the one that can be obtained from $I_{DS}$ approximated except for `m' that acts as a correction factor.
 
-The maximum speed of carriers in the channel is limited by \textbf{velocity saturation} and this has a strong effect on the maximum current that a trasistor can drive. The effect of velocity saturation due to the longitudinal field can be modeled using the following expression ($I_{DS}$ is expressed using `m'):
+The maximum speed of carriers in the channel is limited by \textbf{velocity saturation}\footnote{It occurs when the carriers lose energy on account of the increased number of scattering events with the lattice atoms.} and this has a strong effect on the maximum current that a trasistor can drive. The effect of velocity saturation due to the longitudinal field can be modeled using the following expression ($I_{DS}$ is expressed using `m'):
 
 	\begin{eqnarray*}
 	     \mu_n&=&\frac{\mu_{n0}}{1+\frac{\mu_{n0}V_{DS}}{Lv_{sat}}}\\[2ex]
@@ -1201,12 +1258,10 @@ The maximum speed of carriers in the channel is limited by \textbf{velocity satu
 
 
 
-
-
-
 \section{Scaling policies}
 
-There are three scaling policies:
+So far we have considered the main features and the key parameters that are used to study, analyze and compare the different technological processes and families, and how they are affected by scaling as we get closer and closer to the limits of the Bulk process. Although the Bulk process is getting to its natural end as stated at the beginning of the chapter, it is still of great use to study its behaviour and the limits and problems related to the scaling policies applied to it. As a matter of fact, many ideas and solutions that belong to the Bulk legacy can be exported and exploited by the new Multi-Gate technological process. Independently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions.\\
+Traditionally, for the Bulk process we can distinguish among three different scaling approaches for \textbf{devices} that will be analyzed:
 
 \begin{enumerate}
 \item \textbf{Constant voltage scaling};
@@ -1214,29 +1269,107 @@ There are three scaling policies:
 \item \textbf{Generalized scaling}.
 \end{enumerate}
 
-We will analize all these three policies.
+The scaling factor for transistors is \textbf{K}.\\
+Similarly, we have three different scaling policies for interconnects: 
 
-Indepentently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions: transistors and interconnects are scaled by a different factor that for the former is \textbf{K} and for the latter is \textbf{S}.
+\begin{enumerate}
+\item \textbf{Ideal scaling};
+\item \textbf{Quasi-ideal scaling};
+\item \textbf{Fixed-height scaling}.
+\end{enumerate}
 
-The transistors dimensions are reduced by K:
+The scaling factor for transistors is \textbf{S}. Furthermore, another discrimination can be done among local, intermediate and global wires: local wires scale almost like devices, global wires mainly do not scale, whereas intermediate wires are somewhere in between. This approach is called \textbf{Hierarchical scaling policy} for interconnects.\\
+Transistors scaling is more aggressive than interconnects scaling: $\text{\textbf{K}} > \text{\textbf{S}}$. Actually, it is important to remark that the scaling policy for interconnects varies according to the interconnect hierarchy, which is mainly due to the different delays for local and global interconnects.
 
-\begin{align*}
-&W \xrightarrow[]{scaling} W' & &L \xrightarrow[]{scaling} L' \\
-&W' = W \cdot \frac{1}{K} & &L' = L \cdot \frac{1}{K}\\
-&\frac{W}{W'} = K & &\frac{L}{L'} = K
-\end{align*}
+%QUESTO E' INCOMPLETO ED IN PARTE SBAGLIATO
+%The transistors dimensions are reduced by K:
+%\begin{align*}
+%&W \xrightarrow[]{scaling} W' & &L \xrightarrow[]{scaling} L' \\
+%&W' = W \cdot \frac{1}{K} & &L' = L \cdot \frac{1}{K}\\
+%&\frac{W}{W'} = K & &\frac{L}{L'} = K
+%\end{align*}
+%For interconnects we have (W is the width of the interconnect):
+%\begin{align*}
+%&W \xrightarrow[]{scaling} W'\\
+%&W' = W \cdot \frac{1}{S}\\
+%&\frac{W}{W'} = S
+%\end{align*}
 
-For interconnects we have (W is the width of the interconnect):
+\subsection{Device scaling}
 
-\begin{align*}
-&W \xrightarrow[]{scaling} W'\\
-&W' = W \cdot \frac{1}{S}\\
-&\frac{W}{W'} = S
-\end{align*}
+\subsubsection{Basic scalable MOSFET} %%%DA METTERE PRIMA DELLE DIVERSE SCALING POLICIES!!!!
 
-Transistors scaling is more aggressive than interconnects scaling: $\text{\textbf{K}} > \text{\textbf{S}}$.
+The most common MOSFET structure is the LDD (Lightly-Doped Drain) one:
 
-\subsection{Constant voltage scaling}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figbasmos}
+	\caption{A LDD MOSFET.}
+	\label{}
+	\end{figure}
+
+\textbf{LDD} MOSFETs are used since the the extension at the drain end of the channel can \textbf{significantly reduce the electric field} peak, thus \textbf{limiting the hot carrier injection} phenomenon that could severely damage the device.  
+Fundamental parts that characterize this structure are:
+
+\begin{itemize}
+\item the gate $\rightarrow$ $T_{gate}$, $T_{OX}$;
+\item source/drain extensions $\rightarrow $ $X_{j}$ (junction depth);
+\item source/drain contacts $\rightarrow$ $X_{jc}$ (contact junction depth);
+\item spacers (regions beside the gate) $\rightarrow$ $T_{SW}$.
+\end{itemize}
+
+In the basic CMOS process, the polysilicon gate is used to mask source/drain implantation. Now we want to realize extensions and contacts exploiting the \textbf{LDD CMOS process}:
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figldd}
+	\caption{The steps to realize spacers.}
+	\label{LDD_process}
+	\end{figure}
+
+In the standard process source and drain are implanted using a high dose, $N_D = 10^{15}$, and a high energy, $E = 80/100\ keV$. In the LDD process, the dose is reduced by three orders of magnitude and the energy is around 20/30 keV in order to realize very shallow junctions ($X_j \approx 10 nm$). So, looking at figure \ref{LDD_process}, we can distinguish four steps:
+
+\begin{enumerate}
+\item implantation of shallow lightly-doped source/drain extensions ($N_D = 10^{12}$, $E = 20/30\ keV$);
+\item CVD deposition of a thick ($\approx 1\mu m$) layer of silicon oxide;
+\item anisotropic etching to remove $SiO_{2}$: part of the silicon oxide is not removed and it constitutes spacers;
+\item high energy implantation of source/drain contacts ($N_D = 10^{15}$, $E = 80/100\ keV$).
+\end{enumerate}
+
+%\begin{enumerate}
+%\item [\textbf{Step (1)}] implatation of shallow light-doped source/drain extensions ($N_D = 10^{12}$, $E = 20/30\ keV$);
+%\item [\textbf{Step (2)}] CVD deposition of a thick ($\approx 1\mu m$) layer of silicon oxide;
+%\item [\textbf{Step (3)}] anisotropic etching to remove $SiO_{2}$; part of the silicon oxide is not removed and it constitutes spacers;
+%\item [\textbf{Step (4)}] high energy implantation of source/drain contacts ($N_D = 10^{15}$, $E = 80/100\ keV$).
+%\end{enumerate}
+
+Spacers can be realized in $SiO_{2}$ or in silicon nitride ($Si_{3}N_{4}$) (more often in $SiO_{2}$). These structures are used to define source and drain contacts.
+
+When we realize S/D extensions it is necessary to perform thermal annealing for a short time since in order to obtain shallow junctions. On the contrary, to realize S/D contacts, that have to be deep, it is required to perform thermal annealing for a longer time and at a higher temperature than in the previous case. The consequence of performing "heavy" thermal annealing consists of the lateral diffusion of the extensions below the gate, reducing the effective length of the channel, and increasing parasitics (because of the source-gate and drain-gate coupling). There exist techniques to reduce the lateral diffusion: the main idea is to implant S/D contacts before extensions.
+
+The \emph{great advantage} of the LDD technology is it can be \textbf{implemented without any additional mask and photolitography} because the oxide deposition and source/drain contacts implantation are obtained using the masking action of spacers. This means that all processes can be easily updated to LDD. Starting from the end of 80s, the reference device has become the LDD one. 
+
+An example of the reference MOSFET is the following:
+
+\newpage
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figscalablemos}
+	\caption{}
+	\label{}
+	\end{figure}
+
+We can see that this device has very large spacers and, as a consequence, very long extensions: this is negative since the resistance of the extension regions becomes very high because they are lightly-doped and long.
+
+Moreover, we can notice the presence of silicide (the silicide is a compound of silicon and metal, in this case nichel) contacts useful to reduce the parasitic resistance.
+
+We recall that source/drain extensions have been introduced in order to improve the reliability of the device limiting the high electric field near the drain. Extensions offer another advantage: \textbf{better scaling} because contact 
+geometry does not depend on S/D extension dimensions. This means that we can scale independently $X_{j}$ and $X_{jc}$ so, we can have a thin junction depth (generally scaled by a factor K) and a thick contact region (less scaled than the junction depth) to reduce the resistance.
+
+Why does the junction depth $X_{j}$ have to be scaled by the same factor by which we scale the device dimensions? Because the \textbf{short channel effects} become more and more relevant as technology scales and they must be kept as small as possible.
+
+\subsubsection{Constant voltage scaling}
 
 Constant voltage scaling features:
 
@@ -1673,7 +1806,7 @@ It is fundamental to observe that the time period in which a power supply value 
 
 \newpage
 
-\subsection{Constant field scaling}
+\subsubsection{Constant field scaling}
 
 This policy involves the reduction of the transistor dimensions in order to maintain constant the electric field. As a conseuqence, if dimensions are scaled by a factor K, $V_{DD}$ also has to be reduced like K.
 
@@ -1908,7 +2041,7 @@ Summarizing:
 
 It is not possible to scale $V_{DD}$ of the same scaling factor that we use for dimensions at each technological node since, doing in such a way, the power supply now should be equal to few millivolts and this, clearly, is not possible. In other words, we cannot apply only the constant field scaling because we would need a very small power supply and, as a consequence, a very low threshold voltage and it wouldn't be possible to operate transistors for two reasons: high leakages and noise (few mV of noise signal could erroneously switch on/off a transistor). On the other hand we cannot apply only constant voltage field because of the low reliability. We have to mix these two policies creating the \textbf{Generalized scaling}.
 
-\subsection{Generalized scaling}
+\subsubsection{Generalized scaling}
 
 In generalized scaling are used two different parameters:
 
@@ -1973,69 +2106,7 @@ Now should be clear how to deduce all these rules.
 
 \newpage
 
-\section{Basic scalable MOSFET}
 
-The most common MOSFET structure is the LDD (Lightly-Doped Drain) one:
-
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\textwidth]{figbasmos}
-	\caption{A LDD MOSFET.}
-	\label{}
-	\end{figure}
-
-Fundamental parts that characterize this structure are:
-
-\begin{itemize}
-\item the gate $\rightarrow$ $T_{gate}$, $T_{OX}$;
-\item source/drain extensions $\rightarrow $ $X_{j}$ (junction depth);
-\item source/drain contacts $\rightarrow$ $X_{jc}$ (contact junction depth);
-\item spacers (regions beside the gate) $\rightarrow$ $T_{SW}$.
-\end{itemize}
-
-In the basic CMOS process, the polysilicon gate is used to mask source/drain implantation. Now we want to realize extensions and contacts exploiting the \textbf{LDD CMOS process}:
-
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\textwidth]{figldd}
-	\caption{The steps to realize spacers.}
-	\label{LDD_process}
-	\end{figure}
-
-In the standard process source and drain are implanted using a high dose, $N_D = 10^{15}$, and a high energy, $E = 80/100\ keV$. In the LDD process, the dose is reduced by three orders of magnitude and the energy is around 20/30 keV in order to realize very shallow junctions ($X_j \approx 10 nm$). So, looking at figure \ref{LDD_process}, we can distinguish four steps:
-
-\begin{enumerate}
-\item [\textbf{Step (1)}] implatation of shallow light-doped source/drain extensions ($N_D = 10^{12}$, $E = 20/30\ keV$);
-\item [\textbf{Step (2)}] CVD deposition of a thick ($\approx 1\mu m$) layer of silicon oxide;
-\item [\textbf{Step (3)}] anisotropic etching to remove $SiO_{2}$; part of the silicon oxide is not removed and it constitutes spacers;
-\item [\textbf{Step (4)}] high energy implantation of source/drain contacts ($N_D = 10^{15}$, $E = 80/100\ keV$).
-\end{enumerate}
-
-Spacers can be realized in $SiO_{2}$ or in silicon nitride ($Si_{3}N_{4}$) (more often in $SiO_{2}$). These structures are used to define source and drain contacts.
-
-When we realize S/D extensions it is necessary to perform thermal annealing for a short time since we want shallow junctions. On the contrary, to realize S/D contacts, that have to be deep, it is required to perform thermal annealing for a longer time and at a higher temperature than the previous case. The consequence of performing "heavy" thermal annealing is that it causes the lateral diffusion of extensions below the gate, affecting the effective length of the channel, and it increases parasitics (because of the source-gate and drain-gate coupling). There exist techniques to reduce the lateral diffusion: the main idea is to implant S/D contacts before extensions.
-
-The \emph{great advantage} of the LDD technology is it can be \textbf{implemented without any additional mask and photolitography} because the oxide deposition and source/drain contacts implantation are obtained using the masking action of spacers. This means that all processes can be easily updated to LDD. Starting from the end of 80s, the reference device has become the LDD one. 
-
-An example of the reference MOSFET is the following:
-
-\newpage
-
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{figscalablemos}
-	\caption{}
-	\label{}
-	\end{figure}
-
-We can see that this device has very large spacers and, as a consequence, very long extensions: this is negative since the resistance of the extension regions becomes very high because they are lightly-doped and long.
-
-Moreover, we can notice the presence of silicide (the silicide is a compound of silicon and metal, in this case nichel) contacts useful to reduce the parasitic resistance.
-
-We recall that source/drain extensions have been introduced in order to improve the reliability of the device limiting the high electric field near the drain. Extensions offer another advantage: \textbf{better scaling} because contact 
-geometry does not depend on S/D extension dimensions. This means that we can scale independently $X_{j}$ and $X_{jc}$ so, we can have a thin junction depth (generally scaled by a factor K) and a thick contact region (less scaled than the junction depth) to reduce the resistance.
-
-Why the junction depth $X_{j}$ has to be scaled by the same factor with which we scale the device dimensions? Because of the \textbf{short channel effects}.
 
 \section{Short Channel Effects}
 \subsection{Roll-off}
