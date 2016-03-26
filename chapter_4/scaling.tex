@@ -1262,7 +1262,7 @@ The maximum speed of carriers in the channel is limited by \textbf{velocity satu
 
 \section{Scaling policies}
 
-So far we have considered the main features and the key parameters that are used to study, analyze and compare the different technological processes and families, and how they are affected by scaling as we get closer and closer to the limits of the Bulk process. Although the Bulk process is getting to its natural end as stated at the beginning of the chapter, it is still of great use to study its behaviour and the limits and problems related to the scaling policies applied to it. As a matter of fact, many ideas and solutions that belong to the Bulk legacy can be exported and exploited by the new Multi-Gate technological process. Independently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions.\\
+So far we have considered the main features and the key parameters that are used to study, analyze and compare the different technological processes and families, and how they are affected by scaling as we get closer and closer to the limits of the Bulk process. Although the Bulk process is getting to its natural end as stated at the beginning of the chapter, it is still of great interest to study its behaviour and the limits and problems related to the scaling policies applied to it. As a matter of fact, many ideas and solutions that belong to the Bulk legacy can be exported and exploited by the new Multi-Gate technological process. Independently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions.\\
 Traditionally, for the Bulk process we can distinguish among three different scaling approaches for \textbf{devices} that will be analyzed:
 
 \begin{enumerate}
@@ -1280,7 +1280,7 @@ Similarly, we have three different scaling policies for interconnects:
 \item \textbf{Fixed-height scaling}.
 \end{enumerate}
 
-The scaling factor for transistors is \textbf{S}. Furthermore, another discrimination can be done among local, intermediate and global wires: local wires scale almost like devices, global wires mainly do not scale, whereas intermediate wires are somewhere in between. This approach is called \textbf{Hierarchical scaling policy} for interconnects.\\
+The scaling factor for interconnects is \textbf{S}. Furthermore, another discrimination can be done among local, intermediate and global wires: local wires scale almost like devices, global wires mainly do not scale, whereas intermediate wires are somewhere in between. This approach is called \textbf{Hierarchical scaling policy} for interconnects.\\
 Transistors scaling is more aggressive than interconnects scaling: $\text{\textbf{K}} > \text{\textbf{S}}$. Actually, it is important to remark that the scaling policy for interconnects varies according to the interconnect hierarchy, which is mainly due to the different delays for local and global interconnects.
 
 %QUESTO E' INCOMPLETO E FORSE STAREBBE MEGLIO DA UN'ALTRA PARTE
@@ -1298,6 +1298,8 @@ Transistors scaling is more aggressive than interconnects scaling: $\text{\textb
 %\end{align*}
 
 \subsection{Device scaling}
+
+Even though new kinds of transistors are being developed and exploited in integrated circuit fabrication to solve some critical problems arisen in the planar Bulk process as technology keeps scaling, it is important to consider the scalable MOSFET device that has been taken as a reference point over the last years. Moreover, some general concepts and ideas that are eligible for the Bulk process may come in handy for future generations of new devices. That is the reason why we will still focus on the Bulk process in this part of the chapter as we discuss about scaling policies. 
 
 \subsubsection{Basic scalable MOSFET} %%%DA METTERE PRIMA DELLE DIVERSE SCALING POLICIES -> CHECK!
 
@@ -1320,7 +1322,7 @@ Fundamental parts that characterize this structure are:
 \item spacers (regions beside the gate) $\rightarrow$ $T_{SW}$.
 \end{itemize}
 
-In the basic CMOS process, the polysilicon gate is used to mask source/drain implantation. Now we want to realize extensions and contacts exploiting the \textbf{LDD CMOS process}:
+In the basic CMOS process, the polysilicon\footnote{Nowadays, polysilicon has been replaced by metal as to avoid poly-depletion effects.} gate is used to mask source/drain implantation. Now we want to realize extensions and contacts exploiting the \textbf{LDD CMOS process}:
 
 	\begin{figure}[H]
 	\centering
@@ -1349,7 +1351,7 @@ Spacers can be realized in $SiO_{2}$ or in silicon nitride ($Si_{3}N_{4}$) (more
 
 When we realize S/D extensions it is necessary to perform thermal annealing for a short time since in order to obtain shallow junctions. On the contrary, to realize S/D contacts, that have to be deep, it is required to perform thermal annealing for a longer time and at a higher temperature than in the previous case. The consequence of performing "heavy" thermal annealing consists of the lateral diffusion of the extensions below the gate, reducing the effective length of the channel, and increasing parasitics (because of the source-gate and drain-gate coupling). There exist techniques to reduce the lateral diffusion: the main idea is to implant S/D contacts before extensions.
 
-The \emph{great advantage} of the LDD technology is it can be \textbf{implemented without any additional mask and photolitography} because the oxide deposition and source/drain contacts implantation are obtained using the masking action of spacers. This means that all processes can be easily updated to LDD. Starting from the end of 80s, the reference device has become the LDD one. 
+The \emph{great advantage} of the LDD technology consists of the possibility to be \textbf{implemented without any additional mask and photolitography} because the oxide deposition and source/drain contacts implantation are obtained using the masking action of spacers. This means that all processes can be easily updated to LDD. Starting from the end of 80s, the reference device has become the LDD one. 
 
 An example of the reference MOSFET is the following:
 
@@ -2106,7 +2108,10 @@ Now should be clear how to deduce all these rules.
 
 
 \section{Short Channel Effects}
-\subsection{Roll-off}
+
+\textbf{Short Channel Effects (SCE)} is a general term that includes all the consequences and the effects that are visible in deeply-scaled devices. For scaling continues with years, SCE are getting more and more evident and difficult to deal with. As we are entering the age of nanoscale FET devices, where the channel length will be a few nanometers only, SCE are leading to the end of the Bulk planar process and into a new era of different solutions ranging from finFETs to Gate-All-Around (GAA) nanowire transistors. 
+
+\subsection{Roll-off} \label{subsec:roll_off}
 
 
 For a long channel device the threshold voltage can be written as:
@@ -2189,20 +2194,20 @@ Substituting this expression in the threshold voltage expression for a short cha
 
 The quantity $- \frac{q N_A x_d x_1}{C_{OX}L}$ is a \textbf{correction factor}.
 
-We said that the expression of the threshold voltage  for a short channel device is:
+We said that the expression of the threshold voltage for a short channel device is:
 
 	\begin{eqnarray*}
 	   V_{ThSC}&=& V_{FB}+2\Phi_P+\frac{qN_AW\left(L+L-2x_1\right)x_d}{2 C_{ox}WL}\\
-	           &=& V_{ThLC} - \frac{qN_A x_d \dfrac{x_1}{L}}{C_{ox}}
+	           &=& V_{ThLC} - \frac{qN_A x_d }{C_{ox}}\frac{x_1}{L}
 	\end{eqnarray*}
 
-We can observe that the SCE (represented by $- \frac{q N_A x_d x_1}{C_{OX}L}$) reduces the threshold voltage. When we scale a device, the ratio $\frac{x_1}{L}$ should be kept constant. If it doesn't remain constant, which means that L is scaled while $x_{1}$ (which is the junction depth) not, $\frac{x_1}{L}$ increases causing a further reduction of the threshold voltage. So, in order to keep limited the $V_{TH}$ reduction we have to scale $x_{1}$ that, however, is not a technological parameter.
+The second term on the right-hand side of the equation represents the contribution given by the SCE and it causes a threshold voltage lowering. When we scale a device, the ratio $\frac{x_1}{L}$ should be kept constant. If it doesn't remain constant, which means that L is scaled whereas $x_{1}$ (which is half the portion of the depletion charge \textbf{not} controlled by the gate) is not, $\frac{x_1}{L}$ increases causing a further reduction of the threshold voltage. Thus, in order to keep limited the $V_{th}$ reduction we have to scale $x_{1}$. Unfortunately, $x_{1}$ is not a technological parameter.
 
 	\begin{eqnarray*}
 	   x_1&=& x_J \left(\sqrt{1+\frac{2x_d}{x_J}} -1 \right)
 	\end{eqnarray*}
 
-We can reduce $x_{1}$ scaling $x_{j}$ by the same factor of the channel length (that's why it is essential to scale S/D junctions like channel). But, looking at the expression of $x_{1}$, if we want to reduce it by a factor K, we have to \textbf{scale both the depletion width and the junction depth}:
+We can reduce $x_{1}$ scaling $x_{j}$ by the same factor of the channel length (that is the reason why it is essential to scale S/D junctions like the channel). However, by looking at the expression of $x_{1}$, we notice that if we want to reduce it by a factor K, we have to \textbf{scale both the depletion width and the junction depth}. Scaling the depletion width can be realized by increasing the doping level by a factor $K^2$ (because of the squareroot behaviour in the formula for $x_{d}$); unfortunately, there is a drawback about increasing the doping level, since it worsens the electric field peak at the drain terminal and it turns into degraded $m$ and $\mu$ values. Instead, the junction depth can be scaled during the junction-implementation steps.
 
 	\begin{equation}
 	x'_d = \frac{1}{K} x_d\ \text{and}\ x'_j = \frac{1}{K} x_j
@@ -2214,34 +2219,39 @@ So:
 	x'_1 = \frac{1}{K} x_j \left( \sqrt{1+ 2\frac{1/K \cdot x_d}{1/K \cdot x_j}} - 1 \right) = \frac{1}{K} \cdot x_1
 	\end{equation}
 
-Scaling $x_{d}$ and $x_{j}$ we are sure that the effect of the SCE on $V_{TH}$ is limited. If we don't respect this rule the consequence is \textbf{roll-off}. Roll-off means that the threshold voltage is dominated by the SCE:
+Scaling $x_{d}$ and $x_{j}$ we are sure that the effect of the SCE on $V_{th}$ is limited. If we do not respect this rule the consequence is \textbf{roll-off}. Roll-off means that the threshold voltage is dominated by the SCE and it becomes a function of the channel length, whereas designers would like to have a $V_{th}$ invariant with transistor dimensions and biasing conditions. This effect is exacerbated by $V_{DS}$, that is, roll-off gets worse as $V_{DS}$ increases to $V_{dd}$. Roll-off becomes significant for channels that are shorter than 100 nm. Since there is no way to make sure that all transistors would have a channel length equal to the nominal value, even a small variation in the process (due to poor photolitography resolution) can determine large changes in the threshold voltage when the curve is steep. It is important to choose the optimal length in such a way that, if its value changes, the roll-off region is still avoided and the threshold voltage remains around the nominal value.
 
 \newpage
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{figrolloff}
-	\caption{}
+	\caption{It can be seen that with a channel length below 80 nm, the threshold voltage is subject to roll-off.}
 	\label{}
 	\end{figure}
 
-Looking at the graph, it can be seen that, in this case, with a channel length below 80 nm, the threshold voltage is subject to roll-off. 
 
 \newpage
 
-\subsection{DIBL effect}
+\subsection{Drain-Induced Barrier Lowering (DIBL) effect}
 
-The previous graph shows another effect called \textbf{DIBL (Drain Induced Barrier Lowering}; it is the influence of the drain voltage on the barrier): the red line is related to a higher value of $V_{DS}$; in this case the roll-off effect appears earlier.
+As technology scales and the channel gets shorter, source and drain regions get closer to each other. When they become sufficiently close, an electrostatic coupling occurs between source and drain. When $V_{DS}=V_{dd}$ the energy barrier that prevents the flow of carriers through the channel becomes very low. At this point, even a small value of the gate-source voltage, with $0 < V_{GS} < V_{dd}$, can completely flatten the energy barrier and allow a free flow of carriers in the channel. \\
+%%QUI CI STAREBBERO BENE DEI DIAGRAMMI A BANDE RIGUARDANTI IL DIBL
+Finally, another phomenon that must be avoided is \textbf{punchthrough}. Punchthrough consists of the union of the source and drain depletion regions on account of the enlargement towards the source terminal of the depletion region at drain. This is another problem that can be solved by increasing the level of doping at drain (since it reduces the depletion width), even though it causes some drawbacks as it is explained in the \ref{subsec:roll_off}.\\
+%%ANCHE QUI UN GRAFICO DEL PUNCHTHROUGH CON LA PROPRIA FORMULA NON CI STAREBBE MALE
+ 
 
-It is clear that the reference channel length for a technology has to be carefully chosen in order to avoid the roll-off region:
+%The previous graph shows another effect called \textbf{DIBL (Drain Induced Barrier Lowering}; it is the influence of the drain voltage on the barrier): the red line is related to a higher value of $V_{DS}$; in this case the roll-off effect appears earlier.
 
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{12_L_opt}
-	\caption{}
-	\label{}
-	\end{figure}
+%It is clear that the reference channel length for a technology has to be carefully chosen in order to avoid the roll-off region:
 
-Because of process variations (the photolitography is not so accurate), the effective channel length can vary from a minimum value to a maximum one. It is important to choose the optimal length in such a way that, if its value changes, the roll-off region is still avoided and the threshold voltage remains the nominal one.
+%	\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\textwidth]{12_L_opt}
+%	\caption{}
+%	\label{}
+%	\end{figure}
+
+%Because of process variations (the photolitography is not so accurate), the effective channel length can vary from a minimum value to a maximum one. 
 
 \end{document}
