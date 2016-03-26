@@ -522,7 +522,7 @@ Even though the subthreshold current is an important parameter for any device fa
 	SS|_{300K}  = 2,3 \cdot 26mV \cdot m \approx 59.8 mV \cdot m
 	\end{equation}
 
-SS is measured in \textbf{mV/dec}, since it tells us how many milliVolts the gate voltage must change in order to decrease/increase the $I_{subV_{th}}$ by one order of magnitude. The lower is the value of SS the better is the technological process. \textbf{The minimum reachable value for SS is 59.8 mV/dec}, when $m = 1$. So, from the technological point of view, all the efforts are focused towards the direction that allows to have $m \approx 1$. Typical SS values for the bulk CMOS technology are in the range 80 - 100 $mV/dec$. More advanced technologies have a lower SS and in some cases it is possible to reach values near the theoretical limit. A good example is provided by the \textbf{Fully-Depleted Silicon-On-Insulator (FD-SOI)} process, where $SS=60mV/dec$. FD-SOI has a very good value of the SS due to the extremely reduced thickness of the silicon overlay, which reduces $C_{dep}$.\\
+SS is measured in \textbf{mV/dec}, since it tells us how many milliVolts the gate voltage must change in order to decrease/increase the $I_{subV_{th}}$ by one order of magnitude. The lower is the value of SS the better is the technological process. \textbf{The minimum reachable value for SS is 59.8 mV/dec}, when $m = 1$. So, from the technological point of view, all the efforts are focused towards the direction that allows to have $m \approx 1$. Typical SS values for the bulk CMOS technology are in the range 80 - 100 $mV/dec$. More advanced technologies have a lower SS and in some cases it is possible to reach values near the theoretical limit. A good example is provided by the \textbf{Fully-Depleted Silicon-On-Insulator (FD-SOI)} process, where $SS=60mV/dec$. The FD-SOI process has a very good value of the SS due to the extremely reduced thickness of the silicon overlay, which reduces $C_{dep}$. FD-SOI devices are characterized by many advantages compared to standard Bulk transistors; in fact, one the main advantages is represented by the reduced SS value that makes the control on the device more effective.\\
 As a matter of fact, $m = 1+ \frac{C_{dep}}{C_{OX}}$ and its value can be minimized by lowering the ratio $C_{dep}/C_{OX}$ in two possible ways:
 
 \begin{enumerate}
@@ -532,6 +532,8 @@ As a matter of fact, $m = 1+ \frac{C_{dep}}{C_{OX}}$ and its value can be minimi
 
 In the graph below are shown different curves related to SS: %%METTERE ALMENO UN GRAFICO SU BULK vs FD-SOI (o MG)
 
+
+%%QUESTA PARTE E' STATA RIDOTTA (SOPRA) PERCHE' LA TRATTAZIONE ERA LUNGA E NON CENTRATA SULLO SCALING. SERVIVA MOSTRARE UNA FORMULA PER LA CORRENTE DI SOTTOSOGLIA MA SENZA DILUNGARSI COME ERA STATO FATTO QUI. E' UN CORSO DI TECNOLOGIA, NON DI DISPOSITIVI.
 %It is very important to understand which are the physical mechanisms that produce $I_{subV_{th}}$.
 %
 %	\begin{figure}[H]
@@ -1281,7 +1283,7 @@ Similarly, we have three different scaling policies for interconnects:
 The scaling factor for transistors is \textbf{S}. Furthermore, another discrimination can be done among local, intermediate and global wires: local wires scale almost like devices, global wires mainly do not scale, whereas intermediate wires are somewhere in between. This approach is called \textbf{Hierarchical scaling policy} for interconnects.\\
 Transistors scaling is more aggressive than interconnects scaling: $\text{\textbf{K}} > \text{\textbf{S}}$. Actually, it is important to remark that the scaling policy for interconnects varies according to the interconnect hierarchy, which is mainly due to the different delays for local and global interconnects.
 
-%QUESTO E' INCOMPLETO ED IN PARTE SBAGLIATO
+%QUESTO E' INCOMPLETO E FORSE STAREBBE MEGLIO DA UN'ALTRA PARTE
 %The transistors dimensions are reduced by K:
 %\begin{align*}
 %&W \xrightarrow[]{scaling} W' & &L \xrightarrow[]{scaling} L' \\
@@ -1297,7 +1299,7 @@ Transistors scaling is more aggressive than interconnects scaling: $\text{\textb
 
 \subsection{Device scaling}
 
-\subsubsection{Basic scalable MOSFET} %%%DA METTERE PRIMA DELLE DIVERSE SCALING POLICIES!!!!
+\subsubsection{Basic scalable MOSFET} %%%DA METTERE PRIMA DELLE DIVERSE SCALING POLICIES -> CHECK!
 
 The most common MOSFET structure is the LDD (Lightly-Doped Drain) one:
 
@@ -1308,7 +1310,7 @@ The most common MOSFET structure is the LDD (Lightly-Doped Drain) one:
 	\label{}
 	\end{figure}
 
-\textbf{LDD} MOSFETs are used since the the extension at the drain end of the channel can \textbf{significantly reduce the electric field} peak, thus \textbf{limiting the hot carrier injection} phenomenon that could severely damage the device.  
+\textbf{LDD} MOSFETs are used since the extension at the drain end of the channel can \textbf{significantly reduce the electric field} peak, thus \textbf{limiting the hot carrier injection} phenomenon that could severely damage the device. If there are too many electrons trapped in the gate oxide, the threshold voltage of the device can permanently change and irreversibly damage the transistor.   
 Fundamental parts that characterize this structure are:
 
 \begin{itemize}
@@ -1360,14 +1362,9 @@ An example of the reference MOSFET is the following:
 	\label{}
 	\end{figure}
 
-We can see that this device has very large spacers and, as a consequence, very long extensions: this is negative since the resistance of the extension regions becomes very high because they are lightly-doped and long.
+We can see that the device has very large spacers and, as a consequence, very long extensions, which is negative since the resistance of the extension regions becomes very high because they are lightly-doped and long. As a consequence, we can notice the presence of silicide (the silicide is a compound of silicon and metal, in this case nichel) contacts useful to reduce the parasitic resistance at least for the source/drain contacts. We recall that source/drain extensions have been introduced in order to improve the reliability of the device limiting the high electric field near the drain. Extensions offer another advantage: \textbf{better scaling} because contact geometry does not depend on S/D extension dimensions. This means that we can scale independently $X_{j}$ and $X_{jc}$ so, we can have a thin junction depth (generally scaled by a factor K) and a thick contact region (less scaled than the junction depth) to reduce the resistance. Why does the junction depth $X_{j}$ have to be scaled by the same factor by which we scale the device dimensions? The answer is given by the \textbf{short channel effects}, which become more and more relevant as technology scales and they must be kept as small as possible. \\
 
-Moreover, we can notice the presence of silicide (the silicide is a compound of silicon and metal, in this case nichel) contacts useful to reduce the parasitic resistance.
 
-We recall that source/drain extensions have been introduced in order to improve the reliability of the device limiting the high electric field near the drain. Extensions offer another advantage: \textbf{better scaling} because contact 
-geometry does not depend on S/D extension dimensions. This means that we can scale independently $X_{j}$ and $X_{jc}$ so, we can have a thin junction depth (generally scaled by a factor K) and a thick contact region (less scaled than the junction depth) to reduce the resistance.
-
-Why does the junction depth $X_{j}$ have to be scaled by the same factor by which we scale the device dimensions? Because the \textbf{short channel effects} become more and more relevant as technology scales and they must be kept as small as possible.
 
 \subsubsection{Constant voltage scaling}
 
