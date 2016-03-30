@@ -386,9 +386,9 @@ What has been kept constant during the years is the ratio $V_{DD}/V_{T}$. This r
 	\label{tau}
 	\end{figure}
 
-Up to the 2011 edition of the \textbf{ITRS} there has been a significantly different value of this ratio for the three families. For HP, $\frac{V_{DD}}{V_{T}} \approx 6/7$. Generally, when the \textbf{ratio is high} it means that the considered process will be characterized by a \textbf{high} on-current. For many years (during the golden age of the CMOS technology: '70, '80, beginning of '90) $V_{DD}$ had been 5 V and $V_{T}$ 1 V, so their ratio was equal to 5.\\
-In LOP the ratio is lower and it is, approximately, equal to 3 since $V_{T}$ is higher.\\
-In LSTP the quantity $V_{DD}/V_{T}$ is slightly smaller, approximately less than 3 ($\approx$ 2.5).
+Up to the 2011 edition of the \textbf{ITRS} there has been a significantly different value of this ratio for the three families. For HP, $V_{DD}/V_{th} \approx 6/7$. Generally, when the \textbf{ratio is high} it means that the considered process will be characterized by a \textbf{high} on-current. For many years (during the golden age of the CMOS technology: '70, '80, beginning of '90) $V_{DD}$ had been 5 V and $V_{th}$ 1 V, so their ratio was equal to 5.\\
+In LOP the ratio is lower and it is, approximately, equal to 3 since $V_{th}$ is higher.\\
+In LSTP the quantity $V_{DD}/V_{th}$ is slightly smaller, approximately less than 3 ($\approx$ 2.5).
 By looking at the 2013 edition, instead, the following ratios are reported for the HP and LP family respectively: the former is supposed to constantly decrease from 5 down to 3 over the years, the latter will reduce from 2 down to approximately 1.5. 
 
 \paragraph{Third row: EOT - $T_{ox}$ (\r{A}).} The thickness of the gate oxide is reduced node by node. For example, in the HP process, in 2012, $T_{ox}$ is equal to 7 \r{A}; considering that the $SiO_{2}$ lattice constant is 2.7, having a thickness of 7 \r{A} means having roughly 3 atomic layers. This thickness is not enough to prevent \emph{tunneling} and it causes an \textbf{increase of the gate current}, which, instead, should be close to zero since the gate is supposed to be isolated. This could represent another problem for deeply scaled devices.\\
@@ -424,7 +424,7 @@ So, the followed sequence is:
 Besides the effort of reducing $t_{ox}$ as to obtain a better electrostatic control of the channel to switch the device on and off more efficiently, there are other reasons why the gate oxide thickness has been reduced over and over with years. Two of them are the most significant:
 
 \begin{itemize}
-\item QM effects. For deeply-scaled devices the classical model that has been used for many year to describe the distribution of the inversion charge in the channel is not accurate anymore. The inversion charge does \textbf{not} concentrate at the surface between gate oxide and channel, but it is pushed further away from the oxide, into the silicon. The distance between the silicon-oxide surface and the maximum concentration of carriers in the silicon is called \textbf{Dark Space (DS)}. As a consequence, there exists a new capacitance $C_{DS}=\frac{\epsilon_s}{DS} $that is in series with $C_{ox}$ and the total capacitance will be: \\ $C_{tot}=\frac{C_{ox}*C_{DS}}{C_{ox}+C_{DS}}$.\\ It is straight-forward to notice that the gate electrostatic control will worsen on account of dark space.
+\item QM effects. For deeply-scaled devices the classical model that has been used for many year to describe the distribution of the inversion charge in the channel is not accurate anymore. The inversion charge does \textbf{not} concentrate at the surface between gate oxide and channel, but it is pushed further away from the oxide, into the silicon. The distance between the silicon-oxide surface and the maximum concentration of carriers in the silicon is called \textbf{Dark Space (DS)}. As a consequence, there exists a new capacitance $C_{DS}=\epsilon_{s}/ DS $that is in series with $C_{ox}$ and the total capacitance will be: \\ $C_{tot}=C_{ox}*C_{DS}/(C_{ox}+C_{DS})$.\\ It is straight-forward to notice that the gate electrostatic control will worsen on account of dark space.
 \item Polydepletion effect. A similar phenomenon occurs in devices with polysilicon gates, since there exists a depletion layer in the gate itself due to the applied voltage. Once again, a second capacitance can be inserted in series to $C_{ox}$, thus reducing the total capacitance and worsening the device performance. However, the polydepletion effect has been resolved by replacing polysilicon with metals. Nowadays, metal-gate technology has completely taken over polysilicon-gate technology.
 \end{itemize} 
 %IN QUESTO ITEMIZE POTREMMO INTRODURRE DEI GRAFICI
@@ -2156,8 +2156,8 @@ As it has been said in the main introduction about scaling, there are three diff
 \end{itemize}
 %%MAGARI IL DISEGNO CHE C'E' SULLE SLIDE CHE MOSTRA LA DIFFERENZA TRA LE 3 COSE
 
-\begin{table}[H]
-\begin{center}
+\begin{table}[H] {
+\begin{center} {
 \begin{tabular}{||c|c|c|c||}
 \hline
 &Ideal&Quasi-ideal&Fixed-Height\\
@@ -2180,14 +2180,14 @@ $\mathcal{R_{int}}*\mathcal{C_{IMD}}$&$S^2$&$S^2$&$S^2$\\
 \hline
 $\mathcal{R_{int}}*\mathcal{C_{ILD}}$&$S^2$&S&1\\
 \hline
-\end{tabular}
-\end{center}
+\end{tabular} }
+\end{center} }
 \end{table}
 
 Now that we have seen the main geometrical and electrical parameters and how they vary when scaled, we can analyze the different effects of scaling on local, intermediate and global wires.\\ Firstly, a distinction must be made: the scaling factor \textbf{S will be kept for local wires}, whereas another factor \textbf{$S_{G}$ will be introduced for global interconnects}. Secondly, it must be taken into account that as scaling proceeds the dimensions of the die will increase according to Moore's Law. Therefore, the length of the global wires will increase as they will need to reach parts of the IC that are further apart. As a result, the delay of local and global interconnects will behave differently.\\ Let us look at the following table:
 
-\begin{table}[H]
-\begin{center}
+\begin{table}[H] {
+\begin{center} {
 \begin{tabular}{||c|c|c|c||}
 \hline
 &Ideal&Quasi-ideal&Fixed-Height\\
@@ -2204,15 +2204,15 @@ Global Delay (IMD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{IMD}}*L_G^2$}&$S^{2}S_
 \hline
 Global Delay (ILD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{ILD}}*L_G^2$}&$S^{2}S_G^2$&$S S_G^2$&$S_G^2$\\
 \hline
-\end{tabular}
-\end{center}
+\end{tabular} }
+\end{center} }
 \end{table}
 
 The results in the last two tables show us that the \textbf{fixed-height} scaling for \textbf{local} wires offers the outcome in terms of \textit{current density} and \textit{delay} even though the higher aspect ratio increases the complexity of the process. 
 At the same time, the delay for global wires grows excessively and it is \textbf{not affordable} at system level. Consequently, a different approach has become necessary and the \textbf{hierarchical scaling} policing for interconnects has been adopted. We define three factors: $S_{L}$, $S_{I}$ and $S_{G}$ for local, intermediate and global wires respectively. The magnitude of the three different parameters will be $S_{L}>S_{I}>S_{G}$:
 
-\begin{table}[H]
-\begin{center}
+\begin{table}[H] {
+\begin{center} {
 \begin{tabular}{||c|c|c|c||}
 \hline
 &Local&Intermediate&Global\\
@@ -2221,8 +2221,8 @@ $W_{int}$, $W_{sp}$&1/$S_{L}$&1/$S_{I}$&$1/S_{G} \simeq 1$\\
 \hline
 $H_{int}$, $T_{ILD}$&$\simeq 1$&$\simeq 1$&$\simeq 1$\\
 \hline
-\end{tabular}
-\end{center}
+\end{tabular} }
+\end{center} }
 \end{table}
 
 The Fixed-Height policy has been applied to all hierarchical levels of interconnects, whereas horizontal quantities scale according to their own scaling factor. For global wires $S_{G} \simeq 1$, which means that basically they do not scale. Local wires scale like $S_{L} \simeq K$, thus they almost behave the same way as devices do. Finally, intermediate wires gradually range from local to global or vice-versa.
