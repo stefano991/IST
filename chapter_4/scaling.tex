@@ -1,4 +1,4 @@
- \documentclass[a4paper, 12pt, twoside, openright]{report}
+\documentclass[a4paper, 12pt, twoside, openright]{report}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -19,6 +19,8 @@
 \setlength{\textwidth}{17.5cm}
 \setlength{\oddsidemargin}{-1.0cm}
 \setlength{\evensidemargin}{-1.0cm}
+
+
 \begin{document}
 
 \tableofcontents
@@ -33,11 +35,11 @@ In figure \label{confronto} a comparison between a very old process (3 um channe
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{Immagine}
-	\caption{Conparison between two technological processes.}
+	\caption{Comparison between two technological processes.}
 	\label{confronto}
 	\end{figure}
 
-First it's important to say that devices have been scaled much more than interconnections; in other words, interconnects cannot be scaled with the same policy used for electronic devices. This could be a problem since in a technology where devices and interconnects have comparable dimensions, interconnects parasitics do not have influence on the overall performance; on the contrary, in a technology where the devices and the interconnections are not scaled with the same rate, as in this case (devices smaller than interconnects), \textbf{parasitics have a significant influence on the perfomance}. This is one of the consequences of scaling that can only be partially solved by technology, so it is essential to act from the design point of view in order to limit the effect of parasitics. The other consequence of the scaling is related to \textbf{Short Channel Effects (SCE)}. Short channel effect is a phenomenon that is attributable to short channel devices, in other words when the channel length is of the same order of magnitude as the depletion-layer widths (xdD, xdS) of the source and drain junction. One of the most important consequences of this effect is a change of the threshold voltage and so a less strong electrostatic control of the channel. The SCE can be strongly limited by appropriate technological choices (this is the main target of integrated technologies); \\
+First it's important to say that devices have been scaled much more than interconnections; in other words, interconnects cannot be scaled with the same policy used for electronic devices. This could be a problem since in a technology where devices and interconnects have comparable dimensions, interconnects parasitics do not have influence on the overall performance; on the contrary, in a technology where the devices and the interconnections are not scaled with the same rate, as in this case (devices smaller than interconnects), \textbf{parasitics have a significant influence on the performance}. This is one of the consequences of scaling that can only be partially solved by technology, so it is essential to act from design point of view in order to limit the effect of parasitics. The other consequence of the scaling is related to \textbf{Short Channel Effects (SCE)}. Short channel effect is a phenomenon that is attributable to short channel devices, in other words when the channel length is of the same order of magnitude as the depletion-layer widths (xdD, xdS) of the source and drain junction. One of the most important consequences of this effect is a change of the threshold voltage and so a less strong electrostatic control of the channel. The SCE can be strongly limited by appropriate technological choices (this is the main target of integrated technologies); \\
 
 The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifies technologies in the following way (2011 edition):
 
@@ -50,7 +52,7 @@ The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifi
 Nowadays, HP is becoming marginal with respect to the other process families, because modern technology tends to pay attention in particular to the reduction of leakage (by avoiding to reduce too much the threshold voltage), since the supply voltage has been scaled more and more over the years. For these reasons, LOP technology is playing a key role: it has become the new HP family in \textbf{ITRS} (2013 edition), which will be used throughout this chapter for technological parameters. As a consequence, the old LSTP has become the new LP family. In conclusion, from now on this chapter will refer to two different technological families:
 
 \begin{itemize}
-\item \textbf{HP}: High Performace processes have as main goal to improve perfomance even though power consumption increases.
+\item \textbf{HP}: High Performance processes have as main goal to improve performance even though power consumption increases.
 \item \textbf{LP}: Low Power processes have aims at reducing the static power for low performance and low battery capacity applications.
 \end{itemize}
 
@@ -295,7 +297,7 @@ For high-performance logic, dynamic power dissipation is expected to become part
 \item \textbf{V}: here it is assumed equal to $V_{dd}$.
 \end{itemize}
 
-Historically, for the low-power family, devoted to the reduction of static power dissipation, hence the off-current, the main indicator had been the $I_{off}$ current: it has always been much lower than the $I_{off}$ for the HP technology. However, also the previous parameter, i.e. $CV^{2}$, is used to characterize the low-power family. A comparison between technological families tells us that for the HP family the obtained value is lower with respect to the LP family on account of a lower value of the total gate capacitance, while power supply voltage scales similarly both for HP and LP. As to understand this behaviour in a more satisfactory way, let us consider to the following picture \ref{CV^2}:
+Historically, for the low-power family, devoted to the reduction of static power dissipation, hence the off-current, the main indicator had been the $I_{off}$ current: it has always been much lower than the $I_{off}$ for the HP technology. However, also the previous parameter, i.e. $CV^{2}$, is used to characterize the low-power family. A comparison between technological families tells us that for the HP family the obtained value is lower with respect to the LP family on account of a lower value of the total gate capacitance, while power supply voltage scales similarly both for HP and LP. As to understand this behavior in a more satisfactory way, let us consider to the following picture \ref{CV^2}:
 
 %inserire grafico CV^2 HPvsLP
 %	\begin{figure}[h]
@@ -323,7 +325,7 @@ I_{on} = I_{ds}(V_{gs}=V_{dd}, V_{ds}=V_{dd}, W=W_{ref})
 	\label{}
 	\end{figure}
 
-Let us analyze the line in the table related to the $I_{on}$ values, for the two families HP and LP. \\In the former, the n-channel MOSFET saturation drive current is found to increase only for a few years and then it starts to drop. This behaviour is drastically different from the previous projections where the current continued to grow every year. The reason for the drop of the on-current is mainly due to $V_{dd}$ scaling and significant source-drain tunneling for channel lengths below 10 nm, which makes a high threshold voltage necessary to keep the same $I_{off}$.\\
+Let us analyze the line in the table related to the $I_{on}$ values, for the two families HP and LP. \\In the former, the n-channel MOSFET saturation drive current is found to increase only for a few years and then it starts to drop. This behavior is drastically different from the previous projections where the current continued to grow every year. The reason for the drop of the on-current is mainly due to $V_{dd}$ scaling and significant source-drain tunneling for channel lengths below 10 nm, which makes a high threshold voltage necessary to keep the same $I_{off}$.\\
 In the latter, the same trend as the one explained above is kept, with values of on-current almost equal to 35\% to the corresponding HP-node values in the table: let us recall that the main feature for the LP transistors is low static power at the expense of a reasonable speed reduction.
 
 $I_{off}$ ($nA/\mu m$) is the current flowing out of the source node of the n-MOSFET when the gate is connected to ground and the drain to $V_{DD}$, as defined in the following equation:
@@ -346,11 +348,11 @@ In the case of low power devices this current is set to be four decades lower th
 
 An important parameter is represented by the ratio between $I_{on}$ and $I_{off}$: it reveals how good the electrostatic control of the channel performed by the gate is; the larger the ratio, the more effective it is the control. In an ideal technology this ratio should be infinite. Referring to the data analyzed so far, for the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$, while in the LOP logic it is roughly $10^7$. It is clear that the higher the ratio the higher it is $I_{on}$, boosting performance, and the lower it is $I_{off}$, leading to low static power.
 
-An efficient method to measure the performance of a process is to evaluate the intrinsic time $\tau$: it can be seen as the time required to remove the charge stored in the gate capacitance of a transistor with W=W_{ref} by mean of the $I_{on}$ current.
+An efficient method to measure the performance of a process is to evaluate the intrinsic time $\tau$: it can be seen as the time required to remove the charge stored in the gate capacitance of a transistor with $W=W_{ref}$ by mean of the $I_{on}$ current.
 The value listed in the tables are computed applying the following equation:
 
 \begin{equation}
-$\tau$ = $\frac{$C_{g,total}$*$V_{dd}$}{$I_{on}$}$
+\tau = \frac{C_{g,total}*V_{dd}}{I_{on}}$
 \label{}
 \end{equation}
 
@@ -370,7 +372,7 @@ The dotted capacitor is the total gate capacitance per micron device width in in
 	\end{enumerate}
 
 Since the input capacitance depends mainly on the geometries, generally, if we want to improve the intrinsic time we have to act on $I_{on}$. This is another reason why, in advanced processes, the main aim is to increase $I_{on}$ as much as possible. $\tau$ and the clock frequency are not the same thing; however, increasing the former can probably lead to an improvement of the latter.
-In generating the roadmap projection for logic technology, the guiding metric has been the transistor intrinsic speed, the inverse of $\tau$. Even if some new transitor delay metric has been developed, also in the 2013 edition original metric will be used, because it is sufficiently accurate to follow the key scaling trends, and for consistency with previous Roadmaps too.
+In generating the roadmap projection for logic technology, the guiding metric has been the transistor intrinsic speed, the inverse of $\tau$. Even if some new transistor delay metric has been developed, also in the 2013 edition original metric will be used, because it is sufficiently accurate to follow the key scaling trends, and for consistency with previous Roadmaps too.
 Observing the graph in figure \ref{tau}, it can been seen that, for high-performance transistors, the intrinsic speed\footnote{It is the inverse of $\tau$ for a speed unit.} improves initially with a slope of 4\% per year, while in low-power family increases only at a slope of roughly 2\% per year. 
 
 
@@ -384,7 +386,7 @@ What has been kept constant during the years is the ratio $V_{DD}/V_{T}$. This r
 	\label{tau}
 	\end{figure}
 
-Up to the 2011 edition of the \textbf{ITRS} there has been a signficantly different value of this ratio for the three families. For HP, $\frac{V_{DD}}{V_{T}} \approx 6/7$. Generally, when the \textbf{ratio is high} it means that the considered process will be characterized by a \textbf{high} on-current. For many years (during the golden age of the CMOS technology: '70, '80, beginning of '90) $V_{DD}$ had been 5 V and $V_{T}$ 1 V, so their ratio was equal to 5.\\
+Up to the 2011 edition of the \textbf{ITRS} there has been a significantly different value of this ratio for the three families. For HP, $\frac{V_{DD}}{V_{T}} \approx 6/7$. Generally, when the \textbf{ratio is high} it means that the considered process will be characterized by a \textbf{high} on-current. For many years (during the golden age of the CMOS technology: '70, '80, beginning of '90) $V_{DD}$ had been 5 V and $V_{T}$ 1 V, so their ratio was equal to 5.\\
 In LOP the ratio is lower and it is, approximately, equal to 3 since $V_{T}$ is higher.\\
 In LSTP the quantity $V_{DD}/V_{T}$ is slightly smaller, approximately less than 3 ($\approx$ 2.5).
 By looking at the 2013 edition, instead, the following ratios are reported for the HP and LP family respectively: the former is supposed to constantly decrease from 5 down to 3 over the years, the latter will reduce from 2 down to approximately 1.5. 
@@ -427,7 +429,7 @@ Besides the effort of reducing $t_{ox}$ as to obtain a better electrostatic cont
 \end{itemize} 
 %IN QUESTO ITEMIZE POTREMMO INTRODURRE DEI GRAFICI
 
-As it has been stated at the beginning of the paragraph, the main drawback of the reduction of $t_{ox}$ consists of the strong increase of the \textbf{gate leakage} current: in order to avoid this undesired consequence, the gate structure and materials should be completely changed. Indepentently from the technological family \textbf{scaling means higher $I_{off}$} as long as the bulk planar process is concerned. New processes try to maintan limited, under control, $I_{off}$. For the moment we consider $I_{off}=I_{subV_{th}}$ for a n-MOS transistor whose drain is tied to $V_{dd}$ and its source, gate and body are tied to ground (dual condition for a p-MOS)\label{ioff_config}; therefore, we are not considering other leakage sources as junction leakages, gate leakages, \dots.
+As it has been stated at the beginning of the paragraph, the main drawback of the reduction of $t_{ox}$ consists of the strong increase of the \textbf{gate leakage} current: in order to avoid this undesired consequence, the gate structure and materials should be completely changed. Independently from the technological family \textbf{scaling means higher $I_{off}$} as long as the bulk planar process is concerned. New processes try to maintain limited, under control, $I_{off}$. For the moment we consider $I_{off}=I_{subV_{th}}$ for a n-MOS transistor whose drain is tied to $V_{dd}$ and its source, gate and body are tied to ground (dual condition for a p-MOS)\label{ioff_config}; therefore, we are not considering other leakage sources as junction leakages, gate leakages, \dots.
 
 \subsection{Subthreshold current} %%%SI POSSONO INTRODURRE DEI GRAFICI (alcuni, ma non troppi)
 
@@ -438,7 +440,7 @@ The subthreshold current expression is something that is of great interest to us
 \item $0<V_{GS}<V_{th}$, $V_{DS}>0$ and $\Phi_{p}<\Psi(0)<2\Phi_{p}$ (where $\Psi(0)$ is the surface potential at the interface). 
 \end{itemize}
 
-For the sake of completeness, the main steps that lead to the $I_{subV_{th}$ expression will be reported:
+For the sake of completeness, the main steps that lead to the $I_{subV_{th}}$ expression will be reported:
 
 \begin{enumerate}
 \item Find a good analytical expression for the inversion charge $Q_{n}(y)$ in WI by solving Poisson's equation.
@@ -1101,7 +1103,7 @@ In the graph below are shown different curves related to SS: %%METTERE ALMENO UN
 %
 %We remember that $C_{dep}$ and $C_{OX}$ are called depletion and oxide capacitance, respectively, but they are \emph{densities} measured in fF/cm$^{2}$.
 %
-%The behaviour of the sub-threshold current for HP100 HP65 HP32 technologies is:
+%The behavior of the sub-threshold current for HP100 HP65 HP32 technologies is:
 %
 %	\begin{figure}[H]
 %	\centering
@@ -1198,7 +1200,7 @@ I_{DS,\ sat} = \frac{\mu_n C_{OX} W}{2L} (V_{GS} - V_{TH})^2
 \label{}
 \end{equation}
 
-However, this model \emph{overestimates} the current. Why? Because we consider just a linear dependency of the inversion charge on the gate voltage neglecting other squareroots terms present in the charge expression. Clearly, this leads to an unprecise approximation.
+However, this model \emph{overestimates} the current. Why? Because we consider just a linear dependency of the inversion charge on the gate voltage neglecting other square-root terms present in the charge expression. Clearly, this leads to an unprecise approximation.
 
 In general, we can use three models to estimate the drive current:
 \begin{enumerate}
@@ -1247,7 +1249,7 @@ The \textbf{maximum drive current} (saturation current) can be obtained imposing
 
 Again, this equation is equal equal to the one that can be obtained from $I_{DS}$ approximated except for `m' that acts as a correction factor.
 
-The maximum speed of carriers in the channel is limited by \textbf{velocity saturation}\footnote{It occurs when the carriers lose energy on account of the increased number of scattering events with the lattice atoms.} and this has a strong effect on the maximum current that a trasistor can drive. The effect of velocity saturation due to the longitudinal field can be modeled using the following expression ($I_{DS}$ is expressed using `m'):
+The maximum speed of carriers in the channel is limited by \textbf{velocity saturation}\footnote{It occurs when the carriers lose energy on account of the increased number of scattering events with the lattice atoms.} and this has a strong effect on the maximum current that a transistor can drive. The effect of velocity saturation due to the longitudinal field can be modeled using the following expression ($I_{DS}$ is expressed using `m'):
 
 	\begin{eqnarray*}
 	     \mu_n&=&\frac{\mu_{n0}}{1+\frac{\mu_{n0}V_{DS}}{Lv_{sat}}}\\[2ex]
@@ -1262,7 +1264,7 @@ The maximum speed of carriers in the channel is limited by \textbf{velocity satu
 
 \section{Scaling policies}
 
-So far we have considered the main features and the key parameters that are used to study, analyze and compare the different technological processes and families, and how they are affected by scaling as we get closer and closer to the limits of the Bulk process. Although the Bulk process is getting to its natural end as stated at the beginning of the chapter, it is still of great interest to study its behaviour and the limits and problems related to the scaling policies applied to it. As a matter of fact, many ideas and solutions that belong to the Bulk legacy can be exported and exploited by the new Multi-Gate technological process. Independently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions.\\
+So far we have considered the main features and the key parameters that are used to study, analyze and compare the different technological processes and families, and how they are affected by scaling as we get closer and closer to the limits of the Bulk process. Although the Bulk process is getting to its natural end as stated at the beginning of the chapter, it is still of great interest to study its behavior and the limits and problems related to the scaling policies applied to it. As a matter of fact, many ideas and solutions that belong to the Bulk legacy can be exported and exploited by the new Multi-Gate technological process. Independently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions.\\
 Traditionally, for the Bulk process we can distinguish among three different scaling approaches for \textbf{devices} that will be analyzed:
 
 \begin{enumerate}
@@ -1364,7 +1366,7 @@ An example of the reference MOSFET is the following:
 	\label{}
 	\end{figure}
 
-We can see that the device has very large spacers and, as a consequence, very long extensions, which is negative since the resistance of the extension regions becomes very high because they are lightly-doped and long. As a consequence, we can notice the presence of silicide (the silicide is a compound of silicon and metal, in this case nichel) contacts useful to reduce the parasitic resistance at least for the source/drain contacts. We recall that source/drain extensions have been introduced in order to improve the reliability of the device limiting the high electric field near the drain. Extensions offer another advantage: \textbf{better scaling} because contact geometry does not depend on S/D extension dimensions. This means that we can scale independently $X_{j}$ and $X_{jc}$ so, we can have a thin junction depth (generally scaled by a factor K) and a thick contact region (less scaled than the junction depth) to reduce the resistance. Why does the junction depth $X_{j}$ have to be scaled by the same factor by which we scale the device dimensions? The answer is given by the \textbf{short channel effects}, which become more and more relevant as technology scales and they must be kept as small as possible. \\
+We can see that the device has very large spacers and, as a consequence, very long extensions, which is negative since the resistance of the extension regions becomes very high because they are lightly-doped and long. As a consequence, we can notice the presence of silicide (the silicide is a compound of silicon and metal, in this case nickel) contacts useful to reduce the parasitic resistance at least for the source/drain contacts. We recall that source/drain extensions have been introduced in order to improve the reliability of the device limiting the high electric field near the drain. Extensions offer another advantage: \textbf{better scaling} because contact geometry does not depend on S/D extension dimensions. This means that we can scale independently $X_{j}$ and $X_{jc}$ so, we can have a thin junction depth (generally scaled by a factor K) and a thick contact region (less scaled than the junction depth) to reduce the resistance. Why does the junction depth $X_{j}$ have to be scaled by the same factor by which we scale the device dimensions? The answer is given by the \textbf{short channel effects}, which become more and more relevant as technology scales and they must be kept as small as possible. \\
 
 
 
@@ -1446,7 +1448,7 @@ We can see that L and W are scaled as 1/K. $x_{J}$ is the \textbf{juction depth}
 
 Why $x_{J}$ needs to be scaled? At first glance we can say that if the thickness of the highly doped regions is smaller their resistance increase and this is a drawback. So, why, despite this disadvantage, $x_{J}$ is scaled? Scaling $x_{J}$ helps to control lateral diffusions. After source and drain are implanted, it is necessary to perform thermal annealing. During this phase lateral diffusions are created and this is a problem because they increase capacitances and create other problems. In order to reduce lateral diffusions it is necessary to implant less deeply the dopant. So, when we reduce planar dimensions (W, L) we have also to reduce the vertical dimension ($x_{J}$) otherwise it becomes impossible to control lateral diffusions. Moreover, scaling $x_{J}$ by the same factor of the channel helps to \textbf{keep under control the short channel effect (SCE) avoiding roll-off} (the threshold voltage is function of the channel length).
 
-So, it is important to technologically control the doped regions, in terms of rediffusion, and the SCE (maintaining the dependece of $V_{TH}$ on L limited to avoid roll-off).
+So, it is important to technologically control the doped regions, in terms of re-diffusion, and the SCE (maintaining the dependence of $V_{TH}$ on L limited to avoid roll-off).
 
 Now we want to define how and why the doping level (N) changes when we scale a device. 
 
@@ -1506,7 +1508,7 @@ $V_{FB}$ and $\Phi_P$ depend both on $N_{A}$ but they change in an opposite dire
 \item the expression of $V_{FB}$ contains the working function of the silicon that depends on $-\Phi_P$.
 \end{itemize}
 
-so these two terms partially compensate. Moreover, the variation of $\Phi_P$ is not so strong since it depends on the logarithm of $N_{A}$ thus, under the sqaureroot, what prevails is $N_{A}$ that is scaled by $K^{2}$. This means that, overall, $V_{TH}$ should scale like K. But, since, as we said, we want to maintain the ratio $\frac{V_{DD}}{V_{TH}}$ constant, $V_{TH}$ cannot scale. As a result, $C_{OX}$ must increase of a factor K. In this way $V_{TH}$ remains constant.
+so these two terms partially compensate. Moreover, the variation of $\Phi_P$ is not so strong since it depends on the logarithm of $N_{A}$ thus, under the square-root, what prevails is $N_{A}$ that is scaled by $K^{2}$. This means that, overall, $V_{TH}$ should scale like K. But, since, as we said, we want to maintain the ratio $\frac{V_{DD}}{V_{TH}}$ constant, $V_{TH}$ cannot scale. As a result, $C_{OX}$ must increase of a factor K. In this way $V_{TH}$ remains constant.
 
 	\begin{equation}
 	V_{TH}' \approx V_{TH} \Rightarrow C_{OX}' = K \cdot C_{OX}
@@ -1550,7 +1552,7 @@ The average electric field along the channel ($E_{y}$) and the vertical one ($E_
 
 Both these results are not good. Now we try to understand why.
 
-First of all, the expression of the electric field $E_y = \frac{V_{DD}}{L}$ is an acceptable approximation only when $V_{DS} \approx 0$ because in this case the behaviour of the channel is resistive. Infact:
+First of all, the expression of the electric field $E_y = \frac{V_{DD}}{L}$ is an acceptable approximation only when $V_{DS} \approx 0$ because in this case the behavior of the channel is resistive. In fact:
 
 	\begin{figure}[H]
 	\centering
@@ -1559,7 +1561,7 @@ First of all, the expression of the electric field $E_y = \frac{V_{DD}}{L}$ is a
 	\label{}
 	\end{figure}
 
-For small values of $V_{DS}$ the behaviour of $I_{DS}$ is linear. This means that when the device is in the linear region the channel is resistive. This implies that the electric field along the channel is roughly uniform. So, the trend of the channel potential for small values of $V_{DS}$ is:
+For small values of $V_{DS}$ the behavior of $I_{DS}$ is linear. This means that when the device is in the linear region the channel is resistive. This implies that the electric field along the channel is roughly uniform. So, the trend of the channel potential for small values of $V_{DS}$ is:
 
 	\begin{figure}[H]
 	\centering
@@ -1590,7 +1592,7 @@ The inversion charge ($Q_{n}$) is pinched-off (channel length modulation). The c
 	\label{}
 	\end{figure}
 
-Electrons are travelling by mean of the electric field (drift current): near the source the el. field is not so high so it doesn't cause problems; electrons are confined between two high energy barriers, one towards the oxide (3 eV) and one electrostatic barrier due to the depletion region; inside the channel there are collisions with the interface and with the lattice; the energy that electrons receive from the electric field, in this region, is not enough high to make electrons jump the barriers in which they are confined. Near the drain electrons receive an overshoot and their speed is further increased. In addition, they receive such a high energy that they can overcome the barrier with the oxide and towards the substrate. Electrons become hot electrons and thay cause different problems:
+Electrons are traveling by mean of the electric field (drift current): near the source the el. field is not so high so it doesn't cause problems; electrons are confined between two high energy barriers, one towards the oxide (3 eV) and one electrostatic barrier due to the depletion region; inside the channel there are collisions with the interface and with the lattice; the energy that electrons receive from the electric field, in this region, is not enough high to make electrons jump the barriers in which they are confined. Near the drain electrons receive an overshoot and their speed is further increased. In addition, they receive such a high energy that they can overcome the barrier with the oxide and towards the substrate. Electrons become hot electrons and thay cause different problems:
 
 \begin{itemize}
 \item current loss since some electrons don't reach the drain (gate current);
@@ -1612,7 +1614,7 @@ Let us focus on the last point. Now we consider only the channel-drain junction.
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{09_LDD_proc}
-	\caption{The behaviour of the electric field with a standard process MOS and with a LDD process MOS.}
+	\caption{The behavior of the electric field with a standard process MOS and with a LDD process MOS.}
 	\label{}
 	\end{figure}
 
@@ -1659,7 +1661,7 @@ Example:
 
 Smaller transistor means \textbf{smaller parasitics} and, thus, \textbf{faster technology} in addition to a higher saturation current. For these reasons, for many years, CV scaling has been strongly exploited: it guaratees higher performances.
 
-Now let us see how  $I_{ON}$ changes rembering that this parameter is measured considering \emph{W fixed} ($W_{ref}$ that, according to the Roadmap is $1 \mu m$).
+Now let us see how $I_{ON}$ changes, while remembering that this parameter is measured considering \emph{W fixed} ($W_{ref}$ that is $1 \mu m$ according to the Roadmap).
 
 	\begin{equation}
 	I_{ON}' = \frac{\mu_n K C_{OX} W_{ref}}{2 L/K}(V_{GS} - V_{TH})^2 = K^2 \cdot I_{ON}
@@ -1936,7 +1938,7 @@ In the last two equations ((\ref{cox}) and (\ref{tox})) $K^{3/2}$ has been appro
 	\label{}
 	\end{equation}
 
-\textbf{Ratio $\frac{C'_{dep}}{C'_{OX} }$ (m - 1)}:
+\textbf{Ratio $\frac{C'_{dep}}{C'_{OX}}$ (m - 1)}:
 
 	\begin{equation}
 	\frac{C'_{dep}}{C'_{OX}} = \frac{1}{K^{1/2}} \approx 1
@@ -2038,7 +2040,7 @@ Summarizing:
 	\end{itemize}
 \end{itemize}
 
-It is not possible to scale $V_{DD}$ of the same scaling factor that we use for dimensions at each technological node since, doing in such a way, the power supply now should be equal to few millivolts and this, clearly, is not possible. In other words, we cannot apply only the constant field scaling because we would need a very small power supply and, as a consequence, a very low threshold voltage and it wouldn't be possible to operate transistors for two reasons: high leakages and noise (few mV of noise signal could erroneously switch on/off a transistor). On the other hand we cannot apply only constant voltage field because of the low reliability. We have to mix these two policies creating the \textbf{Generalized scaling}.
+It is not possible to scale $V_{DD}$ of the same scaling factor that we use for dimensions at each technological node since, doing in such a way, the power supply now should be equal to few millivolts and this, clearly, is not possible. In other words, we cannot apply only the constant field scaling because we would need a very small power supply and, as a consequence, a very low threshold voltage and it would not be possible to operate transistors for two reasons: high leakages and noise (few mV of noise signal could erroneously switch on/off a transistor). On the other hand we cannot apply only constant voltage field because of the low reliability. We have to mix these two policies creating the \textbf{Generalized scaling}.
 
 \subsubsection{Generalized scaling}
 
@@ -2114,7 +2116,7 @@ Althoug we have mostly talked about device scaling and its effects so far, as te
 \item Interconnects for logic signals, which can be classified as local, intermediate and global.
 \end{itemize}
 
-Power supply interconnects suffer the most from electromigration phenomena among all types of interconnects, since the current always flows into the same direction and it can causes \textit{hillocks} or \textit{depletions} according to ion flux. Another problem that affects power supply is \textit{IR-drop}, which leads to an effective value of $V_{dd}$ or ground different from the nominal one.\\ Clock tree is another critical part of the circuit because of the unbalanced distribution over the IC area of the sequential elements, i.e. registers, flip-flips, and so on. That leads to an uneven load on the different branches of the tree and it can cause a worse clock skew. \\ Finally, logic signal interconnects are affected by different delays depending on their position in the interconnect \textbf{hierarchy}. Our attention will be focused on this last kind of interconnects, for which there will be explanation about the differnt approaches to their scaling. \\However, we will at first describe which are the electrical quantities that play a key role in interconnect scaling
+Power supply interconnects suffer the most from electro-migration phenomena among all types of interconnects, since the current always flows into the same direction and it can causes \textit{hillocks} or \textit{depletions} according to ion flux. Another problem that affects power supply is \textit{IR-drop}, which leads to an effective value of $V_{dd}$ or ground different from the nominal one.\\ Clock tree is another critical part of the circuit because of the unbalanced distribution over the IC area of the sequential elements, i.e. registers, flip-flips, and so on. That leads to an uneven load on the different branches of the tree and it can cause a worse clock skew. \\ Finally, logic signal interconnects are affected by different delays depending on their position in the interconnect \textbf{hierarchy}. Our attention will be focused on this last kind of interconnects, for which there will be explanation about the different approaches to their scaling. \\vHowever, we will at first describe which are the electrical quantities that play a key role in interconnect scaling
 
 \subsection{Electrical and geometrical parameters for interconnects}
 %%QUI SI PUO' COMINCIARE SUBUTO METTENDO UN DISEGNO DELLE INTERCONNESSIONI (DUE WIRE CON LE DISTANZE E I NOMI DELLE DIMENSIONI RIPORTATI)
@@ -2129,7 +2131,7 @@ As we can observe from the figure (MAGARI UNA LABEL QUI) above, there are differ
 \item $A/R$: it is the aspct ratio; it relates the vertical and the horizontal dimension of a wire and it is definied as $A/R=H_{int}/W_{int}$.
 \end{itemize}
 
-Other important parameters that determine the good behaviour of interconnects are the dielectric constants $\epsilon_{ILD}$ (for Inter-Layer Dielectric) and $\epsilon_{IMD}$ (for Inter-Metal Dielectric). The former must have good thermal properties to dissipate heat in an efficient way from layer to layer, the latter must be very low in order to reduce \textit{cross-talk capacitance}.\\ Finally, the three main electrical quantities involved are:
+Other important parameters that determine the good behavior of interconnects are the dielectric constants $\epsilon_{ILD}$ (for Inter-Layer Dielectric) and $\epsilon_{IMD}$ (for Inter-Metal Dielectric). The former must have good thermal properties to dissipate heat in an efficient way from layer to layer, the latter must be very low in order to reduce \textit{cross-talk capacitance}.\\ Finally, the three main electrical quantities involved are:
 
 \begin{itemize}
 \item $R_{int}=\rho(\frac{L_{int}}{W_{int}H_{int}})$, where \rho is the material resistivity;
@@ -2182,7 +2184,7 @@ $\mathcal{R_{int}}*\mathcal{C_{ILD}}$&$S^2$&S&1\\
 \end{center}
 \end{table}
 
-Now that we have seen the main geometrical and electricla parameters and how they vary when scaled, we can analyze the different effects of scaling on local, intermediate and global wires.\\ Firstly, a distinction must be made: the scaling factor \textbf{S will be kept for local wires}, whereas another factor \textbf{$S_{G}$ will be introduced for global interconnects}. Secondly, it must be taken into account that as scaling proceeds the dimensions of the die will increase according to Moore's Law. Therefore, the length of the global wires will increase as they will need to reach parts of the IC that are further apart. As a result, the delay of local and global interconnects will behave differently.\\ Let us look at the following table:
+Now that we have seen the main geometrical and electrical parameters and how they vary when scaled, we can analyze the different effects of scaling on local, intermediate and global wires.\\ Firstly, a distinction must be made: the scaling factor \textbf{S will be kept for local wires}, whereas another factor \textbf{$S_{G}$ will be introduced for global interconnects}. Secondly, it must be taken into account that as scaling proceeds the dimensions of the die will increase according to Moore's Law. Therefore, the length of the global wires will increase as they will need to reach parts of the IC that are further apart. As a result, the delay of local and global interconnects will behave differently.\\ Let us look at the following table:
 
 \begin{table}[H]
 \begin{center}
@@ -2207,7 +2209,7 @@ Global Delay (ILD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{ILD}}*L_G^2$}&$S^{2}S_
 \end{table}
 
 The results in the last two tables show us that the \textbf{fixed-height} scaling for \textbf{local} wires offers the outcome in terms of \textit{current density} and \textit{delay} even though the higher aspect ratio increases the complexity of the process. 
-At the same time, the delay for global wires grows excessively and it is \textbf{not affordable} at system level. Consequently, a different approach has become necessary and the \textbf{hierarchical scaling} policing for interconnects has been adopted. We define three factors: $S_{L}$, $S_{I}$ and $S_{G}$ for local, intermediate and global wires respectively. The magnitued of the three different parameters will be $S_{L}>S_{I}>S_{G}$:
+At the same time, the delay for global wires grows excessively and it is \textbf{not affordable} at system level. Consequently, a different approach has become necessary and the \textbf{hierarchical scaling} policing for interconnects has been adopted. We define three factors: $S_{L}$, $S_{I}$ and $S_{G}$ for local, intermediate and global wires respectively. The magnitude of the three different parameters will be $S_{L}>S_{I}>S_{G}$:
 
 \begin{table}[H]
 \begin{center}
@@ -2223,7 +2225,7 @@ $H_{int}$, $T_{ILD}$&$\simeq 1$&$\simeq 1$&$\simeq 1$\\
 \end{center}
 \end{table}
 
-The Fixed-Height policy has been applied to all hierarchical levels of interconnects, whereas horizontal quantities scale according to their own scaling factor. For global wires $S_{G} \simeq 1$, which means that basically they do not scale. Local wires scale like $S_{L} \simeq K$, thus they almost behave the same way as devices do. Finally, intermediate wires gradually range from local to global or viceversa.
+The Fixed-Height policy has been applied to all hierarchical levels of interconnects, whereas horizontal quantities scale according to their own scaling factor. For global wires $S_{G} \simeq 1$, which means that basically they do not scale. Local wires scale like $S_{L} \simeq K$, thus they almost behave the same way as devices do. Finally, intermediate wires gradually range from local to global or vice-versa.
 
 \section{Short Channel Effects}
 
@@ -2316,7 +2318,7 @@ We said that the expression of the threshold voltage for a short channel device 
 
 	\begin{eqnarray*}
 	   V_{ThSC}&=& V_{FB}+2\Phi_P+\frac{qN_AW\left(L+L-2x_1\right)x_d}{2 C_{ox}WL}\\
-	           &=& V_{ThLC} - \frac{qN_A x_d }{C_{ox}}\frac{x_1}{L}
+	           &=& V_{ThLC} - \frac{qN_A x_d}{C_{ox}}\frac{x_1}{L}
 	\end{eqnarray*}
 
 The second term on the right-hand side of the equation represents the contribution given by the SCE and it causes a threshold voltage lowering. When we scale a device, the ratio $\frac{x_1}{L}$ should be kept constant. If it doesn't remain constant, which means that L is scaled whereas $x_{1}$ (which is half the portion of the depletion charge \textbf{not} controlled by the gate) is not, $\frac{x_1}{L}$ increases causing a further reduction of the threshold voltage. Thus, in order to keep limited the $V_{th}$ reduction we have to scale $x_{1}$. Unfortunately, $x_{1}$ is not a technological parameter.
@@ -2325,7 +2327,7 @@ The second term on the right-hand side of the equation represents the contributi
 	   x_1&=& x_J \left(\sqrt{1+\frac{2x_d}{x_J}} -1 \right)
 	\end{eqnarray*}
 
-We can reduce $x_{1}$ scaling $x_{j}$ by the same factor of the channel length (that is the reason why it is essential to scale S/D junctions like the channel). However, by looking at the expression of $x_{1}$, we notice that if we want to reduce it by a factor K, we have to \textbf{scale both the depletion width and the junction depth}. Scaling the depletion width can be realized by increasing the doping level by a factor $K^2$ (because of the squareroot behaviour in the formula for $x_{d}$); unfortunately, there is a drawback about increasing the doping level, since it worsens the electric field peak at the drain terminal and it turns into degraded $m$ and $\mu$ values. Instead, the junction depth can be scaled during the junction-implementation steps.
+We can reduce $x_{1}$ scaling $x_{j}$ by the same factor of the channel length (that is the reason why it is essential to scale S/D junctions like the channel). However, by looking at the expression of $x_{1}$, we notice that if we want to reduce it by a factor K, we have to \textbf{scale both the depletion width and the junction depth}. Scaling the depletion width can be realized by increasing the doping level by a factor $K^2$ (because of the square-root behavior in the formula for $x_{d}$); unfortunately, there is a drawback about increasing the doping level, since it worsens the electric field peak at the drain terminal and it turns into degraded $m$ and $\mu$ values. Instead, the junction depth can be scaled during the junction-implementation steps.
 
 	\begin{equation}
 	x'_d = \frac{1}{K} x_d\ \text{and}\ x'_j = \frac{1}{K} x_j
