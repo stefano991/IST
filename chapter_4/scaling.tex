@@ -2105,7 +2105,125 @@ Now should be clear how to deduce all these rules.
 
 \newpage
 
+\subsection{Interconnect scaling}
+Althoug we have mostly talked about device scaling and its effects so far, as technology continues to scale the \textbf{most critical part} of an IC in terms of power and delay is represented by the \textbf{interconnects}. As matter of fact, the \textbf{limitations on interconnect scaling are due to performance} rather than technological processes. On an IC there are three main types of interconnects: 
 
+\begin{itemize}
+\item Interconnects for power supply (i.e. $V_{dd}$ and ground).
+\item Interconnects for timing signals (i.e. clock tree).
+\item Interconnects for logic signals, which can be classified as local, intermediate and global.
+\end{itemize}
+
+Power supply interconnects suffer the most from electromigration phenomena among all types of interconnects, since the current always flows into the same direction and it can causes \textit{hillocks} or \textit{depletions} according to ion flux. Another problem that affects power supply is \textit{IR-drop}, which leads to an effective value of $V_{dd}$ or ground different from the nominal one.\\ Clock tree is another critical part of the circuit because of the unbalanced distribution over the IC area of the sequential elements, i.e. registers, flip-flips, and so on. That leads to an uneven load on the different branches of the tree and it can cause a worse clock skew. \\ Finally, logic signal interconnects are affected by different delays depending on their position in the interconnect \textbf{hierarchy}. Our attention will be focused on this last kind of interconnects, for which there will be explanation about the differnt approaches to their scaling. \\However, we will at first describe which are the electrical quantities that play a key role in interconnect scaling
+
+\subsection{Electrical and geometrical parameters for interconnects}
+%%QUI SI PUO' COMINCIARE SUBUTO METTENDO UN DISEGNO DELLE INTERCONNESSIONI (DUE WIRE CON LE DISTANZE E I NOMI DELLE DIMENSIONI RIPORTATI)
+As we can observe from the figure (MAGARI UNA LABEL QUI) above, there are different geometrical quantities involved: 
+
+\begin{itemize}
+\item $W_{int}$: cross-section width;
+\item $H_{int}$: cross-section height;
+\item $L_{int}$: longitudinal lenght of the interconnection;
+\item $W_{sp}$: distance between two wires belonging to the same matel layer;
+\item $T_{ILD}$: distance between two consecutive metal layers;
+\item $A/R$: it is the aspct ratio; it relates the vertical and the horizontal dimension of a wire and it is definied as $A/R=H_{int}/W_{int}$.
+\end{itemize}
+
+Other important parameters that determine the good behaviour of interconnects are the dielectric constants $\epsilon_{ILD}$ (for Inter-Layer Dielectric) and $\epsilon_{IMD}$ (for Inter-Metal Dielectric). The former must have good thermal properties to dissipate heat in an efficient way from layer to layer, the latter must be very low in order to reduce \textit{cross-talk capacitance}.\\ Finally, the three main electrical quantities involved are:
+
+\begin{itemize}
+\item $R_{int}=\rho(\frac{L_{int}}{W_{int}H_{int}})$, where \rho is the material resistivity;
+\item $C_{IMD}=\epsilon_{IMD}(\frac{L_{int}H_{int}}{W_{sp}})$;
+\item $C_{ILD}=\epsilon_{ILD}(\frac{L_{int}W_{int}}{T_{int}})$.
+\end{itemize}
+%%QUI CI STAREBBE BENE UN DISEGNO CHE FACCIA VEDERE DOVE SONO QUESTE TRE
+
+It would be much simpler to define and compare the parameters above independently from the length of each wire. Therefore, we can define:
+\begin{itemize}
+\item $\mathcal{R_{int}}=\rho(\frac{1}{W_{int}H_{int}})$, where \rho is the material resistivity;
+\item $\mathcal{C_{IMD}}=\epsilon_{IMD}(\frac{H_{int}}{W_{sp}})$;
+\item $\mathcal{C_{ILD}}=\epsilon_{ILD}(\frac{W_{int}}{T_{int}})$.
+\end{itemize}
+
+\subsection{Scaling policies for interconnects and their effect}
+As it has been said in the main introduction about scaling, there are three different policies that can be followed:
+\begin{itemize}
+\item ideal scaling: all dimensions, both vertical and horizontal ones, are scaled using a factor S (constant aspect ratio);
+\item quasi-ideal scaling: horizontal quantities are scaled using S, while horizontal ones are scaled by $\sqrt(S)$ (aspect ratio slightly increased); 
+\item fixed-height scaling: only horizontal quantities are scaled by S, whereas the vertical dimension is \textbf{not scaled} at all (aspect ratio largely increased). 
+\end{itemize}
+%%MAGARI IL DISEGNO CHE C'E' SULLE SLIDE CHE MOSTRA LA DIFFERENZA TRA LE 3 COSE
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{||c|c|c|c||}
+\hline
+&Ideal&Quasi-ideal&Fixed-Height\\
+\hline
+$W_{int}$, $W_{sp}$&1/S&1/S&1/S\\
+\hline
+$H_{int}$, $T_{ILD}$&1/S&1/$\sqrt{S}$&1\\
+\hline
+Aspect Ratio&1&$\sqrt{S}$&S\\
+\hline
+$\mathcal{R_{int}}$&$S^2$&$S^(3/2)$&S\\
+\hline
+$\mathcal{C_{IMD}}$&1&$S^(1/2)$&S\\
+\hline
+$\mathcal{C_{ILD}}$&1&$S^(-1/2)$&$S^(-1)$\\
+\hline
+J&$S^2$&$S^(3/2)$&S\\
+\hline
+$\mathcal{R_{int}}*\mathcal{C_{IMD}}$&$S^2$&$S^2$&$S^2$\\
+\hline
+$\mathcal{R_{int}}*\mathcal{C_{ILD}}$&$S^2$&S&1\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Now that we have seen the main geometrical and electricla parameters and how they vary when scaled, we can analyze the different effects of scaling on local, intermediate and global wires.\\ Firstly, a distinction must be made: the scaling factor \textbf{S will be kept for local wires}, whereas another factor \textbf{$S_{G}$ will be introduced for global interconnects}. Secondly, it must be taken into account that as scaling proceeds the dimensions of the die will increase according to Moore's Law. Therefore, the length of the global wires will increase as they will need to reach parts of the IC that are further apart. As a result, the delay of local and global interconnects will behave differently.\\ Let us look at the following table:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{||c|c|c|c||}
+\hline
+&Ideal&Quasi-ideal&Fixed-Height\\
+\hline
+Local length \textbf{$L_{L}$}&$S^{-1}$&$S^{-1}$&$S^{-1}$\\
+\hline
+Global lenght \textbf{$L_{G}$}&$S_{G}$&$S_{G}$&$S_{G}$\\
+\hline
+Local Delay (IMD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{IMD}}*L_L^2$}&1&1&1\\
+\hline
+Local Delay (ILD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{ILD}}*L_L^2$}&1&$S^{-1}$&$S^{-2}$\\
+\hline
+Global Delay (IMD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{IMD}}*L_G^2$}&$S^{2}S_G^2$&$S^{2}S_G^2$&$S^{2}S_G^2$\\
+\hline
+Global Delay (ILD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{ILD}}*L_G^2$}&$S^{2}S_G^2$&$S S_G^2$&$S_G^2$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The results in the last two tables show us that the \textbf{fixed-height} scaling for \textbf{local} wires offers the outcome in terms of \textit{current density} and \textit{delay} even though the higher aspect ratio increases the complexity of the process. 
+At the same time, the delay for global wires grows excessively and it is \textbf{not affordable} at system level. Consequently, a different approach has become necessary and the \textbf{hierarchical scaling} policing for interconnects has been adopted. We define three factors: $S_{L}$, $S_{I}$ and $S_{G}$ for local, intermediate and global wires respectively. The magnitued of the three different parameters will be $S_{L}>S_{I}>S_{G}$:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{||c|c|c|c||}
+\hline
+&Local&Intermediate&Global\\
+\hline
+$W_{int}$, $W_{sp}$&1/$S_{L}$&1/$S_{I}$&$1/S_{G} \simeq 1$\\
+\hline
+$H_{int}$, $T_{ILD}$&$\simeq 1$&$\simeq 1$&$\simeq 1$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The Fixed-Height policy has been applied to all hierarchical levels of interconnects, whereas horizontal quantities scale according to their own scaling factor. For global wires $S_{G} \simeq 1$, which means that basically they do not scale. Local wires scale like $S_{L} \simeq K$, thus they almost behave the same way as devices do. Finally, intermediate wires gradually range from local to global or viceversa.
 
 \section{Short Channel Effects}
 
