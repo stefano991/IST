@@ -501,7 +501,7 @@ The expression \ref{final_Ids} is the one that will be used to evaluate the effe
 Even though the subthreshold current is an important parameter for any device family, it is not sufficient to determine whether a certain technological process is a good process or not. A more reliable parameter is represented by the subthreshold swing (SS) that tells us how easily a transistor can be switched off. How we can evaluate SS? We can apply the definition of slope which is the inverse of the derivative of the $log_{10}I_{DS}$ curve:
 
 	\begin{equation}
-	SS = \left( \frac{d(log_{10}I_{subV_{th})}{dV_G} \right)^{-1}
+	SS = \left( \frac{d(log_{10}I_{subV_{th})}}{dV_G} \right)^{-1}
 	\end{equation}
 	
 	\begin{equation}
@@ -1843,7 +1843,7 @@ This policy involves the reduction of the transistor dimensions in order to main
        $I_{ON}$      &- &$ {1}$\\ 
       \hline
        $I_{subVt}$      &$\frac{\mu_n W \left(m-1 \right) C_{ox} {V_T}^2}{L}\;
-            e^{\displaystyle \frac{ {V_G-V_{Th}}}{ mV_T}}$ &$ K^{1/2} e^{\frac{V_{Th}}{mV_T}
+            e^{\displaystyle \frac{{V_G-V_{Th}}}{ mV_T}}$ &$ K^{1/2} e^{\frac{V_{Th}}{mV_T}
                \left( \frac{K-1}{K}\right)}$\\ 
       \hline  
        $I_{off}$      &- & $ K^{3/2} e^{\frac{V_{Th}}{mV_T}
@@ -1855,7 +1855,7 @@ This policy involves the reduction of the transistor dimensions in order to main
       \hline 
        $P_{Dyn}^{Den}$      &-&$ {1}$\\ 
       \hline
-       $P_{Isub}^{tr}$     &$I_{subV_{th}V_{DD}$  &$ K^{-1/2} e^{\frac{V_{Th}}{mV_T}
+       $P_{Isub}^{tr}$     &$I_{subV_{th}}V_{DD}$  &$ K^{-1/2} e^{\frac{V_{Th}}{mV_T}
                \left( \frac{K-1}{K}\right)} $\\ 
       \hline 
        $P_{Isub}^{Den}$      &-&$ K^{3/2} e^{\frac{V_{Th}}{mV_T}
@@ -1887,7 +1887,7 @@ The next step is try to understand the consequences of the constant field scalin
 	\label{}
 	\end{figure}
 
-In the unscaled situation the subthreshold current is $I_{subV_{th}$ while in the scaled case the leakage current is $I'_{subVT}$ which is quite higher than $I_{subV_{th}$. In the last case it becomes difficult to switch off the transistor. This is the problem of the CF scaling.
+In the unscaled situation the subthreshold current is $I_{subV_{th}}$ while in the scaled case the leakage current is $I'_{subVT}$ which is quite higher than $I_{subV_{th}}$. In the last case it becomes difficult to switch off the transistor. This is the problem of the CF scaling.
 
 Now we can analize how the technological parameters change applying the CF scaling.
 
@@ -2002,19 +2002,19 @@ These last two expressions represent an excellent result: the dynamic power cons
 The subthreshold current is evaluated with $V_{GS} = 0$:
 
 	\begin{eqnarray*}
-	I_{subV_{th} & = &\frac{\mu_n W C_{dep} {V_T}^2}{L}\;e^{\displaystyle \frac{ {V_G-V_{Th}}}{ mV_T}}
+	I_{subV_{th}} & = &\frac{\mu_n W C_{dep} {V_T}^2}{L}\;e^{\displaystyle \frac{ {V_G-V_{Th}}}{ mV_T}}
 	\end{eqnarray*}
 
 After scaling, approximating m' with m, it becomes:
 
 	\begin{eqnarray*}
-	I_{subV_{th}^{\prime} & = &\frac{K \mu_n W K^{1/2} C_{dep} {V_T}^2}{K L}\;e^{\displaystyle \frac{ {V_G-(V_{Th}/K)}}{ m^{\prime}V_T}}
+	I_{subV_{th}}^{\prime} & = &\frac{K \mu_n W K^{1/2} C_{dep} {V_T}^2}{K L}\;e^{\displaystyle \frac{ {V_G-(V_{Th}/K)}}{ m^{\prime}V_T}}
 	\end{eqnarray*}
 
-The ratio between $I'_{subVT}$ and $I_{subV_{th}$ is:
+The ratio between $I'_{subVT}$ and $I_{subV_{th}}$ is:
 
 	\begin{eqnarray*}
-	\frac{I_{subV_{th}^{\prime}}{I_{subV_{th}} & =& K^{1/2} e^{\frac{V_{Th}}{mV_T}\left( \frac{K-1}{K}\right)}
+	\frac{I_{subV_{th}}^{\prime}}{I_{subV_{th}}} & =& K^{1/2} e^{\frac{V_{Th}}{mV_T}\left( \frac{K-1}{K}\right)}
 	\end{eqnarray*}
 
 The ratio increases exponentially with K:
@@ -2134,17 +2134,17 @@ As we can observe from the figure (MAGARI UNA LABEL QUI) above, there are differ
 Other important parameters that determine the good behavior of interconnects are the dielectric constants $\epsilon_{ILD}$ (for Inter-Layer Dielectric) and $\epsilon_{IMD}$ (for Inter-Metal Dielectric). The former must have good thermal properties to dissipate heat in an efficient way from layer to layer, the latter must be very low in order to reduce \textit{cross-talk capacitance}.\\ Finally, the three main electrical quantities involved are:
 
 \begin{itemize}
-\item $R_{int}=\rho(\frac{L_{int}}{W_{int}H_{int}})$, where \rho is the material resistivity;
-\item $C_{IMD}=\epsilon_{IMD}(\frac{L_{int}H_{int}}{W_{sp}})$;
-\item $C_{ILD}=\epsilon_{ILD}(\frac{L_{int}W_{int}}{T_{int}})$.
+\item $R_{int}$=$\rho(\frac{L_{int}}{W_{int}H_{int}})$, where $\rho$ is the material resistivity;
+\item $C_{IMD}$=$\epsilon_{IMD}(\frac{L_{int}H_{int}}{W_{sp}})$;
+\item $C_{ILD}$=$\epsilon_{ILD}(\frac{L_{int}W_{int}}{T_{int}})$.
 \end{itemize}
 %%QUI CI STAREBBE BENE UN DISEGNO CHE FACCIA VEDERE DOVE SONO QUESTE TRE
 
 It would be much simpler to define and compare the parameters above independently from the length of each wire. Therefore, we can define:
 \begin{itemize}
-\item $\mathcal{R_{int}}=\rho(\frac{1}{W_{int}H_{int}})$, where \rho is the material resistivity;
-\item $\mathcal{C_{IMD}}=\epsilon_{IMD}(\frac{H_{int}}{W_{sp}})$;
-\item $\mathcal{C_{ILD}}=\epsilon_{ILD}(\frac{W_{int}}{T_{int}})$.
+\item $\mathcal{R_{int}}$=$\rho(\frac{1}{W_{int}H_{int}})$, where $\rho$ is the material resistivity;
+\item $\mathcal{C_{IMD}}$=$\epsilon_{IMD}(\frac{H_{int}}{W_{sp}})$;
+\item $\mathcal{C_{ILD}}$=$\epsilon_{ILD}(\frac{W_{int}}{T_{int}})$.
 \end{itemize}
 
 \subsection{Scaling policies for interconnects and their effect}
