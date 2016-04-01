@@ -10,6 +10,8 @@
 %\usepackage[makeroom]{cancel}
 %\usepackage{subscript}
 %\usepackage{empheq}
+\usepackage{ltxtable}
+\usepackage{booktabs}
 \graphicspath{{./}{Immagini/}}
 
 \newcommand{\sub}{\textsubscript}
@@ -25,7 +27,9 @@
 
 \tableofcontents
 
-\chapter{Scaling}
+
+\chapter{Introduction to Scaling}
+
 
 \section{Introduction}
 
@@ -44,7 +48,7 @@ First it's important to say that devices have been scaled much more than interco
 The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifies technologies in the following way (2011 edition):
 
 	\begin{itemize}
-	\item \textbf{HP}: High Performace processes have as main aim to reduce the gate delay even if the power dissipation can be high; it is clear that this kind of processes cannot be used to produce portable devices, they can be used only for mainframes or data centers; in the last years HP processes have reached the natural end;
+	\item \textbf{HP}: High Performance processes have as main aim to reduce the gate delay even if the power dissipation can be high; it is clear that this kind of processes cannot be used to produce portable devices, they can be used only for mainframes or data centres; in the last years HP processes have reached the natural end;
 	\item \textbf{LOP}: Low Operating Power processes are used for relatively high performance mobile applications where the focus is on reduced operating power (acceptable performance and acceptable dynamic power consumption);
 	\item \textbf{LSTP}: Low STandby Power processes have as main aim to reduce the static power for low performance and low battery capacity applications (for example mobile phones); so, LSTP processes try to reduce the power consumption when the device is in standby mode, paying in terms of performance (reduced clock frequency).
 	\end{itemize}
@@ -61,6 +65,14 @@ The \textbf{ITRS} makes previsions on which direction research will proceed rega
 %%INSERIRE LEGENDA A COLORI CON QUADRATINI
 
 As already stated above, there are two tables per technological family. That is due to different technological processes that can be exploited to implement both HP and LP families, which consist of Bulk technology and Multi-Gate (MG) technology. The former is going to disappear by the end of 2017 and the latter has become dominant in the last few years, whereas SOI technology has already become out-of-date. As a matter of fact, all the major foundaries in the world have already switched to MG technology, focusing their production on finFET-on-Bulk devices.
+
+\noindent As Multi-Gate technology requires a different approach to scaling, in this part of the chapter only the tables related to the Bulk process will be reported. All data and graphs about MG devices will be showed and analyzed later in the chapter (\ref{sec:multigate}).
+
+\chapter{Scaling on Bulk process}
+
+\section{Main parameters for scaling}
+All the parameters listed below in the two tables have been obtained by the ITRS roadmap. For each physical quantity will we consider both the values for High-Performance and Low-Power families. Moreover, since we are especially interested in the drive and subthreshold currents\footnote{They tell us how good a device is in conduction and off-state respectively.} a brief section is dedicated to their mathematical derivation.
+
 
 \begin{table}[h]
 \centering
@@ -116,61 +128,6 @@ $I_{d,satn}/I_{d,satp}$&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14&1.13&1.
 \caption{\textbf{Bulk process for HP (ITRS 2013)}}
 \end{table}
 
-\begin{table}[h]
-\centering
-\resizebox{\textwidth}{!}{\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c|c||}
-\hline
-Year&2013&2014&2015&2016&2017&2018&2019&2020&2021&2022&2023&2024\\
-\hline
-$L_{g}$ [nm]&20&18&16.7&15.2&13.9&12.7&11.6&10.6&9.7&8.8&8&7.3\\
-\hline
-$L_{ch}$ [nm]&16&14.4&13.4&12.2&11.1&10.2&9.3&8.5&7.8&7&6.4&5.8\\
-\hline
-$V_{dd}$ [V]&0.86&0.85&0.83&0.81&0.8&0.78&0.77&0.75&0.74&0.72&0.71&0.69\\
-\hline
-EOT [nm]&0.8&0.77&0.73&0.7&0.67&0.64&0.61&0.59&0.56&0.54&0.51&0.49\\
-\hline
-$\epsilon_{HK}$&12.5&13&13.5&14&14.5&15&15.5&16&16.5&17&17.5&18\\
-\hline
-$T_{HK}$ [nm]&2.56&2.57&2.53&2.51&2.49&2.46&2.42&2.42&2.37&2.35&2.29&2.26\\
-\hline
-$Doping_{ch}$ [$10^{18}$/$cm^{3}$]&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1\\
-\hline
-$T_{body}$ [nm]&6.4&5.8&5.3&4.9&4.4&4.1&3.7&3.4&3.1&2.8&2.6&2.3\\
-\hline
-CET [nm]&1.1&1.07&1.03&1&0.97&0.94&0.91&0.89&0.86&0.84&0.81&0.79\\
-\hline
-$C_{ch}$ [fF/$\mu$m]&0.502&0.465&0.448&0.42&0.396&0.373&0.352&0.329&0.311&0.289&0.273&0.255\\
-\hline
-$\mu$ [$cm^{2}$/V*s]&250&250&250&250&250&200&200&200&200&200&200&150\\
-\hline
-$I_{off}$ [pA/$\mu$m]&100&100&100&100&100&100&100&100&100&100&100&100\\
-\hline
-$I_{on}$ [$\mu$A/$\mu$m]&1670&1680&1700&1660&1660&1610&1600&1480&1450&1350&1330&1170\\
-\hline
-$V_{t,lin}$ [V]&0.219&0.225&0.231&0.239&0.264&0.266&0.265&0.276&0.295&0.303&0.306&0.319\\
-\hline
-$V_{t,sat}$ [V]&0.174&0.179&0.179&0.186&0.191&0.196&0.199&0.205&0.214&0.219&0.222&0.233\\
-\hline
-S/D $R_{s}$ [$\omega$*$\mu$m]&128&146&130&126&124&117&120&116&112&111&113&123\\
-\hline
-$C_{fringing}/C_{intrinsic}$ &1.2&1.3&1.4&1.5&1.6&1.7&1.8&1.9&2&2&2&2\\
-\hline
-$C_{fringing}$ [fF/$\mu$m]&0.6&0.6&0.63&0.63&0.63&0.63&0.63&0.62&0.62&0.58&0.55&0.51\\
-\hline
-$C_{g,total}$ [fF/$\mu$m]&1.1&1.07&1.07&1.05&1.03&1.01&0.99&0.95&0.93&0.87&0.82&0.77\\
-\hline
-$CV^{2}$ [fJ/$\mu$m]&0.82&0.77&0.74&0.69&0.66&0.61&0.58&0.54&0.51&0.45&0.41&0.36\\
-\hline
-$\tau$ [ps]&0.569&0.541&0.525&0.512&0.496&0.488&0.474&0.483&0.477&0.463&0.437&0.451\\
-\hline
-1/$\tau$ [1/ps]&1.76&1.85&1.91&1.95&2.02&2.05&2.11&2.07&2.1&2.16&2.29&2.22\\
-\hline
-$I_{d,satn}/I_{d,satp}$&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14&1.13&1.12\\
-\hline
-\end{tabular}}
-\caption{\textbf{MG process for HP (ITRS 2013)}}
-\end{table}
 
 \begin{table}[h]
 \centering
@@ -226,68 +183,11 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 \caption{\textbf{Bulk process for LP (ITRS 2013)}}
 \end{table}
 
-\begin{table}[h]
-\centering
-\resizebox{\textwidth}{!}{\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c|c||}
-\hline
-Year&2013&2014&2015&2016&2017&2018&2019&2020&2021&2022&2023&2024\\
-\hline
-$L_{g}$ [nm]&23&21&19&18&16&14.6&13.3&12.2&11.1&10.1&9.3&8.5\\
-\hline
-$L_{ch}$ [nm]&18.4&16.8&15.2&14.4&12.8&11.7&10.6&9.8&8.9&8.1&7.4&6.8\\
-\hline
-$V_{dd}$ [V]&0.86&0.85&0.83&0.81&0.8&0.78&0.77&0.75&0.74&0.72&0.71&0.69\\
-\hline
-EOT [nm]&0.8&0.77&0.73&0.7&0.67&0.64&0.61&0.59&0.56&0.54&0.51&0.49\\
-\hline
-$\epsilon_{HK}$&12.5&13&13.5&14&14.5&15&15.5&16&16.5&17&17.5&18\\
-\hline
-$T_{HK}$ [nm]&2.56&2.57&2.53&2.51&2.49&2.46&2.42&2.42&2.37&2.35&2.29&2.26\\
-\hline
-$Doping_{ch}$ [$10^{18}$/$cm^{3}$]&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1\\
-\hline
-$T_{body}$ [nm]&7.4&6.7&6.1&5.8&5.1&4.7&4.3&3.9&3.6&3.2&3&2.7\\
-\hline
-CET [nm]&1.1&1.07&1.03&1&0.97&0.94&0.91&0.89&0.86&0.84&0.81&0.79\\
-\hline
-$C_{ch}$ [fF/$\mu$m]&0.577&0.542&0.509&0.497&0.455&0.429&0.404&0.379&0.356&0.332&0.317&0.297\\
-\hline
-$\mu$ [$cm^{2}$/V*s]&375&375&375&375&375&375&375&300&300&300&300&300\\
-\hline
-$I_{off}$ [pA/$\mu$m]&10&10&10&10&10&10&10&20&20&20&20&20\\
-\hline
-$I_{on}$ [$\mu$A/$\mu$m]&643&610&618&589&574&556&550&533&537&461&458&395\\
-\hline
-$V_{t,lin}$ [V]&0.483&0.492&0.492&0.496&0.507&0.507&0.51&0.501&0.507&0.521&0.511&0.52\\
-\hline
-$V_{t,sat}$ [V]&0.446&0.453&0.453&0.454&0.461&0.459&0.461&0.447&0.446&0.454&0.453&0.46\\
-\hline
-S/D $R_{s}$ [$\omega$*$\mu$m]&128&146&130&126&124&117&120&116&112&111&113&123\\
-\hline
-$C_{fringing}/C_{intrinsic}$ &1.1&1.2&1.3&1.4&1.5&1.6&1.7&1.8&1.9&2&2&2\\
-\hline
-$C_{fringing}$ [fF/$\mu$m]&0.64&0.65&0.66&0.7&0.68&0.69&0.69&0.68&0.68&0.66&0.63&0.59\\
-\hline
-$C_{g,total}$ [fF/$\mu$m]&1.21&1.19&1.17&1.19&1.14&1.12&1.09&1.06&1.03&1&0.95&0.89\\
-\hline
-$CV^{2}$ [fJ/$\mu$m]&0.9&0.86&0.81&0.78&0.73&0.68&0.65&0.6&0.57&0.52&0.48&0.42\\
-\hline
-$\tau$ [ps]&1.622&1.661&1.573&1.64&1.587&1.564&1.525&1.491&1.424&1.556&1.474&1.557\\
-\hline
-1/$\tau$ [1/ps]&0.62&0.6&0.64&0.61&0.63&0.64&0.66&0.67&0.7&0.64&0.68&0.64\\
-\hline
-$I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14\\
-\hline
-\end{tabular}}
-\caption{\textbf{MG process for LP (ITRS 2013)}}
-\end{table}
+\noindent Let's start with the analysis, assuming roadmap definition for some while for others a comparison between the different families:
 
-\noindent Let us compare the values that we have in the four tables.
-
-\paragraph{Gate Length~:}The gate length is defined as the distance between the source and drain terminals. For example, taking into account the actual node (i.e. year 2016) for analysis, we can observe that the gate length is 15.2 nm for the HP logic, while in the LP logic reaches the value of 18 nm. What we can understand is that in order to get high performance it is necessary to reduce the channel length. First of all, reducing the channel length allows to have \emph{smaller parasitic capacitances} and, above all, a \emph{higher current}. So, generally a faster device is the combination of two main factors: smaller parasitic capacitances and larger $I_{ON}$ current.
-This is true when considering the near-term period, defined approximately from 2013 up to 2020 in the Roadmap \textbf{PIDS} \footnote{\emph{Process Integration, devices and Structure}} chapter. Since it is coming to an end very soon, technology is going to move towards a new direction consisting of fabrication of advanced non-planar multi-gate and nanowire FETs below 10-nm gate length, dragging all the related issues: effective scaling of the device, control of the short channel effects and parasitic components.
+\paragraph{Gate Length $L_{g}$~:}The gate length is defined as the distance between the source and drain terminals. For example, taking into account the actual node (i.e. year 2016) for analysis, we can observe that the gate length is 15.2 nm for the HP logic, while in the LP logic reaches the value of 18 nm. What we can understand is that in order to get high performance it is necessary to reduce the channel length. First of all, reducing the channel length allows to have \emph{smaller parasitic capacitances} and, above all, a \emph{higher current}. So, generally a faster device is the combination of two main factors: smaller parasitic capacitances and larger $I_{ON}$ current.
+This is true when considering the near-term period, defined approximately from 2013 up to 2020 in the Roadmap \textbf{PIDS}\footnote{\emph{Process Integration, devices and Structure}} chapter. Since it is coming to an end very soon, technology is going to move towards a new direction consisting of fabrication of advanced non-planar multi-gate and nanowire FETs below 10-nm gate length, dragging all the related issues: effective scaling of the device, control of the short channel effects and parasitic components.
 Notice that in all the tables it is possible to distinguish also the effective channel length $L_{ch}$ defined as the distance between metallurgical source/drain junctions, and it is assumed equal to 80\% of the gate length; in this manner, the gate/source and gate/drain overlaps are 10\% of gate length at each side. This parameter is used in the computation of some quantities listed in the previous tables.
-
 
 \paragraph{Power Supply Voltage $V_{DD}$~:} It is well known that $V_{dd}$ is more difficult to scale than other parameters, mainly because of the fundamental limit of the subthreshold swing $SS\simeq60 mV/decade$. This trend will continue and become more severe as $V_{DD}$ approaches the regime of 0.6 V. This fact, along with the continuous increase of current density (per unit of area) causes the dynamic power density to climb with scaling, soon reaching an unacceptable level.
 For high-performance logic, dynamic power dissipation is expected to become particularly difficult to control due to greater chip complexity and larger transistor on-current, which aims to maintain high speed while scaling. The main indicator for power dissipation is reported in the table as $CV^{2}$:
@@ -317,7 +217,7 @@ I_{on} = I_{ds}(V_{gs}=V_{dd}, V_{ds}=V_{dd}, W=W_{ref})
 \label{}
 \end{equation} 
 
-%%AGGIORNARE FIGURA
+%%AGGIORNARE FIGURA: I_on MATLAB
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figIon}
@@ -335,6 +235,7 @@ I_{off} = I_{ds}(V_{gs}=0, V_{ds}=V_{dd}, W=W_{ref})
 \label{}
 \end{equation}
 
+%%AGGIORNARE FIGURA: I_off MATLAB
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figIoff}
@@ -346,7 +247,15 @@ In order to appreciate this small value, let us examine the transfer-characteris
 In an ideal transistor $I_{off}$ should be zero. However, source-drain tunnelling phenomena, as mentioned before, make the device harder to turn off and increase the subthreshold swing (SS). Since for the HP family transistor the off-current is fixed to 100 nA/$\mu$m for all years, the tunnelling current requires the threshold voltage to be higher in order to maintain $I_{off}$ constant, and consequently leads to a reduction in the inversion charge.
 In the case of low power devices this current is set to be four decades lower than that of HP, specifically 10 pA/$\mu m$. Note that to meet the leakage current requirement, the gate length scaling of LP logic lags behind that of HP logic.
 
-An important parameter is represented by the ratio between $I_{on}$ and $I_{off}$: it reveals how good the electrostatic control of the channel performed by the gate is; the larger the ratio, the more effective it is the control. In an ideal technology this ratio should be infinite. Referring to the data analyzed so far, for the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$, while in the LOP logic it is roughly $10^7$. It is clear that the higher the ratio the higher it is $I_{on}$, boosting performance, and the lower it is $I_{off}$, leading to low static power.
+An important parameter is represented by the ratio between $I_{on}$ and $I_{off}$: it reveals how good the electrostatic control of the channel performed by the gate is; the larger the ratio, the more effective it is the control. In an ideal technology this ratio should be infinite. Referring to the data analyzed so far, for the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$, while in the LOP logic it is roughly $10^7$. It is clear that the higher the ratio the higher it is $I_{on}$, boosting performance, and the lower it is $I_{off}$, leading to low static power. A detailed view for this parameter is showed in the following figure: \ref{Ion-Ioff}
+
+%%AGGIORNARE FIGURA: I_on/I_off MATLAB
+%	\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.85\textwidth]{figOnOff}
+%	\caption{Ion/Ioff ratio.}
+%	\label{Ion-Ioff}
+%	\end{figure}
 
 An efficient method to measure the performance of a process is to evaluate the intrinsic time $\tau$: it can be seen as the time required to remove the charge stored in the gate capacitance of a transistor with $W=W_{ref}$ by mean of the $I_{on}$ current.
 The value listed in the tables are computed applying the following equation:
@@ -356,7 +265,7 @@ The value listed in the tables are computed applying the following equation:
 \label{}
 \end{equation}
 
-
+%%AGGIORNARE FIGURA: tau MATLAB
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figtau}
@@ -376,9 +285,10 @@ In generating the roadmap projection for logic technology, the guiding metric ha
 Observing the graph in figure \ref{tau}, it can been seen that, for high-performance transistors, the intrinsic speed\footnote{It is the inverse of $\tau$ for a speed unit.} improves initially with a slope of 4\% per year, while in low-power family increases only at a slope of roughly 2\% per year. 
 
 
-\paragraph{Threshold voltage~  $V_{T}$~:} To define how good a technology is, the threshold voltage can be considered as target: all the choices that can be made depend on $V_{T}$. Starting from the HP technology, we can observe that the value of $V_{T}$ is quite low (it is around or under 200 mV).\\
+\paragraph{Threshold voltage $V_{T}$~:} To define how good a technology is, the threshold voltage can be considered as target: all the choices that can be made depend on $V_{T}$. Starting from the HP technology, we can observe that the value of $V_{T}$ is quite low (it is around or under 200 mV).\\
 What has been kept constant during the years is the ratio $V_{DD}/V_{T}$. This ratio is the fundamental parameter to \textbf{distinguish a technological process} from another.
 
+%%AGGIORNARE FIGURA: Vdd/Vth MATLAB
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figVddVt}
@@ -391,9 +301,9 @@ In LOP the ratio is lower and it is, approximately, equal to 3 since $V_{th}$ is
 In LSTP the quantity $V_{DD}/V_{th}$ is slightly smaller, approximately less than 3 ($\approx$ 2.5).
 By looking at the 2013 edition, instead, the following ratios are reported for the HP and LP family respectively: the former is supposed to constantly decrease from 5 down to 3 over the years, the latter will reduce from 2 down to approximately 1.5. 
 
-\paragraph{Third row: EOT - $T_{ox}$ (\r{A}).} The thickness of the gate oxide is reduced node by node. For example, in the HP process, in 2012, $T_{ox}$ is equal to 7 \r{A}; considering that the $SiO_{2}$ lattice constant is 2.7, having a thickness of 7 \r{A} means having roughly 3 atomic layers. This thickness is not enough to prevent \emph{tunneling} and it causes an \textbf{increase of the gate current}, which, instead, should be close to zero since the gate is supposed to be isolated. This could represent another problem for deeply scaled devices.\\
+\paragraph{Equivalent Oxide Thickness $T_{ox}$~:} The thickness of the gate oxide is reduced node by node. For example, in the HP process, in 2012, $T_{ox}$ is equal to 7 \r{A}; considering that the $SiO_{2}$ lattice constant is 2.7, having a thickness of 7 \r{A} means having roughly 3 atomic layers. This thickness is not enough to prevent \emph{tunneling} and it causes an \textbf{increase of the gate current}, which, instead, should be close to zero since the gate is supposed to be isolated. This could represent another problem for deeply scaled devices.\\
 Especially in the last nodes, while still considering the three different technology families\footnote{Again, up to ITRS 2011 edition.}, $I_{gate}$ (expressed as current density, A/cm$^{2}$) is characterized by high values. In particular, HP has the highest $I_{gate}$ value among the three technologies. LSTP has the minimum value due to a thicker gate oxide.\\
-\textbf{Why in a scaled device the gate oxide thickness must be reduced?} The answer is that reducing $t_{ox}$, although it causes an increase of parasitic capacitances, it also boosts $C_{ox}$ (gate capacitance). In fact,
+\textbf{Why in a scaled device the gate oxide thickness must be reduced?} The answer is that reducing $t_{ox}$, although it causes an increase of parasitic capacitances, it also boosts $C_{ox}$ (gate capacitance). In fact:
 
 \begin{equation}
 C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}
@@ -407,7 +317,7 @@ I_{ON} = \frac{\mu_n C_{ox} W}{2 L} (V_{DD} - V_{TH})^2
 \label{}
 \end{equation}
 
-Therefore, with a \textbf{thinner oxide} we are able to control, in a better way, the quantity of charge in the channel and this means \textbf{higher trasconductance}, that turns into \textbf{higher current}.\\
+Therefore, with a \textbf{thinner oxide} we are able to control, in a better way, the quantity of charge in the channel and this means \textbf{higher transconductance}, that turns into \textbf{higher current}.\\
 However, this is not the main motivation to reduce the oxide thickness in a scaled process. The main motivation is that reducing $t_{ox}$ allows to reduce $V_{TH}$:
 
 \begin{equation}
@@ -423,13 +333,14 @@ So, the followed sequence is:
 
 Besides the effort of reducing $t_{ox}$ as to obtain a better electrostatic control of the channel to switch the device on and off more efficiently, there are other reasons why the gate oxide thickness has been reduced over and over with years. Two of them are the most significant:
 
+%IN QUESTO ITEMIZE POTREMMO INTRODURRE DEI GRAFICI 12/11/15 quaderno ste (grafico capacità)
 \begin{itemize}
-\item QM effects. For deeply-scaled devices the classical model that has been used for many year to describe the distribution of the inversion charge in the channel is not accurate anymore. The inversion charge does \textbf{not} concentrate at the surface between gate oxide and channel, but it is pushed further away from the oxide, into the silicon. The distance between the silicon-oxide surface and the maximum concentration of carriers in the silicon is called \textbf{Dark Space (DS)}. As a consequence, there exists a new capacitance $C_{DS}=\epsilon_{s}/ DS $that is in series with $C_{ox}$ and the total capacitance will be: \\ $C_{tot}=C_{ox}*C_{DS}/(C_{ox}+C_{DS})$.\\ It is straight-forward to notice that the gate electrostatic control will worsen on account of dark space.
+\item QM effects. For deeply-scaled devices the classical model that has been used for many year to describe the distribution of the inversion charge in the channel is not accurate any more. The inversion charge does \textbf{not} concentrate at the surface between gate oxide and channel, but it is pushed further away from the oxide, into the silicon. The distance between the silicon-oxide surface and the maximum concentration of carriers in the silicon is called \textbf{Dark Space (DS)}. As a consequence, there exists a new capacitance $C_{DS}=\epsilon_{s}/ DS$ that is in series with $C_{ox}$ and the total capacitance will be: \\ $C_{tot}=C_{ox}*C_{DS}/(C_{ox}+C_{DS})$.\\ It is straight-forward to notice that the gate electrostatic control will worsen on account of dark space.
 \item Polydepletion effect. A similar phenomenon occurs in devices with polysilicon gates, since there exists a depletion layer in the gate itself due to the applied voltage. Once again, a second capacitance can be inserted in series to $C_{ox}$, thus reducing the total capacitance and worsening the device performance. However, the polydepletion effect has been resolved by replacing polysilicon with metals. Nowadays, metal-gate technology has completely taken over polysilicon-gate technology.
 \end{itemize} 
-%IN QUESTO ITEMIZE POTREMMO INTRODURRE DEI GRAFICI
 
 As it has been stated at the beginning of the paragraph, the main drawback of the reduction of $t_{ox}$ consists of the strong increase of the \textbf{gate leakage} current: in order to avoid this undesired consequence, the gate structure and materials should be completely changed. Independently from the technological family \textbf{scaling means higher $I_{off}$} as long as the bulk planar process is concerned. New processes try to maintain limited, under control, $I_{off}$. For the moment we consider $I_{off}=I_{subV_{th}}$ for a n-MOS transistor whose drain is tied to $V_{dd}$ and its source, gate and body are tied to ground (dual condition for a p-MOS)\label{ioff_config}; therefore, we are not considering other leakage sources as junction leakages, gate leakages, \dots.
+
 
 \subsection{Subthreshold current} %%%SI POSSONO INTRODURRE DEI GRAFICI (alcuni, ma non troppi)
 
@@ -453,9 +364,23 @@ I_{DS}=-I_{diff_{n}}=-\frac{\partial Q_{n}(y)}{\partial y}
 \end{enumerate}
 
 The inversion charge expression in WI will be:
-\begin{eqnarray}
-Q_n(y)&\approx& -C_{dep} V_T \left(e^{\displaystyle \frac{\Psi_S(y)-2\Phi_P}{V_T}}\right)
-\end{eqnarray}
+
+	\begin{eqnarray*}
+	      Q_n(y)&\approx &-C_{dep}~~V_T
+	             \left(e^{\displaystyle \frac{\Psi_S(y)-2\Phi_P}{V_T}}
+	              \right)\\[2ex]
+	       C_{dep}&=& {\sqrt{\frac{q \epsilon_S N_A}{ 4\Phi_P}}}
+	\end{eqnarray*}
+
+Just for completeness, in the picture \ref{ChargeDist} it has been plotted the charge density as a function of the surface potential in all the working region of the transistor (accumulation; depletion, WI; SI)
+
+%%AGGIORNARE FIGURA: charge distribution MATLAB
+%	\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.75\textwidth]{figCharge}
+%	\caption{Charge density as a function of surface potential for complete model.}
+%	\label{ChargeDist}
+%	\end{figure}
 
 The inversion charge at source and drain will be respectively:
 \begin{eqnarray*}
@@ -485,7 +410,7 @@ The expression above can be further simplified by making two more assumptions:
 
 \begin{itemize}
 \item Let us define the parameter $m=1+\frac{C_{dep}}{C_{ox}}$.
-\item For $V_{DS}>5V_{T}$ we can consider 
+\item For $V_{DS}>5V_{T}$ we can consider:
 \begin{eqnarray}
 \left( 1-e^{\displaystyle\frac{-V_{DS}}{V_T}}\right) \simeq 1
 \end{eqnarray}
@@ -494,7 +419,7 @@ The expression above can be further simplified by making two more assumptions:
 Therefore, we finally obtain
 
 \begin{equation} \label{final_Ids}
-I_{DS} \approx \frac{\mu_n W C_{dep} V_T^2}{L} e^{\frac{V_GS - V_T}{m V_T}}
+I_{DS} \approx \frac{\mu_n W C_{dep} V_T^2}{L} e^{\frac{V_{GS} - V_T}{m V_T}}
 \end{equation}
 
 The expression \ref{final_Ids} is the one that will be used to evaluate the effects of scaling on the subthreshold current and $I_{off}$ in particular. \\
@@ -521,7 +446,7 @@ Even though the subthreshold current is an important parameter for any device fa
 	\end{equation}
 	
 	\begin{equation}
-	SS|_{300K}  = 2,3 \cdot 26mV \cdot m \approx 59.8 mV \cdot m
+	SS|_{300K}  = 2,3 \cdot 26mV \cdot m \approx 59.8\cdot m mV
 	\end{equation}
 
 SS is measured in \textbf{mV/dec}, since it tells us how many milliVolts the gate voltage must change in order to decrease/increase the $I_{subV_{th}}$ by one order of magnitude. The lower is the value of SS the better is the technological process. \textbf{The minimum reachable value for SS is 59.8 mV/dec}, when $m = 1$. So, from the technological point of view, all the efforts are focused towards the direction that allows to have $m \approx 1$. Typical SS values for the bulk CMOS technology are in the range 80 - 100 $mV/dec$. More advanced technologies have a lower SS and in some cases it is possible to reach values near the theoretical limit. A good example is provided by the \textbf{Fully-Depleted Silicon-On-Insulator (FD-SOI)} process, where $SS=60mV/dec$. The FD-SOI process has a very good value of the SS due to the extremely reduced thickness of the silicon overlay, which reduces $C_{dep}$. FD-SOI devices are characterized by many advantages compared to standard Bulk transistors; in fact, one the main advantages is represented by the reduced SS value that makes the control on the device more effective.\\
@@ -532,7 +457,15 @@ As a matter of fact, $m = 1+ \frac{C_{dep}}{C_{OX}}$ and its value can be minimi
 \item $C_{OX} \rightarrow \infty$.
 \end{enumerate}
 
-In the graph below are shown different curves related to SS: %%METTERE ALMENO UN GRAFICO SU BULK vs FD-SOI (o MG)
+In the graph below are shown different curves related to SS: 
+
+%%AGGIORNARE FIGURA: questa è quella che già cìera. Se riusciamo fare meglio
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figsubvt6}
+	\caption{Subthreshold slopes for different technology nodes.}
+	\label{}
+	\end{figure}
 
 
 %%QUESTA PARTE E' STATA RIDOTTA (SOPRA) PERCHE' LA TRATTAZIONE ERA LUNGA E NON CENTRATA SULLO SCALING. SERVIVA MOSTRARE UNA FORMULA PER LA CORRENTE DI SOTTOSOGLIA MA SENZA DILUNGARSI COME ERA STATO FATTO QUI. E' UN CORSO DI TECNOLOGIA, NON DI DISPOSITIVI.
@@ -1200,9 +1133,10 @@ I_{DS,\ sat} = \frac{\mu_n C_{OX} W}{2L} (V_{GS} - V_{TH})^2
 \label{}
 \end{equation}
 
-However, this model \emph{overestimates} the current. Why? Because we consider just a linear dependency of the inversion charge on the gate voltage neglecting other square-root terms present in the charge expression. Clearly, this leads to an unprecise approximation.
+However, this model \emph{overestimates} the current. Why? Because we consider just a linear dependency of the inversion charge on the gate voltage neglecting other square-root terms present in the charge expression. Clearly, this leads to an inexact approximation.
 
 In general, we can use three models to estimate the drive current:
+
 \begin{enumerate}
 \item the expression obtained from the linear approximation of $Q_{n}(y)$
 
@@ -1216,7 +1150,7 @@ In general, we can use three models to estimate the drive current:
 	 I_{DS} &=&\frac{W \mu_n C_{ox}}{L}\left[\left(V_G-V_{Tn}\right)V_{DS}-\frac{ {m}}{2}V_{DS}^2\right]
 	\end{eqnarray*}
 
-\item the expression derived using the complete $Q_{n}(y)$ (spice model)
+\item the expression derived using the complete $Q_{n}(y)$ (Spice model)
 
 	\begin{eqnarray*}
 	I_{DS} &=&\frac{W \mu_n C_{ox}}{L}\left[\left(V_G-V_{Tn}\right)V_{DS}-\frac{V_{DS}^2}{2}\right]
@@ -1231,7 +1165,6 @@ We can observe that the second expression is equal to the first one except for \
 
 Comparing the three equations it can be noted that the `m' factor expression represents a very good approximation and it has one big advantage: it is a very simple expression that can be easily used for calculations.
 
-
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.55\textwidth]{figidson1}
@@ -1239,17 +1172,18 @@ Comparing the three equations it can be noted that the `m' factor expression rep
 	\label{}
 	\end{figure}
 
-Regarding the `m' factor equation for the drive current we can say that, the smaller m is, the higher $I_{DS}$ is. Again, the ideal value of m is one. So, improving m ($m \approx 1$), we can get a lower subthreshold current and, at the same time, a higher drive current.
+Regarding the `m' factor equation for the drive current we can say that, the smaller m is, the higher $I_{DS}$ is. Again, the ideal value of m is one. So, by improving it ($m \approx 1$), we can get a lower subthreshold current and, at the same time, a higher drive current.
 
-The \textbf{maximum drive current} (saturation current) can be obtained imposing that $V_{DSmax} = \frac{V_{GS} - V_{TH}}{m}$:
+The \textbf{maximum drive current} (saturation current) can be obtained imposing maximum drain-source voltage:
 
-   \begin{eqnarray*}    
-       I_{DSmax}&=& \frac{\mu_n W C_{ox}}{2L \cdot  {m}}\left(V_{GS}-V_{Tn}\right)^2
-    \end{eqnarray*}
+	\begin{eqnarray*}
+	     V_{DSmax} &=& \frac{V_{GS} - V_{TH}}{m}\\
+	   I_{DSmax} &=& \frac{\mu_n W C_{ox}}{2L \cdot  {m}}\left(V_{GS}-V_{Tn}\right)^2
+	\end{eqnarray*}
 
 Again, this equation is equal equal to the one that can be obtained from $I_{DS}$ approximated except for `m' that acts as a correction factor.
 
-The maximum speed of carriers in the channel is limited by \textbf{velocity saturation}\footnote{It occurs when the carriers lose energy on account of the increased number of scattering events with the lattice atoms.} and this has a strong effect on the maximum current that a transistor can drive. The effect of velocity saturation due to the longitudinal field can be modeled using the following expression ($I_{DS}$ is expressed using `m'):
+The maximum speed of carriers in the channel is limited by \textbf{velocity saturation}\footnote{It occurs when the carriers lose energy on account of the increased number of scattering events with the lattice atoms.} and this has a strong effect on the maximum current that a transistor can drive. The effect of velocity saturation due to the longitudinal field can be modelled using the following expression ($I_{DS}$ is expressed using `m'):
 
 	\begin{eqnarray*}
 	     \mu_n&=&\frac{\mu_{n0}}{1+\frac{\mu_{n0}V_{DS}}{Lv_{sat}}}\\[2ex]
@@ -1260,30 +1194,22 @@ The maximum speed of carriers in the channel is limited by \textbf{velocity satu
 (\emph{\textbf{Note}: it is not requested to know the expression of $I_{DS}$ but just to remember what velocity saturation is.})
 
 
-
-
 \section{Scaling policies}
 
 So far we have considered the main features and the key parameters that are used to study, analyze and compare the different technological processes and families, and how they are affected by scaling as we get closer and closer to the limits of the Bulk process. Although the Bulk process is getting to its natural end as stated at the beginning of the chapter, it is still of great interest to study its behavior and the limits and problems related to the scaling policies applied to it. As a matter of fact, many ideas and solutions that belong to the Bulk legacy can be exported and exploited by the new Multi-Gate technological process. Independently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions.\\
-Traditionally, for the Bulk process we can distinguish among three different scaling approaches for \textbf{devices} that will be analyzed:
+As we will see in a while, both for devices and interconnects we have different policy of scaling. Generally, transistors scaling is more aggressive than interconnects scaling. Actually, it is important to remark that the scaling policy for interconnects varies according to the interconnect hierarchy, which is mainly due to the different delays for local and global interconnects. Please refer to the following section for more details.
+%: $\text{\textbf{K}} > \text{\textbf{S}}$
 
-\begin{enumerate}
-\item \textbf{Constant voltage scaling};
-\item \textbf{Constant field scaling};
-\item \textbf{Generalized scaling}.
-\end{enumerate}
+%Similarly, we have three different scaling policies for interconnects: 
+%
+%\begin{enumerate}
+%\item \textbf{Ideal scaling};
+%\item \textbf{Quasi-ideal scaling};
+%\item \textbf{Fixed-height scaling}.
+%\end{enumerate}
+%
+%The scaling factor for interconnects is \textbf{S}. Furthermore, another discrimination can be done among local, intermediate and global wires: local wires scale almost like devices, global wires mainly do not scale, whereas intermediate wires are somewhere in between. This approach is called \textbf{Hierarchical scaling policy} for interconnects.\\
 
-The scaling factor for transistors is \textbf{K}.\\
-Similarly, we have three different scaling policies for interconnects: 
-
-\begin{enumerate}
-\item \textbf{Ideal scaling};
-\item \textbf{Quasi-ideal scaling};
-\item \textbf{Fixed-height scaling}.
-\end{enumerate}
-
-The scaling factor for interconnects is \textbf{S}. Furthermore, another discrimination can be done among local, intermediate and global wires: local wires scale almost like devices, global wires mainly do not scale, whereas intermediate wires are somewhere in between. This approach is called \textbf{Hierarchical scaling policy} for interconnects.\\
-Transistors scaling is more aggressive than interconnects scaling: $\text{\textbf{K}} > \text{\textbf{S}}$. Actually, it is important to remark that the scaling policy for interconnects varies according to the interconnect hierarchy, which is mainly due to the different delays for local and global interconnects.
 
 %QUESTO E' INCOMPLETO E FORSE STAREBBE MEGLIO DA UN'ALTRA PARTE
 %The transistors dimensions are reduced by K:
@@ -1303,33 +1229,40 @@ Transistors scaling is more aggressive than interconnects scaling: $\text{\textb
 
 Even though new kinds of transistors are being developed and exploited in integrated circuit fabrication to solve some critical problems arisen in the planar Bulk process as technology keeps scaling, it is important to consider the scalable MOSFET device that has been taken as a reference point over the last years. Moreover, some general concepts and ideas that are eligible for the Bulk process may come in handy for future generations of new devices. That is the reason why we will still focus on the Bulk process in this part of the chapter as we discuss about scaling policies. 
 
-\subsubsection{Basic scalable MOSFET} %%%DA METTERE PRIMA DELLE DIVERSE SCALING POLICIES -> CHECK!
+\subsubsection{Basic scalable MOSFET}
 
 The most common MOSFET structure is the LDD (Lightly-Doped Drain) one:
 
-	\begin{figure}[H]
+	\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{figbasmos}
-	\caption{A LDD MOSFET.}
+	\includegraphics[width=0.6\textwidth]{figbasmos}
+	\caption{A Lightly-Doped Drain transistor}
 	\label{}
 	\end{figure}
 
-\textbf{LDD} MOSFETs are used since the extension at the drain end of the channel can \textbf{significantly reduce the electric field} peak, thus \textbf{limiting the hot carrier injection} phenomenon that could severely damage the device. If there are too many electrons trapped in the gate oxide, the threshold voltage of the device can permanently change and irreversibly damage the transistor.   
+\textbf{LDD} mos are used since the extension at the drain end of the channel can \textbf{significantly reduce the electric field} peak, thus \textbf{limiting the hot carrier injection} phenomenon that could severely damage the device. If there are too many electrons trapped in the gate oxide, the threshold voltage of the device can permanently change and irreversibly damage the transistor.
 Fundamental parts that characterize this structure are:
 
+%\begin{itemize}
+%\item gate structure $\rightarrow$ $T_{gate}$, $T_{OX}$;
+%\item source/drain extensions $\rightarrow $ $X_{j}$ (junction depth);
+%\item source/drain contacts $\rightarrow$ $X_{jc}$ (contact junction depth);
+%\item spacers (regions beside the gate) $\rightarrow$ $T_{SW}$.
+%\end{itemize}
+
 \begin{itemize}
-\item the gate $\rightarrow$ $T_{gate}$, $T_{OX}$;
-\item source/drain extensions $\rightarrow $ $X_{j}$ (junction depth);
-\item source/drain contacts $\rightarrow$ $X_{jc}$ (contact junction depth);
-\item spacers (regions beside the gate) $\rightarrow$ $T_{SW}$.
+\item gate structure: $T_{gate}$, $T_{OX}$;
+\item source/drain extensions: $X_{j}$ (junction depth);
+\item source/drain contacts: $X_{jc}$ (contact junction depth);
+\item spacers (regions beside the gate): $T_{SW}$.
 \end{itemize}
 
 In the basic CMOS process, the polysilicon\footnote{Nowadays, polysilicon has been replaced by metal as to avoid poly-depletion effects.} gate is used to mask source/drain implantation. Now we want to realize extensions and contacts exploiting the \textbf{LDD CMOS process}:
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{figldd}
-	\caption{The steps to realize spacers.}
+	\includegraphics[width=0.65\textwidth]{figldd}
+	\caption{Steps to realize LDD structure.}
 	\label{LDD_process}
 	\end{figure}
 
@@ -1342,54 +1275,36 @@ In the standard process source and drain are implanted using a high dose, $N_D =
 \item high energy implantation of source/drain contacts ($N_D = 10^{15}$, $E = 80/100\ keV$).
 \end{enumerate}
 
-%\begin{enumerate}
-%\item [\textbf{Step (1)}] implatation of shallow light-doped source/drain extensions ($N_D = 10^{12}$, $E = 20/30\ keV$);
-%\item [\textbf{Step (2)}] CVD deposition of a thick ($\approx 1\mu m$) layer of silicon oxide;
-%\item [\textbf{Step (3)}] anisotropic etching to remove $SiO_{2}$; part of the silicon oxide is not removed and it constitutes spacers;
-%\item [\textbf{Step (4)}] high energy implantation of source/drain contacts ($N_D = 10^{15}$, $E = 80/100\ keV$).
-%\end{enumerate}
-
 Spacers can be realized in $SiO_{2}$ or in silicon nitride ($Si_{3}N_{4}$) (more often in $SiO_{2}$). These structures are used to define source and drain contacts.
 
-When we realize S/D extensions it is necessary to perform thermal annealing for a short time since in order to obtain shallow junctions. On the contrary, to realize S/D contacts, that have to be deep, it is required to perform thermal annealing for a longer time and at a higher temperature than in the previous case. The consequence of performing "heavy" thermal annealing consists of the lateral diffusion of the extensions below the gate, reducing the effective length of the channel, and increasing parasitics (because of the source-gate and drain-gate coupling). There exist techniques to reduce the lateral diffusion: the main idea is to implant S/D contacts before extensions.
+When we realize S/D extensions it is necessary to perform thermal annealing for a short time, in order to obtain shallow junctions. On the contrary, to realize S/D contacts, that have to be deep, it is required to perform thermal annealing for a longer time and at a higher temperature than in the previous case. The consequence of performing "heavy" thermal annealing consists of the lateral diffusion of the extensions below the gate, reducing the effective length of the channel, and increasing parasitics (because of the source-gate and drain-gate coupling). There exist techniques to reduce the lateral diffusion: the main idea is to implant S/D contacts before extensions.
 
 The \emph{great advantage} of the LDD technology consists of the possibility to be \textbf{implemented without any additional mask and photolitography} because the oxide deposition and source/drain contacts implantation are obtained using the masking action of spacers. This means that all processes can be easily updated to LDD. Starting from the end of 80s, the reference device has become the LDD one. 
 
 An example of the reference MOSFET is the following:
 
-\newpage
-
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figscalablemos}
-	\caption{}
+	\includegraphics[width=0.5\textwidth]{figscalablemos}
+	\caption{Microscopic picture of a basic scalable mosfet}
 	\label{}
 	\end{figure}
 
 We can see that the device has very large spacers and, as a consequence, very long extensions, which is negative since the resistance of the extension regions becomes very high because they are lightly-doped and long. As a consequence, we can notice the presence of silicide (the silicide is a compound of silicon and metal, in this case nickel) contacts useful to reduce the parasitic resistance at least for the source/drain contacts. We recall that source/drain extensions have been introduced in order to improve the reliability of the device limiting the high electric field near the drain. Extensions offer another advantage: \textbf{better scaling} because contact geometry does not depend on S/D extension dimensions. This means that we can scale independently $X_{j}$ and $X_{jc}$ so, we can have a thin junction depth (generally scaled by a factor K) and a thick contact region (less scaled than the junction depth) to reduce the resistance. Why does the junction depth $X_{j}$ have to be scaled by the same factor by which we scale the device dimensions? The answer is given by the \textbf{short channel effects}, which become more and more relevant as technology scales and they must be kept as small as possible. \\
 
+Traditionally, for the Bulk process we can distinguish among three different scaling approaches for \textbf{devices} that will be analyzed in details:
 
+\begin{enumerate}
 
-\subsubsection{Constant voltage scaling}
+\item \textbf{Constant voltage scaling};
+%\subsubsection{Constant voltage scaling}
 
-Constant voltage scaling features:
+Constant voltage scaling features imply a reduction by K in all geometrical dimensions, while $V_{DD}$ is kept constant (and so is $V_{th}$). For many years, during the golden age of the CMOS technology, $V_{DD}$ has \textbf{not changed} (5 V) even if the dimensions of the transistors were scaled. This choice has been made in order to \textbf{guarantee compatibility}: same logic signals. We know that a fundamental parameter useful to distinguish different technological processes is the \textbf{ratio} $\frac{V_{DD}}{V_{TH}}$; \textbf{in constant voltage scaling this ratio too has to be maintained constant}. This means that even $V_{TH}$ has to be kept constant. But what are the consequences, from the technological point of view, of these choices? Let us analyze the following table:
 
-\begin{itemize}
-\item All the dimensions are reduced by K;
-\item VDD is kept constant.
-\end{itemize}
-
-For many years, during the golden age of the CMOS technology, $V_{DD}$ has \textbf{not changed} (5 V) even if the dimensions of the transistors were scaled. This choice has been done in order to \textbf{guarantee compatibility}: same logic signals. We know that a fundamental parameter useful to distinguish different technological processes is the \textbf{ratio} $\frac{V_{DD}}{V_{TH}}$; \textbf{in constant voltage scaling this ratio too has to be maintained constant}. This means that even $V_{TH}$ has to be kept constant.
-
-But what are the consequences, from the technological point of view, of these choices?
-
-Let us analyze the following table:
-
- \begin{table}[H]
+%\LTXtable{\textwidth}
+ %\begin{longtable}[h!]
  \begin{center}
- {
-  {
-     \begin{tabular}{||l||c|c||}\hline
+     \begin{longtable}{||l||c|c||} \caption{CVS effects on main parameters}\\ \hline \label{cvs}
       V$_{DD}$ & -& $ {1}$\\
       \hline
       L,W,$x_J$       &- & $ {1/K}$\\
@@ -1431,15 +1346,14 @@ Let us analyze the following table:
       \hline 
        $P_{Isub}^{Den}$      &-&$ {K^3}$\\ 
       \hline
-     \end{tabular}
-     }
-    }
+     \end{longtable}
+%	\caption{CVS effects on main parameters} 
     \end{center}
-    \end{table}
+%    \end{longtable}
 
 We can see that L and W are scaled as 1/K. $x_{J}$ is the \textbf{juction depth} of the source-drain junction near the channel and it is scaled as well of the same factor K:
 
-	\begin{figure}[!h]
+	\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{09_junction_depth_scaling}
 	\caption{Geometry dimensions scaling.}
@@ -1807,7 +1721,8 @@ It is fundamental to observe that the time period in which a power supply value 
 
 \newpage
 
-\subsubsection{Constant field scaling}
+\item \textbf{Constant field scaling};
+%\subsubsection{Constant field scaling}
 
 This policy involves the reduction of the transistor dimensions in order to maintain constant the electric field. As a conseuqence, if dimensions are scaled by a factor K, $V_{DD}$ also has to be reduced like K.
 
@@ -1863,6 +1778,7 @@ This policy involves the reduction of the transistor dimensions in order to main
       \hline
      \end{tabular}
   }
+\caption{CFS effects on main parameters}
     \end{center}
 }
     \end{table}
@@ -2042,7 +1958,10 @@ Summarizing:
 
 It is not possible to scale $V_{DD}$ of the same scaling factor that we use for dimensions at each technological node since, doing in such a way, the power supply now should be equal to few millivolts and this, clearly, is not possible. In other words, we cannot apply only the constant field scaling because we would need a very small power supply and, as a consequence, a very low threshold voltage and it would not be possible to operate transistors for two reasons: high leakages and noise (few mV of noise signal could erroneously switch on/off a transistor). On the other hand we cannot apply only constant voltage field because of the low reliability. We have to mix these two policies creating the \textbf{Generalized scaling}.
 
-\subsubsection{Generalized scaling}
+\newpage
+
+\item \textbf{Generalized scaling}.
+%\subsubsection{Generalized scaling}
 
 In generalized scaling are used two different parameters:
 
@@ -2070,7 +1989,6 @@ Varying $\alpha$ we modify the kind of scaling.
 
 In the table below is summarized how technological and electrical parameters change applying the generalized scaling:
 
-\newpage
 
 \begin{table}[H]
 {
@@ -2099,11 +2017,14 @@ In the table below is summarized how technological and electrical parameters cha
       \hline
      \end{tabular}
 }
+\caption{Generalized scaling effects on main parameters}
     \end{center}
 }
 \end{table}
 
 Now should be clear how to deduce all these rules.
+
+\end{enumerate}
 
 \newpage
 
@@ -2142,7 +2063,7 @@ Other important parameters that determine the good behavior of interconnects are
 
 It would be much simpler to define and compare the parameters above independently from the length of each wire. Therefore, we can define:
 \begin{itemize}
-\item $\mathcal{R_{int}}$=$\rho(\frac{1}{W_{int}H_{int}})$, where $\rho$ is the material resistivity;
+\item $\mathcal{R}_{int}$=$\rho(\frac{1}{W_{int}H_{int}})$, where $\rho$ is the material resistivity;
 \item $\mathcal{C_{IMD}}$=$\epsilon_{IMD}(\frac{H_{int}}{W_{sp}})$;
 \item $\mathcal{C_{ILD}}$=$\epsilon_{ILD}(\frac{W_{int}}{T_{int}})$.
 \end{itemize}
@@ -2162,23 +2083,23 @@ As it has been said in the main introduction about scaling, there are three diff
 \hline
 &Ideal&Quasi-ideal&Fixed-Height\\
 \hline
-$W_{int}$, $W_{sp}$&1/S&1/S&1/S\\
+$W_{int}$, $W_{sp}$ & $S^{-1}$ & $S^{-1}$ & $S^{-1}$\\
 \hline
-$H_{int}$, $T_{ILD}$&1/S&1/$\sqrt{S}$&1\\
+$H_{int}$, $T_{ILD}$ & $S^{-1}$ & $S^{-1/2}$ & 1\\
 \hline
-Aspect Ratio&1&$\sqrt{S}$&S\\
+Aspect Ratio & 1 & $S^{-1/2}$ & S\\
 \hline
-$\mathcal{R_{int}}$&$S^2$&$S^(3/2)$&S\\
+$\mathcal{R}_{int}$ & $S^{2}$ & $S^{3/2}$ & S\\
 \hline
-$\mathcal{C_{IMD}}$&1&$S^(1/2)$&S\\
+$\mathcal{C_{IMD}}$ & 1 & $S^{1/2}$ & S\\
 \hline
-$\mathcal{C_{ILD}}$&1&$S^(-1/2)$&$S^(-1)$\\
+$\mathcal{C_{ILD}}$ & 1 & $S^{-1/2}$ & $S^{-1}$\\
 \hline
-J&$S^2$&$S^(3/2)$&S\\
+J & $S^{2}$ & $S^{3/2}$ & S\\
 \hline
-$\mathcal{R_{int}}*\mathcal{C_{IMD}}$&$S^2$&$S^2$&$S^2$\\
+$\mathcal{R}_{int}*\mathcal{C_{IMD}}$ & $S^{2}$ & $S^{2}$ & $S^{2}$\\
 \hline
-$\mathcal{R_{int}}*\mathcal{C_{ILD}}$&$S^2$&S&1\\
+$\mathcal{R}_{int}*\mathcal{C_{ILD}}$ & $S^{2}$ & S & 1\\
 \hline
 \end{tabular} }
 \end{center} }
@@ -2196,13 +2117,13 @@ Local length \textbf{$L_{L}$}&$S^{-1}$&$S^{-1}$&$S^{-1}$\\
 \hline
 Global lenght \textbf{$L_{G}$}&$S_{G}$&$S_{G}$&$S_{G}$\\
 \hline
-Local Delay (IMD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{IMD}}*L_L^2$}&1&1&1\\
+Local Delay (IMD) \textbf{$\mathcal{R}_{int}*\mathcal{C_{IMD}}*L_L^2$}&1&1&1\\
 \hline
-Local Delay (ILD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{ILD}}*L_L^2$}&1&$S^{-1}$&$S^{-2}$\\
+Local Delay (ILD) \textbf{$\mathcal{R}_{int}*\mathcal{C_{ILD}}*L_L^2$}&1&$S^{-1}$&$S^{-2}$\\
 \hline
-Global Delay (IMD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{IMD}}*L_G^2$}&$S^{2}S_G^2$&$S^{2}S_G^2$&$S^{2}S_G^2$\\
+Global Delay (IMD) \textbf{$\mathcal{R}_{int}*\mathcal{C_{IMD}}*L_G^2$}&$S^{2}S_G^2$&$S^{2}S_G^2$&$S^{2}S_G^2$\\
 \hline
-Global Delay (ILD) \textbf{$\mathcal{R_{int}}*\mathcal{C_{ILD}}*L_G^2$}&$S^{2}S_G^2$&$S S_G^2$&$S_G^2$\\
+Global Delay (ILD) \textbf{$\mathcal{R}_{int}*\mathcal{C_{ILD}}*L_G^2$}&$S^{2}S_G^2$&$S S_G^2$&$S_G^2$\\
 \hline
 \end{tabular} }
 \end{center} }
@@ -2373,5 +2294,124 @@ Finally, another phomenon that must be avoided is \textbf{punchthrough}. Punchth
 %	\end{figure}
 
 %Because of process variations (the photolitography is not so accurate), the effective channel length can vary from a minimum value to a maximum one. 
+
+\newpage
+
+\chapter{Scaling on MultiGate process}
+
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c|c||}
+\hline
+Year&2013&2014&2015&2016&2017&2018&2019&2020&2021&2022&2023&2024\\
+\hline
+$L_{g}$ [nm]&20&18&16.7&15.2&13.9&12.7&11.6&10.6&9.7&8.8&8&7.3\\
+\hline
+$L_{ch}$ [nm]&16&14.4&13.4&12.2&11.1&10.2&9.3&8.5&7.8&7&6.4&5.8\\
+\hline
+$V_{dd}$ [V]&0.86&0.85&0.83&0.81&0.8&0.78&0.77&0.75&0.74&0.72&0.71&0.69\\
+\hline
+EOT [nm]&0.8&0.77&0.73&0.7&0.67&0.64&0.61&0.59&0.56&0.54&0.51&0.49\\
+\hline
+$\epsilon_{HK}$&12.5&13&13.5&14&14.5&15&15.5&16&16.5&17&17.5&18\\
+\hline
+$T_{HK}$ [nm]&2.56&2.57&2.53&2.51&2.49&2.46&2.42&2.42&2.37&2.35&2.29&2.26\\
+\hline
+$Doping_{ch}$ [$10^{18}$/$cm^{3}$]&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1\\
+\hline
+$T_{body}$ [nm]&6.4&5.8&5.3&4.9&4.4&4.1&3.7&3.4&3.1&2.8&2.6&2.3\\
+\hline
+CET [nm]&1.1&1.07&1.03&1&0.97&0.94&0.91&0.89&0.86&0.84&0.81&0.79\\
+\hline
+$C_{ch}$ [fF/$\mu$m]&0.502&0.465&0.448&0.42&0.396&0.373&0.352&0.329&0.311&0.289&0.273&0.255\\
+\hline
+$\mu$ [$cm^{2}$/V*s]&250&250&250&250&250&200&200&200&200&200&200&150\\
+\hline
+$I_{off}$ [pA/$\mu$m]&100&100&100&100&100&100&100&100&100&100&100&100\\
+\hline
+$I_{on}$ [$\mu$A/$\mu$m]&1670&1680&1700&1660&1660&1610&1600&1480&1450&1350&1330&1170\\
+\hline
+$V_{t,lin}$ [V]&0.219&0.225&0.231&0.239&0.264&0.266&0.265&0.276&0.295&0.303&0.306&0.319\\
+\hline
+$V_{t,sat}$ [V]&0.174&0.179&0.179&0.186&0.191&0.196&0.199&0.205&0.214&0.219&0.222&0.233\\
+\hline
+S/D $R_{s}$ [$\omega$*$\mu$m]&128&146&130&126&124&117&120&116&112&111&113&123\\
+\hline
+$C_{fringing}/C_{intrinsic}$ &1.2&1.3&1.4&1.5&1.6&1.7&1.8&1.9&2&2&2&2\\
+\hline
+$C_{fringing}$ [fF/$\mu$m]&0.6&0.6&0.63&0.63&0.63&0.63&0.63&0.62&0.62&0.58&0.55&0.51\\
+\hline
+$C_{g,total}$ [fF/$\mu$m]&1.1&1.07&1.07&1.05&1.03&1.01&0.99&0.95&0.93&0.87&0.82&0.77\\
+\hline
+$CV^{2}$ [fJ/$\mu$m]&0.82&0.77&0.74&0.69&0.66&0.61&0.58&0.54&0.51&0.45&0.41&0.36\\
+\hline
+$\tau$ [ps]&0.569&0.541&0.525&0.512&0.496&0.488&0.474&0.483&0.477&0.463&0.437&0.451\\
+\hline
+1/$\tau$ [1/ps]&1.76&1.85&1.91&1.95&2.02&2.05&2.11&2.07&2.1&2.16&2.29&2.22\\
+\hline
+$I_{d,satn}/I_{d,satp}$&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14&1.13&1.12\\
+\hline
+\end{tabular}}
+\caption{\textbf{MG process for HP (ITRS 2013)}}
+\end{table}
+
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c|c||}
+\hline
+Year&2013&2014&2015&2016&2017&2018&2019&2020&2021&2022&2023&2024\\
+\hline
+$L_{g}$ [nm]&23&21&19&18&16&14.6&13.3&12.2&11.1&10.1&9.3&8.5\\
+\hline
+$L_{ch}$ [nm]&18.4&16.8&15.2&14.4&12.8&11.7&10.6&9.8&8.9&8.1&7.4&6.8\\
+\hline
+$V_{dd}$ [V]&0.86&0.85&0.83&0.81&0.8&0.78&0.77&0.75&0.74&0.72&0.71&0.69\\
+\hline
+EOT [nm]&0.8&0.77&0.73&0.7&0.67&0.64&0.61&0.59&0.56&0.54&0.51&0.49\\
+\hline
+$\epsilon_{HK}$&12.5&13&13.5&14&14.5&15&15.5&16&16.5&17&17.5&18\\
+\hline
+$T_{HK}$ [nm]&2.56&2.57&2.53&2.51&2.49&2.46&2.42&2.42&2.37&2.35&2.29&2.26\\
+\hline
+$Doping_{ch}$ [$10^{18}$/$cm^{3}$]&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1&0.1\\
+\hline
+$T_{body}$ [nm]&7.4&6.7&6.1&5.8&5.1&4.7&4.3&3.9&3.6&3.2&3&2.7\\
+\hline
+CET [nm]&1.1&1.07&1.03&1&0.97&0.94&0.91&0.89&0.86&0.84&0.81&0.79\\
+\hline
+$C_{ch}$ [fF/$\mu$m]&0.577&0.542&0.509&0.497&0.455&0.429&0.404&0.379&0.356&0.332&0.317&0.297\\
+\hline
+$\mu$ [$cm^{2}$/V*s]&375&375&375&375&375&375&375&300&300&300&300&300\\
+\hline
+$I_{off}$ [pA/$\mu$m]&10&10&10&10&10&10&10&20&20&20&20&20\\
+\hline
+$I_{on}$ [$\mu$A/$\mu$m]&643&610&618&589&574&556&550&533&537&461&458&395\\
+\hline
+$V_{t,lin}$ [V]&0.483&0.492&0.492&0.496&0.507&0.507&0.51&0.501&0.507&0.521&0.511&0.52\\
+\hline
+$V_{t,sat}$ [V]&0.446&0.453&0.453&0.454&0.461&0.459&0.461&0.447&0.446&0.454&0.453&0.46\\
+\hline
+S/D $R_{s}$ [$\omega$*$\mu$m]&128&146&130&126&124&117&120&116&112&111&113&123\\
+\hline
+$C_{fringing}/C_{intrinsic}$ &1.1&1.2&1.3&1.4&1.5&1.6&1.7&1.8&1.9&2&2&2\\
+\hline
+$C_{fringing}$ [fF/$\mu$m]&0.64&0.65&0.66&0.7&0.68&0.69&0.69&0.68&0.68&0.66&0.63&0.59\\
+\hline
+$C_{g,total}$ [fF/$\mu$m]&1.21&1.19&1.17&1.19&1.14&1.12&1.09&1.06&1.03&1&0.95&0.89\\
+\hline
+$CV^{2}$ [fJ/$\mu$m]&0.9&0.86&0.81&0.78&0.73&0.68&0.65&0.6&0.57&0.52&0.48&0.42\\
+\hline
+$\tau$ [ps]&1.622&1.661&1.573&1.64&1.587&1.564&1.525&1.491&1.424&1.556&1.474&1.557\\
+\hline
+1/$\tau$ [1/ps]&0.62&0.6&0.64&0.61&0.63&0.64&0.66&0.67&0.7&0.64&0.68&0.64\\
+\hline
+$I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14\\
+\hline
+\end{tabular}}
+\caption{\textbf{MG process for LP (ITRS 2013)}}
+\end{table}
+
 
 \end{document}
