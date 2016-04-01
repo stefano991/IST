@@ -43,22 +43,22 @@ Ion_B_Ioff_B_ratio=Ion_B./Ioff_B;
 %Bulk function plots
 
 %Charge density for different nodes (complete Qs model)
-[psi0, Qs_B, Qs_approx_B, Qs_app_exp_B]=charge_density_B(Ch_doping_B(1)); %year 2013
-set(0,'DefaultAxesFontSize',13);
-set(0,'DefaultTextFontSize',13);
-set(0,'DefaultLineLinewidth',0.75);
-plot(psi0,fliplr(Qs_B),'b-')
-axis([-0.2 1.3 0 1E-005])
-xlabel('Surface potential Psi(0) [V]')
-ylabel('|Charge density| [C/cm^2]')
-title('Charge density as a function of surface potential for HP (complete model)')
-hold on
-[psi0, Qs_B, Qs_approx_B, Qs_app_exp_B]=charge_density_B(Ch_doping_B(3)); %year 2015
-plot(psi0,fliplr(Qs_B),'g-')
-hold on
-[psi0, Qs_B, Qs_approx_B, Qs_app_exp_B]=charge_density_B(Ch_doping_B(5)); %year 2017
-plot(psi0,fliplr(Qs_B),'r-')
-legend('23nm @2013','19nm @2015','16nm @2017')
+% [psi0, Qs_B, Qs_approx_B, Qs_app_exp_B]=charge_density_B(Ch_doping_B(1)); %year 2013
+% set(0,'DefaultAxesFontSize',13);
+% set(0,'DefaultTextFontSize',13);
+% set(0,'DefaultLineLinewidth',0.75);
+% plot(psi0,fliplr(Qs_B),'b-')
+% axis([-0.2 1.3 0 1E-005])
+% xlabel('Surface potential Psi(0) [V]')
+% ylabel('|Charge density| [C/cm^2]')
+% title('Charge density as a function of surface potential for HP (complete model)')
+% hold on
+% [psi0, Qs_B, Qs_approx_B, Qs_app_exp_B]=charge_density_B(Ch_doping_B(3)); %year 2015
+% plot(psi0,fliplr(Qs_B),'g-')
+% hold on
+% [psi0, Qs_B, Qs_approx_B, Qs_app_exp_B]=charge_density_B(Ch_doping_B(5)); %year 2017
+% plot(psi0,fliplr(Qs_B),'r-')
+% legend('23nm @2013','19nm @2015','16nm @2017')
 
 % %Charge density with different models (same node) --> ERRORI nei modelli!!!!!
 % [psi0, Qs_B, Qs_approx_B, Qs_app_exp_B]=charge_density_B(Ch_doping_B(5)); %year 2017
@@ -86,12 +86,10 @@ legend('23nm @2013','19nm @2015','16nm @2017')
 % plot(psi0,err_approx,'g-*',psi0,err_app_exp,'r-*')
 
 %Subthreshold current and behaviour
-[Ids_sub,Ioff,Vgs]=subth_current_B(Lg_B(5), T_HK_B(5), eps_HK_B(5), mobility_B(5), Ch_doping_B(5), Vdd_B(5), Vth_B(5));
-figure
-semilogy(Vgs,Ids_sub)
+% [Ids_sub,Ioff,Vgs]=subth_current_B(Lg_B(5), T_HK_B(5), eps_HK_B(5), mobility_B(5), Ch_doping_B(5), Vdd_B(5), Vth_B(5));
+% figure
+% semilogy(Vgs,Ids_sub)
 %axis([0 Vdd_B(5) 1E-24 1E-20])
-
-Ioff
 
 
 
@@ -124,69 +122,69 @@ Ion_Ioff_ratio=Ion./Ioff;
 %%
 %%Plots
 
-% set(0,'DefaultAxesFontSize',13);
-% set(0,'DefaultTextFontSize',13);
-% set(0,'DefaultAxesLinewidth',1);
-% set(0,'DefaultLineLinewidth',1.5);
-% set(0,'DefaultAxesPosition',[0.15 0.2 0.7 0.6]);
-% 
-% %Drive current
-% figure
-% plot(year_B,Ion_B, 'r-*')
-% hold on
-% plot(year,Ion, 'g-o')
-% title('HP family: drive current')
-% xlabel('Year')
-% ylabel('Ion [uA/um]')
-% legend('BULK', 'MultiGate')
-% 
-% %Subthreshold current
-% figure
-% plot(year_B, 1000.*Ioff_B, 'r-*')
-% hold on
-% plot(year, 1000.*Ioff, 'g-o')
-% title('HP family: subthreshold current')
-% xlabel('Year')
-% ylabel('Ioff [nA/um]')
-% legend('BULK', 'MultiGate')
-% 
-% %Intrinsic delay 
-% figure
-% plot(year_B, tau_B, 'r-*')
-% hold on
-% plot(year, tau, 'g-o')
-% title('HP family: Intrinsic delay')
-% xlabel('Year')
-% ylabel('Intrinsic delay [ps]')
-% legend('BULK', 'MultiGate')
-% 
-% %Dynamic power indicator
-% figure
-% plot(year_B, CVsquared_B, 'r-*')
-% hold on
-% plot(year, CVsquared, 'g-o')
-% title('HP family: Dynamic power indicator')
-% xlabel('Year')
-% ylabel('Dynamic power indicator [fJ/um]')
-% legend('BULK', 'MultiGate')
-% 
-% %Vdd/Vth
-% figure
-% plot(year_B, Vdd_B_Vth_B_ratio, 'r-*')
-% hold on
-% plot(year, Vdd_Vth_ratio, 'g-o')
-% title('HP family: Vdd/Vth')
-% xlabel('Year')
-% ylabel('Vdd/Vth')
-% legend('BULK', 'MultiGate')
-% 
-% %Ion/Ioff
-% figure
-% plot(year_B, Ion_B_Ioff_B_ratio, 'r-*')
-% hold on
-% plot(year, Ion_Ioff_ratio, 'g-o')
-% title('HP family: Ion/Ioff')
-% xlabel('Year')
-% ylabel('Ion/Ioff')
-% legend('BULK', 'MultiGate')
+set(0,'DefaultAxesFontSize',13);
+set(0,'DefaultTextFontSize',13);
+set(0,'DefaultAxesLinewidth',1);
+set(0,'DefaultLineLinewidth',1.5);
+set(0,'DefaultAxesPosition',[0.15 0.2 0.7 0.6]);
+
+%Drive current
+figure
+plot(year_B,Ion_B, 'r-*')
+hold on
+plot(year,Ion, 'g-o')
+title('HP family: drive current')
+xlabel('Year')
+ylabel('Ion [uA/um]')
+legend('BULK', 'MultiGate')
+
+%Subthreshold current
+figure
+plot(year_B, 1000.*Ioff_B, 'r-*')
+hold on
+plot(year, 1000.*Ioff, 'g-o')
+title('HP family: subthreshold current')
+xlabel('Year')
+ylabel('Ioff [nA/um]')
+legend('BULK', 'MultiGate')
+
+%Intrinsic delay 
+figure
+plot(year_B, tau_B, 'r-*')
+hold on
+plot(year, tau, 'g-o')
+title('HP family: Intrinsic delay')
+xlabel('Year')
+ylabel('Intrinsic delay [ps]')
+legend('BULK', 'MultiGate')
+
+%Dynamic power indicator
+figure
+plot(year_B, CVsquared_B, 'r-*')
+hold on
+plot(year, CVsquared, 'g-o')
+title('HP family: Dynamic power indicator')
+xlabel('Year')
+ylabel('Dynamic power indicator [fJ/um]')
+legend('BULK', 'MultiGate')
+
+%Vdd/Vth
+figure
+plot(year_B, Vdd_B_Vth_B_ratio, 'r-*')
+hold on
+plot(year, Vdd_Vth_ratio, 'g-o')
+title('HP family: Vdd/Vth')
+xlabel('Year')
+ylabel('Vdd/Vth')
+legend('BULK', 'MultiGate')
+
+%Ion/Ioff
+figure
+plot(year_B, Ion_B_Ioff_B_ratio, 'r-*')
+hold on
+plot(year, Ion_Ioff_ratio, 'g-o')
+title('HP family: Ion/Ioff')
+xlabel('Year')
+ylabel('Ion/Ioff')
+legend('BULK', 'MultiGate')
 
