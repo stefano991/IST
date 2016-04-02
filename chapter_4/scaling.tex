@@ -1992,10 +1992,10 @@ Although we have mostly talked about device scaling and its effects so far, as t
 \item Interconnects for logic signals, which can be classified as local, intermediate and global.
 \end{itemize}
 
-Power supply interconnects suffer the most from electro-migration phenomena among all types of interconnects, since the current always flows into the same direction and it can causes \textit{hillocks} or \textit{depletions} according to ion flux. Another problem that affects power supply is \textit{IR-drop}, which leads to an effective value of $V_{dd}$ or ground different from the nominal one.\\ Clock tree is another critical part of the circuit because of the unbalanced distribution over the IC area of the sequential elements, i.e. registers, flip-flips, and so on. That leads to an uneven load on the different branches of the tree and it can cause a worse clock skew. \\ Finally, logic signal interconnects are affected by different delays depending on their position in the interconnect \textbf{hierarchy}. Our attention will be focused on this last kind of interconnects, for which there will be explanation about the different approaches to their scaling. \\vHowever, we will at first describe which are the electrical quantities that play a key role in interconnect scaling
+Power supply interconnects suffer the most from electro-migration phenomena among all types of interconnects, since the current always flows into the same direction and it can causes \textit{hillocks} or \textit{depletions} according to ion flux. Another problem that affects power supply is \textit{IR-drop}, which leads to an effective value of $V_{dd}$ or ground different from the nominal one.\\ Clock tree is another critical part of the circuit because of the unbalanced distribution over the IC area of the sequential elements, i.e. registers, flip-flops, and so on. That leads to an uneven load on the different branches of the tree and it can cause a worse clock skew. \\ Finally, logic signal interconnects are affected by different delays depending on their position in the interconnect \textbf{hierarchy}. Our attention will be focused on this last kind of interconnects, for which there will be explanation about the different approaches to their scaling. \\However, we will at first describe which are the electrical quantities that play a key role in interconnect scaling.
 
 \subsection{Electrical and geometrical parameters for interconnects}
-%%QUI SI PUO' COMINCIARE SUBUTO METTENDO UN DISEGNO DELLE INTERCONNESSIONI (DUE WIRE CON LE DISTANZE E I NOMI DELLE DIMENSIONI RIPORTATI)
+%%QUI SI PUO' COMINCIARE SUBUTO METTENDO UN DISEGNO DELLE INTERCONNESSIONI (DUE WIRE CON LE DISTANZE E I NOMI DELLE DIMENSIONI RIPORTATI --> vedi slide picci)
 As we can observe from the figure (MAGARI UNA LABEL QUI) above, there are different geometrical quantities involved: 
 
 \begin{itemize}
@@ -2221,7 +2221,7 @@ Scaling $x_{d}$ and $x_{j}$ we are sure that the effect of the SCE on $V_{th}$ i
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{figrolloff}
+	\includegraphics[width=0.6\textwidth]{figrolloff}
 	\caption{It can be seen that with a channel length below 80 nm, the threshold voltage is subject to roll-off.}
 	\label{}
 	\end{figure}
