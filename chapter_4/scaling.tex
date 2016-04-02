@@ -1360,37 +1360,32 @@ We can see that L and W are scaled as 1/K. $x_{J}$ is the \textbf{juction depth}
 	\label{}
 	\end{figure}
 
-Why $x_{J}$ needs to be scaled? At first glance we can say that if the thickness of the highly doped regions is smaller their resistance increase and this is a drawback. So, why, despite this disadvantage, $x_{J}$ is scaled? Scaling $x_{J}$ helps to control lateral diffusions. After source and drain are implanted, it is necessary to perform thermal annealing. During this phase lateral diffusions are created and this is a problem because they increase capacitances and create other problems. In order to reduce lateral diffusions it is necessary to implant less deeply the dopant. So, when we reduce planar dimensions (W, L) we have also to reduce the vertical dimension ($x_{J}$) otherwise it becomes impossible to control lateral diffusions. Moreover, scaling $x_{J}$ by the same factor of the channel helps to \textbf{keep under control the short channel effect (SCE) avoiding roll-off} (the threshold voltage is function of the channel length).
-
+Why $x_{J}$ needs to be scaled? At first glance we can say that if the thickness of the highly doped regions is smaller their resistance increase and this is a drawback. So, why, despite this disadvantage, is $x_{J}$ scaled? Because it helps to control lateral diffusions. After source and drain are implanted, it is necessary to perform thermal annealing. During this phase lateral diffusions are created and this is a problem because they increase capacitances and create other problems. In order to reduce lateral diffusions it is necessary to implant less deeply the dopant. So, when we reduce planar dimensions (W, L) we have also to reduce the vertical dimension ($x_{J}$) otherwise it becomes impossible to control lateral diffusions. Moreover, scaling $x_{J}$ by the same factor of the channel helps to \textbf{keep under control the short channel effect (SCE) avoiding roll-off} (the threshold voltage is function of the channel length).
 So, it is important to technologically control the doped regions, in terms of re-diffusion, and the SCE (maintaining the dependence of $V_{TH}$ on L limited to avoid roll-off).
-
-Now we want to define how and why the doping level (N) changes when we scale a device. 
-
-In order to keep SCE limited, the depletion width have to be reduced.
-
-\newpage
+Now we want to define how and why the doping level (N) changes when we scale a device. In order to keep SCE limited, the depletion width have to be reduced.
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{09_depl_width}
-	\caption{}
+	\caption{Depletion layer in a general device}
 	\label{}
 	\end{figure}
 
-The depletion layer visible in the picture above is a good approximation when $V_{DS}$ is equal to 0 V. So, the depletion width at source and drain is the same. Moreover, there is the depletion layer of the channel and its width is known when the system is in SI or near SI:
+The depletion layer visible in the picture above is a good approximation when $V_{DS}$ is equal to 0 V. So, the depletion width at source and drain is the same. Moreover, there is the depletion layer of the channel and its width is known when the system is in SI or near that region:
 
 	\begin{equation}
-	x_{d \approx SI} = \sqrt{\frac{2 \epsilon_S 2 \Phi_P}{q N_A}}
+	x_{dSI} \approx \sqrt{\frac{2 \epsilon_S 2 \Phi_P}{q N_A}}
 	\label{}
 	\end{equation}
 
 The depletion width at the source junction (n\super{+} - p) can be estimated as:
 
 	\begin{equation}
-	x_{dSJ} = \sqrt{\frac{2 \epsilon_S \Phi_i}{q N_A}},\ \Phi_i \rightarrow \text{built-in voltage}
+	x_{dSJ} = \sqrt{\frac{2 \epsilon_S \Phi_i}{q N_A}} 
 	\label{}
 	\end{equation}
 
+where \Phi_i \rightarrow \text{built-in voltage}.
 For an $n+p$ junction $2 \Phi_P \approx 0.7 V - 0.8 V$ and $2 \Phi_i \approx 0.7 V - 0.8 V$. In other words these two width can be confused and, as a consequence, $x_{d}$ and $x_{dSJ}$ can be confused as well. This is true only when $V_{DS} = 0$.
 
 When $V_{DS} > 0$ what happens is that the depletion layer around the drain has a higher width than the depletion layer around the source.
@@ -1407,9 +1402,7 @@ As we said, in order to control and maintain limited the SCE it is necessary to 
 	\label{x_D}
 	\end{equation}
 
-In constant voltage scaling, the doping level of the substrate is, node by node, increased in a non-linear way (strong variation of the doping level).
-
-The increase of the doping level has consequences on the threshold voltage:
+In constant voltage scaling, the doping level of the substrate is, node by node, increased in a non-linear way (strong variation of the doping level). The increase of the doping level has consequences on the threshold voltage:
 
 	\begin{equation}
 	V_{Th} = V_{FB}+2\Phi_P+\frac{1}{C_{ox}}\sqrt{2qN_A\epsilon_S 2\Phi_p}
@@ -1422,7 +1415,7 @@ $V_{FB}$ and $\Phi_P$ depend both on $N_{A}$ but they change in an opposite dire
 \item the expression of $V_{FB}$ contains the working function of the silicon that depends on $-\Phi_P$.
 \end{itemize}
 
-so these two terms partially compensate. Moreover, the variation of $\Phi_P$ is not so strong since it depends on the logarithm of $N_{A}$ thus, under the square-root, what prevails is $N_{A}$ that is scaled by $K^{2}$. This means that, overall, $V_{TH}$ should scale like K. But, since, as we said, we want to maintain the ratio $\frac{V_{DD}}{V_{TH}}$ constant, $V_{TH}$ cannot scale. As a result, $C_{OX}$ must increase of a factor K. In this way $V_{TH}$ remains constant.
+So these two terms partially compensate. Moreover, the variation of $\Phi_P$ is not so strong since it depends on the logarithm of $N_{A}$ thus, under the square-root, what prevails is $N_{A}$ that is scaled by $K^{2}$. This means that, overall, $V_{TH}$ should scale like K. But, since we want to maintain the ratio $\frac{V_{DD}}{V_{TH}}$ constant, $V_{TH}$ cannot scale. As a result, $C_{OX}$ must increase of a factor K. In this way $V_{TH}$ remains constant.
 
 	\begin{equation}
 	V_{TH}' \approx V_{TH} \Rightarrow C_{OX}' = K \cdot C_{OX}
@@ -1437,7 +1430,6 @@ How can we increase the oxide capacitance? Reducing the thickness of the oxide (
 	\end{equation}
 
 This is the set of rules to implement the constant voltage scaling. Now we have to analyze what are the consequences of applying such rules on the electrical parameters.
-
 Let us start from the depletion capacitance:
 
 	\begin{equation}
@@ -1465,28 +1457,25 @@ The average electric field along the channel ($E_{y}$) and the vertical one ($E_
 	\end{equation}
 
 Both these results are not good. Now we try to understand why.
-
-First of all, the expression of the electric field $E_y = \frac{V_{DD}}{L}$ is an acceptable approximation only when $V_{DS} \approx 0$ because in this case the behavior of the channel is resistive. In fact:
+First of all, the expression of the electric field $E_y = \frac{V_{DD}}{L}$ is an acceptable approximation only when $V_{DS} \approx 0$ because in this case the behavior of the channel is resistive. In fact from Figure (\ref{ids}) we notice that the behavior of $I_{DS}$ is linear, for small values of $V_{DS}$.
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{09_Ids_char}
 	\caption{Drain current in function of $V_{DS}$.}
-	\label{}
+	\label{ids}
 	\end{figure}
 
-For small values of $V_{DS}$ the behavior of $I_{DS}$ is linear. This means that when the device is in the linear region the channel is resistive. This implies that the electric field along the channel is roughly uniform. So, the trend of the channel potential for small values of $V_{DS}$ is:
+This means that when the device is in the linear region the channel is resistive. This implies that the electric field along the channel is roughly uniform. So, the trend of the channel potential for small values of $V_{DS}$ is:
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{09_channel_pot}
-	\caption{}
+	\caption{Channel potential for small $V_{DS}$ value}
 	\label{}
 	\end{figure}
 
-Since $\Phi_{ch}$ is linear the electric field can be simply evaluated as the ratio between $V_{DD}$ and L.
-
-This is not true for high values of $V_{DS}$ when the transistor is in saturation:
+Since $\Phi_{ch}$ is linear the electric field can be simply evaluated as the ratio between $V_{DD}$ and L. This is not true for high values of $V_{DS}$ when the transistor is in saturation:
 
 	\begin{figure}[H]
 	\centering
@@ -1497,25 +1486,21 @@ This is not true for high values of $V_{DS}$ when the transistor is in saturatio
 
 The inversion charge ($Q_{n}$) is pinched-off (channel length modulation). The channel potential is approximately linear when $V_{DS} < V_{DSsat}$, while, when $V_{DS} > V_{DSsat}$, its trend strongly changes. So, the electric field assumes a lower value in the resistive part of the channel and a very high value in the region near the drain since the excess voltage with respect to the saturation voltage drops on a very short part of the channel. This causes the presence of \textbf{hot electrons}:
 
-\newpage
-
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.45]{09_hot_electr}
-	\caption{}
+	\caption{Hot electron phenomenon}
 	\label{}
 	\end{figure}
 
-Electrons are traveling by mean of the electric field (drift current): near the source the el. field is not so high so it doesn't cause problems; electrons are confined between two high energy barriers, one towards the oxide (3 eV) and one electrostatic barrier due to the depletion region; inside the channel there are collisions with the interface and with the lattice; the energy that electrons receive from the electric field, in this region, is not enough high to make electrons jump the barriers in which they are confined. Near the drain electrons receive an overshoot and their speed is further increased. In addition, they receive such a high energy that they can overcome the barrier with the oxide and towards the substrate. Electrons become hot electrons and thay cause different problems:
+Electrons are travelling by mean of the electric field (drift current): near the source it is not so high so no problems arise; electrons are confined between two high energy barriers, one towards the oxide (3 eV) and one electrostatic barrier due to the depletion region; inside the channel there are collisions with the interface and with the lattice; the energy that electrons receive from the electric field, in this region, isn't high enough to make electrons jump the barriers in which they are confined. Near the drain electrons receive an overshoot and their speed is further increased. In addition, they receive such a high energy that they can overcome the barrier with the oxide and towards the substrate. Electrons become hot electrons and they cause different problems:
 
 \begin{itemize}
 \item current loss since some electrons don't reach the drain (gate current);
-\item trapped charges in the oxide (ions in the oxide) that cause a change in $V_{FB}$ and, as a consequence, $V_{TH}$.
+\item trapped charges in the oxide (ions in the oxide) that cause a change in $V_{FB}$ and, as a consequence, in $V_{TH}$.
 \end{itemize}
 
-If the threshold voltage shifts becoming too high or too low (it depends on the type of ions created in the oxide), we are no more able to either switch on or switch off the transistor.
-
-How we can limit the hot electrons phenomenon?
+If the threshold voltage shifts becoming too high or too low (it depends on the type of ions created in the oxide), we are no more able to either switch on or switch off the transistor. How we can limit the hot electrons phenomenon?
 
 \begin{itemize}
 \item Reducing $V_{DD}$;
@@ -1533,8 +1518,7 @@ Let us focus on the last point. Now we consider only the channel-drain junction.
 	\end{figure}
 
 Reducing the doping level in the drain, the electric field varies linearly in both the regions. The built-in voltage must be kept constant, which means that the area of the triangular regions must be constant. The depletion region extends not only in the channel but also in the drain region. The result is that the maximum electric field is reduced. This solution is called \textbf{LDD (Lightly Doped Drain) technology}.
-
-Starting from the middle of 80's all processes for CMOS technology became LDD: this means that the channel is not more out directly in contact with highly doped source/drain regions but it is necessary a buffer region characterized by a lower doping level.
+Starting from the middle of 80's all processes for CMOS technology became LDD: this means that the channel is no more out directly in contact with highly doped source/drain regions but it is necessary a buffer region characterized by a lower doping level.
 
  	\begin{figure}[H]
 	\centering
@@ -1551,30 +1535,24 @@ Now, the vertical electric field ($E_{x}$) represents a problem as well.
 E_{x,\ MAX} = \frac{V_{DD}}{T_{OX}}
 \end{equation}
 
-$E_{x, MAX}$ is the maximum electric field that can be applied at the oxide and it is called \textbf{dielectric rigidity}. The electric field cannot overcome this value otherwise the oxide would be permanently damaged. The rigidity of $SiO_{2}$ is equal to 8 MV/cm. This value seems to be high but, actually, it is not because when we apply 5 V on few nanometers (oxide thickness) it is very easy to reach this value. This a problem because, on the basis of what we said before, the oxide thickness has to be scaled by a factor K and, since $V_{DD}$ isn't scaled, it is very easy to overcome the $SiO_{2}$ rigidity. \\
-
-
+$E_{x, MAX}$ is the maximum electric field that can be applied at the oxide and it is called \textbf{dielectric rigidity}. The electric field cannot overcome this value otherwise the oxide would be permanently damaged. The rigidity of $SiO_{2}$ is equal to 8 MV/cm. This value seems to be high but, actually, it is not because when we apply 5 V on few nanometers of oxide thickness it is very easy to reach this value. This a problem because, on the basis of what we said before, the oxide thickness has to be scaled by a factor K and, since $V_{DD}$ isn't scaled, it is very easy to overcome the $SiO_{2}$ rigidity. \\
 Now we analyze the effect of constant voltage scaling on electrical parameters such as $I_{ON}$, $I_{off}$ end power density.
-
 We can estimate how the \textbf{saturation current} for a long channel transistor varies applying CV scaling rules:
 
 \begin{equation}
 I_{DS,\ sat}' = \frac{\mu_n K C_{OX} W/K}{2 L/K}(V_{GS} - V_{TH})^2 = K \cdot I_{DS,\ sat}
 \end{equation}
 
-This equation tells us that we have a higher saturation current using a smaller transistor.
-
-Example:
+This equation tells us that we have a higher saturation current using a smaller transistor, as depicted in the following example:
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{10_CVscaling_example}
-	\caption{}
+	\caption{Drain-Source current for a scaled transistor}
 	\label{}
 	\end{figure}
 
-Smaller transistor means \textbf{smaller parasitics} and, thus, \textbf{faster technology} in addition to a higher saturation current. For these reasons, for many years, CV scaling has been strongly exploited: it guaratees higher performances.
-
+Smaller transistor means \textbf{smaller parasitics} and, thus, \textbf{faster technology} in addition to a higher saturation current. For these reasons, for many years, CV scaling has been strongly exploited: it guarantees higher performances.
 Now let us see how $I_{ON}$ changes, while remembering that this parameter is measured considering \emph{W fixed} ($W_{ref}$ that is $1 \mu m$ according to the Roadmap).
 
 	\begin{equation}
@@ -1588,14 +1566,13 @@ After this we can find out how $I_{subV_{th}}$ varies:
 	\end{equation}
 
 This is not a good result: the subthreshold current is subjected to an increase.
-
 The same can be done for $I_{off}$ (this current, as $I_{ON}$, is evaluated considering $W_{ref}$):
 
 	\begin{equation}
 	I_{off}' = K^2 \cdot I_{off}
 	\end{equation}
 
-Now we can evaluate the dynamic power $P_{DYN}$ for one transistor. We recall that
+Now we can evaluate the dynamic power $P_{DYN}$ for one transistor. We recall that:
 
 	\begin{equation}
 	P_{DYN \ Tr} =f C_L V_{DD}^2
@@ -1606,7 +1583,7 @@ We need an estimation of the frequency f starting from the \textbf{intrinsic tim
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{10_tau_meas}
-	\caption{}
+	\caption{Definition of the intrinsic delay}
 	\label{}
 	\end{figure}
 
@@ -1617,21 +1594,20 @@ $C_{L}$ has the same value of the input capacitance of a transistor with the sam
 	\label{CL}
 	\end{equation}
 
-T1 is discharging the capacitance $C_{L}$ with its maximum current $I_{ON}$. $\tau$ can be written as:
+Transistor T1 is discharging the capacitance $C_{L}$ with its maximum current $I_{ON}$. $\tau$ can be written as:
 
 	\begin{equation}
 	\tau = \frac{C_L V_{DD}}{I_{ON}}
 	\label{tau}
 	\end{equation}
 
-After scaling $\tau$ will be (substituting (\ref{CL}) in (\ref{tau})):
+After scaling, $\tau$ will be (substituting (\ref{CL}) in (\ref{tau})):
 
 	\begin{equation}
 	\tau ' = \frac{K C_{OX} W_{ref} L/K V_{DD}}{K^2 I_{ON}} = \frac{1}{K^2} \cdot \tau
 	\end{equation}
 
 This represents a very good result: devices are K\super{2} times faster thanks to scaling.
-
 The frequency can be expressed as $f = 1/\tau$. So:
 
 	\begin{equation}
@@ -1639,7 +1615,6 @@ The frequency can be expressed as $f = 1/\tau$. So:
 	\end{equation}
 
 f' is higher compared to unscaled technology.
-
 Now we can use $\tau'$ and f' to understand how the dynamic power changes. It is important to underline that we want to evaluate the dynamic power dissipated by a \emph{real transistor} characterized by a width equal to W, not $W_{ref}$, so, the expression of $C_{L}$, in this case, becomes $C_L = C_{OX} W L$ and after scaling
 
 	\begin{equation}
@@ -1652,9 +1627,7 @@ The \textbf{dynamic power} after scaling is:
 	P_{DYN \ Tr}' =  K^2 f C_L/K V_{DD}^2 = K \cdot P_{DYN \ Tr}
 	\end{equation}
 
-This a very bad result.
-
-Let us consider a scaling factor $K = 2$:
+This a very bad result. Let us consider a scaling factor $K = 2$:
 
 	\begin{figure}[H]
 	\centering
@@ -1663,14 +1636,13 @@ Let us consider a scaling factor $K = 2$:
 	\label{}
 	\end{figure}
 
-After scaling we have 4 transistors that occupy the same area occupied by the unscaled device: so, same area but K\super{2} scaled devices each of which dissipate a power equal to $K \cdot P_{DYN \ Tr}$. If we evaluate the \textbf{power density per unit of area} what we get is:
+After scaling we have 4 transistors that occupy the same area occupied by the unscaled device: so, same area but K\super{2} scaled devices. Each of them dissipate a power equal to $K \cdot P_{DYN \ Tr}$. If we evaluate the \textbf{power density per unit of area} what we get is:
 
 	\begin{equation}
 	P^{'den}_{DYN} = K^2 \cdot KP_{DYN}^{den} = K^3 \cdot P^{den}_{DYN}
 	\end{equation}
 
 This is the worst result that we have obtained until now; it has a strong influence on the circuit reliability since it is difficult to dissipate tens of W/cm\super{2}.
-
 Regarding the \textbf{static power}, it can be expressed as $P_{STAT \ Tr} = I_{subV_{th}} V_{DD}$.
 
 	\begin{equation}
@@ -1684,47 +1656,40 @@ The \textbf{power density per unit of area} is:
 	\end{equation}
 
 Both the static power per transistor and the static power density per unit of area increase like K and K\super{3} respectively. This is not a true problem since the level of leakages is low enough to guarantee an acceptable power dissipation.
-
 Summarizing:
 
 \begin{itemize}
 \item \textbf{CV scaling pro}:
-	
 	\begin{itemize}
 	\item faster devices.
 	\end{itemize}
 
 \item \textbf{CV scaling cons}:
-	
 	\begin{itemize}
 	\item low reliability;
 	\item unacceptable power consumption.
 	\end{itemize}
-
 \end{itemize}
 
-Constant voltage scaling curves:
+Before moving on, it's important to analyse constant voltage scaling curves in the Figure (\ref{curves}):
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{figscaVDD}
-	\caption{}
-	\label{}
+	\caption{Power supply and electric filed scaling trend}
+	\label{curves}
 	\end{figure}
 
-Graph on the left: the yellow line is representative of the CMOS technology golden age: for a very long period (from the 80s to the middle of the 90s)$ V_{DD}$ was 5 V.\\
-Graph on the right: from the 80s to the middle of the 90s transistors were scaled but the supply voltage was kept constant; as a result, the average electric field in the channel increased like 1/year following the yellow curve trend.
+On the left side of the picture, the yellow line is representative of the CMOS technology golden age: for a very long period (from the 80s to the middle of the 90s)$ V_{DD}$ was 5 V. Then, it was substituted by a 3.3 $V_{DD}$, 2.5 V and so on.\\
+The graph on the right side shows the evolution of the electric field: from the 80s to the middle of the 90s transistors were scaled but the supply voltage was kept constant; as a result, the average electric field in the channel increased like 1/year following the yellow curve trend.
+It is fundamental to observe that the time period in which a power supply value is kept constant has become increasingly tight. Moving towards the most recent years $V_{DD}$ has been scaled year by year and this is true for HP, LOP and LSTP processes. Dimensions have been scaled as well so the electric field step becomes smaller, as the picture on the right show very well. This means that we are moving towards a constant field scaling.
 
-The 5 V power supply was substituted by a 3.3 $V_{DD}$. Then 2.5 V and so on. 
-
-It is fundamental to observe that the time period in which a power supply value is kept constant has become increasingly tight. Moving towards the most recent years $V_{DD}$ has been scaled year by year and this is true for HP, LOP and LSTP processes. Dimensions have been scaled as well so the electric field step becomes smaller. This means that we are moving towards a constant field scaling.
-
-\newpage
+%\newpage
 
 \item \textbf{Constant field scaling};
 %\subsubsection{Constant field scaling}
 
-This policy involves the reduction of the transistor dimensions in order to maintain constant the electric field. As a conseuqence, if dimensions are scaled by a factor K, $V_{DD}$ also has to be reduced like K.
+This policy involves the reduction of the transistor dimensions in order to maintain the electric field constant . As a consequence, if dimensions are scaled by a factor K, also $V_{DD}$ and $V_{th}$ has to be reduced like K.
 
   \begin{table}[H]
   {
@@ -1784,12 +1749,11 @@ This policy involves the reduction of the transistor dimensions in order to main
     \end{table}
 
 We can notice that $E_{y}$ and $E_{x}$ are kept constant solving the problem of the presence of high energy electrons.
-
 The next step is try to understand the consequences of the constant field scaling. Again, we want to maintain the ratio $V_{DD}/V_{TH}$ unscaled because, if, for instance, the starting process is the LOP one, after scaling the process must be same and in order to do this we have to keep constant the ratio. As a result $V_{TH}$ should be scaled like 1/K and this has a main downside: higher leakage current.
 
-\newpage
+%\newpage
 
-\underline{Example}
+\underline{Example:}
 
 	\begin{itemize}
 	\item Before scaling: let us consider a technology with $V_{TH} = 200 mV$; in ideal conditions when $V_{GS} = 0$ the transistor is off; $V_{GS} - V_{TH} = -200 mV$;
@@ -1799,13 +1763,12 @@ The next step is try to understand the consequences of the constant field scalin
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.45]{10_higher_leak_current}
-	\caption{}
+	\caption{Subthreshold current for two different devices}
 	\label{}
 	\end{figure}
 
 In the unscaled situation the subthreshold current is $I_{subV_{th}}$ while in the scaled case the leakage current is $I'_{subVT}$ which is quite higher than $I_{subV_{th}}$. In the last case it becomes difficult to switch off the transistor. This is the problem of the CF scaling.
-
-Now we can analize how the technological parameters change applying the CF scaling.
+Now we can analyse how the technological parameters change applying the CF scaling.
 
 \textbf{Doping level}: we know that, in order to limit the SCE, the drain depletion width has to be reduced.
 
@@ -1847,32 +1810,29 @@ As a consequence we get the \textbf{oxide thickness}:
 
 In the last two equations ((\ref{cox}) and (\ref{tox})) $K^{3/2}$ has been approximated as K to reduce the complexity of the expressions, on one hand; on the other hand, the oxide thickness is already very thin: scaling it like 1/K is a hard task, scaling it like $1/K^{3/2}$ is even harder and, in many cases, it is impossible. So, it is preferable to reduce $T_{OX}$ of a factor K and this, clearly, has a consequence: $V_{TH}$ will not scale exactly as expected but this is not a problem.
 
-\textbf{Depletion capacitance}:
+\textbf{Depletion capacitance}: let's consider the following equation, with some parameters already scaled:
 
 	\begin{equation}
 	C'_{dep} = \sqrt{\frac{q \epsilon_S K N_A}{4 \Phi_P}} = K^{1/2} \cdot C_{dep} 
 	\label{}
 	\end{equation}
 
-\textbf{Ratio $\frac{C'_{dep}}{C'_{OX}}$ (m - 1)}:
+And the same happen when we consider the ratio $\frac{C'_{dep}}{C'_{OX}}$, that is equal to $(m - 1)$:
 
 	\begin{equation}
 	\frac{C'_{dep}}{C'_{OX}} = \frac{1}{K^{1/2}} \approx 1
 	\label{}
 	\end{equation}
 
-Now we analyze the electrical parameters.
-
-\textbf{Saturation current} (evaluated for $V_{GS} = V_{DD}$, maximum voltage applicable to a transistor):
+Now we'll analyse the electrical parameters.
+\textbf{Saturation current}: it's evaluated for $V_{GS} = V_{DD}$, the maximum voltage applicable to a transistor.
 
 	\begin{equation}
 	I_{DS,\ sat}' = \frac{\mu_n K C_{OX} W/K}{2 L/K}\frac{(V_{DD} - V_{TH})^2}{K^2} = \frac{1}{K} \cdot I_{DS,\ sat}
 	\label{}
 	\end{equation}
 
-The saturation current is reduced so, the effect on the reliability of the device is improved.
-
-$I_{ON}$ current:
+The saturation current is reduced so, the effect on the reliability of the device is improved. For what concern $I_{ON}$ current:
 
 	\begin{equation}
 	I_{ON}' = \frac{\mu_n K C_{OX} W_{ref}}{2 L/K}\frac{(V_{DD} - V_{TH})^2}{K^2} = 1 \cdot I_{ON}
@@ -1890,6 +1850,7 @@ With respect to the CV scaling, now the performance are less good (devices are j
 
 	\begin{equation}
 	P'_{DYN \ Tr} =f' C'_L V_{DD}^{'2}
+	\label{din}
 	\end{equation}
 
 where:
@@ -1899,7 +1860,7 @@ where:
 	&C_L ' = K C_{OX} W/K L/K = C_L/K
 	\end{align}
 
-So $P'_{DYN} \ Tr$ becomes:
+So $P'_{DYN} \ Tr$ of equation (\ref{din}) becomes:
 
 	\begin{equation}
 	P_{DYN \ Tr}' =  K f C_L/K \frac{V_{DD}^2}{K^2} = \frac{P_{DYN \ Tr}}{K^2}
@@ -1912,16 +1873,13 @@ So $P'_{DYN} \ Tr$ becomes:
 	\end{equation}
 
 These last two expressions represent an excellent result: the dynamic power consumption per transistor is reduced by $1/K^{2}$ (while in the CV scaling it increases like K) and the dynamic power density remains constant (while in the CV scaling it increases like $K^{3}$).
-
-
-
 The subthreshold current is evaluated with $V_{GS} = 0$:
 
 	\begin{eqnarray*}
 	I_{subV_{th}} & = &\frac{\mu_n W C_{dep} {V_T}^2}{L}\;e^{\displaystyle \frac{ {V_G-V_{Th}}}{ mV_T}}
 	\end{eqnarray*}
 
-After scaling, approximating m' with m, it becomes:
+After scaling, and approximating m' with m, it becomes:
 
 	\begin{eqnarray*}
 	I_{subV_{th}}^{\prime} & = &\frac{K \mu_n W K^{1/2} C_{dep} {V_T}^2}{K L}\;e^{\displaystyle \frac{ {V_G-(V_{Th}/K)}}{ m^{\prime}V_T}}
@@ -1938,7 +1896,7 @@ The ratio increases exponentially with K:
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{11_I'sub_Isub_graph}
-	\caption{}
+	\caption{Evolution of subthreshold current with scaling factor K}
 	\label{}
 	\end{figure}
 
@@ -1956,9 +1914,9 @@ Summarizing:
 	\end{itemize}
 \end{itemize}
 
-It is not possible to scale $V_{DD}$ of the same scaling factor that we use for dimensions at each technological node since, doing in such a way, the power supply now should be equal to few millivolts and this, clearly, is not possible. In other words, we cannot apply only the constant field scaling because we would need a very small power supply and, as a consequence, a very low threshold voltage and it would not be possible to operate transistors for two reasons: high leakages and noise (few mV of noise signal could erroneously switch on/off a transistor). On the other hand we cannot apply only constant voltage field because of the low reliability. We have to mix these two policies creating the \textbf{Generalized scaling}.
+It is not possible to scale $V_{DD}$ of the same scaling factor that we use for dimensions at each technological node since, doing in such a way, the power supply now should be equal to few millivolts and this, clearly, is not possible. In other words, we cannot apply only the constant field scaling because we would need a very small power supply and, of course, a very low threshold voltage. This solution can't be operated for transistors, mainly for two reasons: high leakages and noise (few mV of noise signal could erroneously switch on/off a transistor). On the other hand we cannot apply only constant voltage field because of the low reliability. We have to mix these two policies creating the \textbf{Generalized scaling}.
 
-\newpage
+%\newpage
 
 \item \textbf{Generalized scaling}.
 %\subsubsection{Generalized scaling}
@@ -1967,7 +1925,7 @@ In generalized scaling are used two different parameters:
 
 	\begin{enumerate}
 	\item K for dimensions (W, L, $x_{j}$);
-	\item $\alpha \rightarrow 1< \alpha < K$.  
+	\item $\alpha$ for the others, that is: $1< \alpha < K$.
 	\end{enumerate}
 
 How do we scale $V_{DD}$? As we said, scaling $V_{DD}$ by a factor K is too much, so, in generalized scaling, we correct it using the factor $\alpha$:
@@ -1976,19 +1934,16 @@ How do we scale $V_{DD}$? As we said, scaling $V_{DD}$ by a factor K is too much
 	V'_{DD} = V_{DD} \cdot \frac{\alpha}{K}
 	\end{equation}
 
-$\alpha$ can be used as a parameter to measure the type of scaling:
+$\alpha$ can be used as a parameter to measure the type of scaling: varying it, we modify the kind of scaling.
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{11_alpha}
-	\caption{}
+	\caption{Range of variation for \alpha parameter}
 	\label{}
 	\end{figure}
 
-Varying $\alpha$ we modify the kind of scaling.
-
 In the table below is summarized how technological and electrical parameters change applying the generalized scaling:
-
 
 \begin{table}[H]
 {
@@ -2029,7 +1984,7 @@ Now should be clear how to deduce all these rules.
 \newpage
 
 \subsection{Interconnect scaling}
-Althoug we have mostly talked about device scaling and its effects so far, as technology continues to scale the \textbf{most critical part} of an IC in terms of power and delay is represented by the \textbf{interconnects}. As matter of fact, the \textbf{limitations on interconnect scaling are due to performance} rather than technological processes. On an IC there are three main types of interconnects: 
+Although we have mostly talked about device scaling and its effects so far, as technology continues to scale the \textbf{most critical part} of an IC in terms of power and delay is represented by the \textbf{interconnects}. As matter of fact, the \textbf{limitations on interconnect scaling are due to performance} rather than technological processes. On an IC there are three main types of interconnects: 
 
 \begin{itemize}
 \item Interconnects for power supply (i.e. $V_{dd}$ and ground).
