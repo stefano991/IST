@@ -199,13 +199,13 @@ For high-performance logic, dynamic power dissipation is expected to become part
 
 Historically, for the low-power family, devoted to the reduction of static power dissipation, hence the off-current, the main indicator had been the $I_{off}$ current: it has always been much lower than the $I_{off}$ for the HP technology. However, also the previous parameter, i.e. $CV^{2}$, is used to characterize the low-power family. A comparison between technological families tells us that for the HP family the obtained value is lower with respect to the LP family on account of a lower value of the total gate capacitance, while power supply voltage scales similarly both for HP and LP. As to understand this behavior in a more satisfactory way, let us consider to the following picture \ref{CV^2}:
 
-%inserire grafico CV^2 HPvsLP
-%	\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.85\textwidth]{}
-%	\caption{Dynamic power $CV^{2}$ analysis.}
-%	\label{CV^2}
-%	\end{figure}
+%inserire grafico CV^2 HPvsLP. FATTO!
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figCV2}
+	\caption{Dynamic power $CV^{2}$ analysis.}
+	\label{CV^2}
+	\end{figure}
 
 
 \paragraph{Parameters $I_{on}$, $I_{off}$, $\tau$~:} These three important parameters are usually used to compare technologies and their main properties.
@@ -217,7 +217,7 @@ I_{on} = I_{ds}(V_{gs}=V_{dd}, V_{ds}=V_{dd}, W=W_{ref})
 \label{}
 \end{equation} 
 
-%%AGGIORNARE FIGURA: I_on MATLAB
+%%AGGIORNARE FIGURA: I_on MATLAB. FATTO!
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figIon}
@@ -235,7 +235,7 @@ I_{off} = I_{ds}(V_{gs}=0, V_{ds}=V_{dd}, W=W_{ref})
 \label{}
 \end{equation}
 
-%%AGGIORNARE FIGURA: I_off MATLAB
+%%AGGIORNARE FIGURA: I_off MATLAB. FATTO!
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figIoff}
@@ -249,13 +249,13 @@ In the case of low power devices this current is set to be four decades lower th
 
 An important parameter is represented by the ratio between $I_{on}$ and $I_{off}$: it reveals how good the electrostatic control of the channel performed by the gate is; the larger the ratio, the more effective it is the control. In an ideal technology this ratio should be infinite. Referring to the data analyzed so far, for the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$, while in the LOP logic it is roughly $10^7$. It is clear that the higher the ratio the higher it is $I_{on}$, boosting performance, and the lower it is $I_{off}$, leading to low static power. A detailed view for this parameter is showed in the following figure: \ref{Ion-Ioff}
 
-%%AGGIORNARE FIGURA: I_on/I_off MATLAB
-%	\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.85\textwidth]{figOnOff}
-%	\caption{Ion/Ioff ratio.}
-%	\label{Ion-Ioff}
-%	\end{figure}
+%%AGGIORNARE FIGURA: I_on/I_off MATLAB. FATTO!
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figOnOff}
+	\caption{Ion/Ioff ratio.}
+	\label{Ion-Ioff}
+	\end{figure}
 
 An efficient method to measure the performance of a process is to evaluate the intrinsic time $\tau$: it can be seen as the time required to remove the charge stored in the gate capacitance of a transistor with $W=W_{ref}$ by mean of the $I_{on}$ current.
 The value listed in the tables are computed applying the following equation:
@@ -265,7 +265,7 @@ The value listed in the tables are computed applying the following equation:
 \label{}
 \end{equation}
 
-%%AGGIORNARE FIGURA: tau MATLAB
+%%AGGIORNARE FIGURA: tau MATLAB. FATTO!
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figtau}
@@ -288,7 +288,7 @@ Observing the graph in figure \ref{tau}, it can been seen that, for high-perform
 \paragraph{Threshold voltage $V_{T}$~:} To define how good a technology is, the threshold voltage can be considered as target: all the choices that can be made depend on $V_{T}$. Starting from the HP technology, we can observe that the value of $V_{T}$ is quite low (it is around or under 200 mV).\\
 What has been kept constant during the years is the ratio $V_{DD}/V_{T}$. This ratio is the fundamental parameter to \textbf{distinguish a technological process} from another.
 
-%%AGGIORNARE FIGURA: Vdd/Vth MATLAB
+%%AGGIORNARE FIGURA: Vdd/Vth MATLAB. FATTO!
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figVddVt}
@@ -372,15 +372,15 @@ The inversion charge expression in WI will be:
 	       C_{dep}&=& {\sqrt{\frac{q \epsilon_S N_A}{ 4\Phi_P}}}
 	\end{eqnarray*}
 
-Just for completeness, in the picture \ref{ChargeDist} it has been plotted the charge density as a function of the surface potential in all the working region of the transistor (accumulation; depletion, WI; SI)
+Just for completeness, in the picture (\ref{ChargeDist}) it has been plotted the charge density as a function of the surface potential in all the working region of the transistor (accumulation; depletion, WI; SI)
 
-%%AGGIORNARE FIGURA: charge distribution MATLAB
-%	\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.75\textwidth]{figCharge}
-%	\caption{Charge density as a function of surface potential for complete model.}
-%	\label{ChargeDist}
-%	\end{figure}
+%%AGGIORNARE FIGURA: charge distribution MATLAB. FATTO!
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figCharge}
+	\caption{Charge density as a function of surface potential for complete model.}
+	\label{ChargeDist}
+	\end{figure}
 
 The inversion charge at source and drain will be respectively:
 \begin{eqnarray*}
@@ -459,7 +459,7 @@ As a matter of fact, $m = 1+ \frac{C_{dep}}{C_{OX}}$ and its value can be minimi
 
 In the graph below are shown different curves related to SS: 
 
-%%AGGIORNARE FIGURA: questa è quella che già cìera. Se riusciamo fare meglio
+%%AGGIORNARE FIGURA: questa è quella che già c'era. Se riusciamo fare meglio
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figsubvt6}
@@ -1168,7 +1168,7 @@ Comparing the three equations it can be noted that the `m' factor expression rep
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.55\textwidth]{figidson1}
-	\caption{Comparison of the three different expression of $I_{DS}(V_{DS})$}
+	\caption{Comparison of the three different expression of $I_{DS}(V_{DS})$.}
 	\label{}
 	\end{figure}
 
@@ -1236,7 +1236,7 @@ The most common MOSFET structure is the LDD (Lightly-Doped Drain) one:
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figbasmos}
-	\caption{A Lightly-Doped Drain transistor}
+	\caption{A Lightly-Doped Drain transistor.}
 	\label{}
 	\end{figure}
 
@@ -1286,7 +1286,7 @@ An example of the reference MOSFET is the following:
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{figscalablemos}
-	\caption{Microscopic picture of a basic scalable mosfet}
+	\caption{Microscopic picture of a basic scalable mosfet.}
 	\label{}
 	\end{figure}
 
@@ -1367,7 +1367,7 @@ Now we want to define how and why the doping level (N) changes when we scale a d
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{09_depl_width}
-	\caption{Depletion layer in a general device}
+	\caption{Depletion layer in a general device.}
 	\label{}
 	\end{figure}
 
@@ -1471,7 +1471,7 @@ This means that when the device is in the linear region the channel is resistive
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{09_channel_pot}
-	\caption{Channel potential for small $V_{DS}$ value}
+	\caption{Channel potential for small $V_{DS}$ value.}
 	\label{}
 	\end{figure}
 
@@ -1489,7 +1489,7 @@ The inversion charge ($Q_{n}$) is pinched-off (channel length modulation). The c
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.45]{09_hot_electr}
-	\caption{Hot electron phenomenon}
+	\caption{Hot electron phenomenon.}
 	\label{}
 	\end{figure}
 
@@ -1548,7 +1548,7 @@ This equation tells us that we have a higher saturation current using a smaller 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{10_CVscaling_example}
-	\caption{Drain-Source current for a scaled transistor}
+	\caption{Drain-Source current for a scaled transistor.}
 	\label{}
 	\end{figure}
 
@@ -1583,7 +1583,7 @@ We need an estimation of the frequency f starting from the \textbf{intrinsic tim
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{10_tau_meas}
-	\caption{Definition of the intrinsic delay}
+	\caption{Definition of the intrinsic delay.}
 	\label{}
 	\end{figure}
 
@@ -1676,7 +1676,7 @@ Before moving on, it's important to analyse constant voltage scaling curves in t
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{figscaVDD}
-	\caption{Power supply and electric filed scaling trend}
+	\caption{Power supply and electric filed scaling trend.}
 	\label{curves}
 	\end{figure}
 
@@ -1763,7 +1763,7 @@ The next step is try to understand the consequences of the constant field scalin
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.45]{10_higher_leak_current}
-	\caption{Subthreshold current for two different devices}
+	\caption{Subthreshold current for two different devices.}
 	\label{}
 	\end{figure}
 
@@ -1896,7 +1896,7 @@ The ratio increases exponentially with K:
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{11_I'sub_Isub_graph}
-	\caption{Evolution of subthreshold current with scaling factor K}
+	\caption{Evolution of subthreshold current with scaling factor K.}
 	\label{}
 	\end{figure}
 
@@ -1939,7 +1939,7 @@ $\alpha$ can be used as a parameter to measure the type of scaling: varying it, 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{11_alpha}
-	\caption{Range of variation for \alpha parameter}
+	\caption{Range of variation for \alpha parameter.}
 	\label{}
 	\end{figure}
 
@@ -2057,6 +2057,7 @@ $\mathcal{R}_{int}*\mathcal{C_{IMD}}$ & $S^{2}$ & $S^{2}$ & $S^{2}$\\
 $\mathcal{R}_{int}*\mathcal{C_{ILD}}$ & $S^{2}$ & S & 1\\
 \hline
 \end{tabular} }
+\caption{Scaling policies for interconects}
 \end{center} }
 \end{table}
 
@@ -2081,6 +2082,7 @@ Global Delay (IMD) \textbf{$\mathcal{R}_{int}*\mathcal{C_{IMD}}*L_G^2$}&$S^{2}S_
 Global Delay (ILD) \textbf{$\mathcal{R}_{int}*\mathcal{C_{ILD}}*L_G^2$}&$S^{2}S_G^2$&$S S_G^2$&$S_G^2$\\
 \hline
 \end{tabular} }
+\caption{Effects of the different scaling policies on Delay}
 \end{center} }
 \end{table}
 
@@ -2098,6 +2100,7 @@ $W_{int}$, $W_{sp}$&1/$S_{L}$&1/$S_{I}$&$1/S_{G} \simeq 1$\\
 $H_{int}$, $T_{ILD}$&$\simeq 1$&$\simeq 1$&$\simeq 1$\\
 \hline
 \end{tabular} }
+\caption{Hierarchical scaling factors}
 \end{center} }
 \end{table}
 
@@ -2135,7 +2138,7 @@ But, in a short channel device these semplifications are no more valid:
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figsce}
-	\caption{A short channel LDD MOS}
+	\caption{A short channel LDD MOS.}
 	\label{figsce}
 	\end{figure}
 
@@ -2217,17 +2220,17 @@ So:
 
 Scaling $x_{d}$ and $x_{j}$ we are sure that the effect of the SCE on $V_{th}$ is limited. If we do not respect this rule the consequence is \textbf{roll-off}. Roll-off means that the threshold voltage is dominated by the SCE and it becomes a function of the channel length, whereas designers would like to have a $V_{th}$ invariant with transistor dimensions and biasing conditions. This effect is exacerbated by $V_{DS}$, that is, roll-off gets worse as $V_{DS}$ increases to $V_{dd}$. Roll-off becomes significant for channels that are shorter than 100 nm. Since there is no way to make sure that all transistors would have a channel length equal to the nominal value, even a small variation in the process (due to poor photolitography resolution) can determine large changes in the threshold voltage when the curve is steep. It is important to choose the optimal length in such a way that, if its value changes, the roll-off region is still avoided and the threshold voltage remains around the nominal value.
 
-\newpage
+%\newpage
 
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figrolloff}
-	\caption{It can be seen that with a channel length below 80 nm, the threshold voltage is subject to roll-off.}
+	\caption{Threshold voltage dependency from roll-off effect.}
 	\label{}
 	\end{figure}
 
 
-\newpage
+%\newpage
 
 \subsection{Drain-Induced Barrier Lowering (DIBL) effect}
 
@@ -2367,6 +2370,55 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 \end{tabular}}
 \caption{\textbf{MG process for LP (ITRS 2013)}}
 \end{table}
+
+
+%inserire grafico CV^2 HPvsLP. FATTO!
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figCV2mg}
+	\caption{Dynamic power $CV^{2}$ analysis.}
+	\label{CV^2}
+	\end{figure}
+
+%%inserire grafico I_on MATLAB. FATTO!
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figIonmg}
+	\caption{Ion current as a function of time.}
+	\label{}
+	\end{figure}
+
+%%inserire grafico I_off MATLAB. FATTO!
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figIoffmg}
+	\caption{Ioff current as a function of time.}
+	\label{}
+	\end{figure}
+
+%%inserire grafico I_on/I_off MATLAB. FATTO!
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figOnOffmg}
+	\caption{Ion/Ioff ratio.}
+	\label{Ion-Ioff}
+	\end{figure}
+
+%%inserire grafico tau MATLAB. FATTO!
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figtaumg}
+	\caption{Intrinsic delay as a function of time.}
+	\label{tau}
+	\end{figure}
+
+%%inserire grafico Vdd/Vth MATLAB. FATTO!
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figVddVtmg}
+	\caption{$V_{DD}/V_{T}$ in function of time.}
+	\label{tau}
+	\end{figure}
 
 
 \end{document}
