@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{graphicx}
+\usepackage[aboveskip = 5 pt]{caption}
 %\usepackage{caption}
 \usepackage{float}
 \usepackage[amssymb]{SIunits}
@@ -33,8 +34,8 @@
 
 \section{Introduction}
 
-\textbf{Scaling and scalable devices}: in this report it will be analyzed how technology should be modified to allow scaling of devices and deeper integration.
-In figure \label{confronto} a comparison between a very old process (3 um channel length) with a relatively newer one (250 nm channel length) is shown and it is possible to notice that device dimensions have become smaller and this fact introduces a lot of issues.
+%\textbf{Scaling and scalable devices}: in this report it will be analyzed how technology should be modified to allow scaling of devices and deeper integration.
+In this report it will be analyzed how technology should be modified to allow scaling of devices and deeper integration. In Figure (\ref{confronto}) a comparison between a very old process (3 um channel length) with a relatively newer one (250 nm channel length) is shown and it is possible to notice that device dimensions have become smaller and this fact introduces a lot of issues.
 
 	\begin{figure}[h]
 	\centering
@@ -44,7 +45,6 @@ In figure \label{confronto} a comparison between a very old process (3 um channe
 	\end{figure}
 
 First it's important to say that devices have been scaled much more than interconnections; in other words, interconnects cannot be scaled with the same policy used for electronic devices. This could be a problem since in a technology where devices and interconnects have comparable dimensions, interconnects parasitics do not have influence on the overall performance; on the contrary, in a technology where the devices and the interconnections are not scaled with the same rate, as in this case (devices smaller than interconnects), \textbf{parasitics have a significant influence on the performance}. This is one of the consequences of scaling that can only be partially solved by technology, so it is essential to act from design point of view in order to limit the effect of parasitics. The other consequence of the scaling is related to \textbf{Short Channel Effects (SCE)}. Short channel effect is a phenomenon that is attributable to short channel devices, in other words when the channel length is of the same order of magnitude as the depletion-layer widths (xdD, xdS) of the source and drain junction. One of the most important consequences of this effect is a change of the threshold voltage and so a less strong electrostatic control of the channel. The SCE can be strongly limited by appropriate technological choices (this is the main target of integrated technologies); \\
-
 The \textbf{ITRS (International Technology Roadmap for Semiconductors)} classifies technologies in the following way (2011 edition):
 
 	\begin{itemize}
@@ -68,6 +68,7 @@ As already stated above, there are two tables per technological family. That is 
 
 \noindent As Multi-Gate technology requires a different approach to scaling, in this part of the chapter only the tables related to the Bulk process will be reported. All data and graphs about MG devices will be showed and analyzed later in the chapter \ref{multigate}.
 
+\newpage
 \chapter{Scaling on Bulk process}
 
 \section{Main parameters for scaling}
@@ -357,7 +358,7 @@ For the sake of completeness, the main steps that lead to the $I_{subV_{th}}$ ex
 \item Find a good analytical expression for the inversion charge $Q_{n}(y)$ in WI by solving Poisson's equation.
 \item Write $Q_{n}(y)$ as a function of the channel potential.
 \item Find an expression to evaluate $\Psi(0)$ as a function of $V_{GS}$.
-\item Write 
+\item Write:
 \begin{equation}\label{punto4}
 I_{DS}=-I_{diff_{n}}=-\frac{\partial Q_{n}(y)}{\partial y}
 \end{equation}
@@ -1285,7 +1286,7 @@ An example of the reference MOSFET is the following:
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{figscalablemos}
+	\includegraphics[width=0.6\textwidth]{figscalablemos}
 	\caption{Microscopic picture of a basic scalable mosfet.}
 	\label{}
 	\end{figure}
@@ -1302,9 +1303,9 @@ Traditionally, for the Bulk process we can distinguish among three different sca
 Constant voltage scaling features imply a reduction by K in all geometrical dimensions, while $V_{DD}$ is kept constant (and so is $V_{th}$). For many years, during the golden age of the CMOS technology, $V_{DD}$ has \textbf{not changed} (5 V) even if the dimensions of the transistors were scaled. This choice has been made in order to \textbf{guarantee compatibility}: same logic signals. We know that a fundamental parameter useful to distinguish different technological processes is the \textbf{ratio} $\frac{V_{DD}}{V_{TH}}$; \textbf{in constant voltage scaling this ratio too has to be maintained constant}. This means that even $V_{TH}$ has to be kept constant. But what are the consequences, from the technological point of view, of these choices? Let us analyze the following table:
 
 %\LTXtable{\textwidth}
- %\begin{longtable}[h!]
+ \begin{table}[h]
  \begin{center}
-     \begin{longtable}{||l||c|c||} \caption{CVS effects on main parameters}\\ \hline \label{cvs}
+     \begin{tabular}{||l||c|c||} \hline \label{cvs}
       V$_{DD}$ & -& $ {1}$\\
       \hline
       L,W,$x_J$       &- & $ {1/K}$\\
@@ -1346,10 +1347,11 @@ Constant voltage scaling features imply a reduction by K in all geometrical dime
       \hline 
        $P_{Isub}^{Den}$      &-&$ {K^3}$\\ 
       \hline
-     \end{longtable}
-%	\caption{CVS effects on main parameters} 
+     \end{tabular}
+\caption{CVS effects on main parameters}
+\label{}
     \end{center}
-%    \end{longtable}
+	\end{table}
 
 We can see that L and W are scaled as 1/K. $x_{J}$ is the \textbf{juction depth} of the source-drain junction near the channel and it is scaled as well of the same factor K:
 
@@ -1684,7 +1686,7 @@ On the left side of the picture, the yellow line is representative of the CMOS t
 The graph on the right side shows the evolution of the electric field: from the 80s to the middle of the 90s transistors were scaled but the supply voltage was kept constant; as a result, the average electric field in the channel increased like 1/year following the yellow curve trend.
 It is fundamental to observe that the time period in which a power supply value is kept constant has become increasingly tight. Moving towards the most recent years $V_{DD}$ has been scaled year by year and this is true for HP, LOP and LSTP processes. Dimensions have been scaled as well so the electric field step becomes smaller, as the picture on the right show very well. This means that we are moving towards a constant field scaling.
 
-%\newpage
+\newpage
 
 \item \textbf{Constant field scaling};
 %\subsubsection{Constant field scaling}
@@ -1750,8 +1752,6 @@ This policy involves the reduction of the transistor dimensions in order to main
 
 We can notice that $E_{y}$ and $E_{x}$ are kept constant solving the problem of the presence of high energy electrons.
 The next step is try to understand the consequences of the constant field scaling. Again, we want to maintain the ratio $V_{DD}/V_{TH}$ unscaled because, if, for instance, the starting process is the LOP one, after scaling the process must be same and in order to do this we have to keep constant the ratio. As a result $V_{TH}$ should be scaled like 1/K and this has a main downside: higher leakage current.
-
-%\newpage
 
 \underline{Example:}
 
@@ -1916,7 +1916,7 @@ Summarizing:
 
 It is not possible to scale $V_{DD}$ of the same scaling factor that we use for dimensions at each technological node since, doing in such a way, the power supply now should be equal to few millivolts and this, clearly, is not possible. In other words, we cannot apply only the constant field scaling because we would need a very small power supply and, of course, a very low threshold voltage. This solution can't be operated for transistors, mainly for two reasons: high leakages and noise (few mV of noise signal could erroneously switch on/off a transistor). On the other hand we cannot apply only constant voltage field because of the low reliability. We have to mix these two policies creating the \textbf{Generalized scaling}.
 
-%\newpage
+\newpage
 
 \item \textbf{Generalized scaling}.
 %\subsubsection{Generalized scaling}
