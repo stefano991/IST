@@ -66,7 +66,7 @@ The \textbf{ITRS} makes previsions on which direction research will proceed rega
 
 As already stated above, there are two tables per technological family. That is due to different technological processes that can be exploited to implement both HP and LP families, which consist of Bulk technology and Multi-Gate (MG) technology. The former is going to disappear by the end of 2017 and the latter has become dominant in the last few years, whereas SOI technology has already become out-of-date. As a matter of fact, all the major foundaries in the world have already switched to MG technology, focusing their production on finFET-on-Bulk devices.
 
-\noindent As Multi-Gate technology requires a different approach to scaling, in this part of the chapter only the tables related to the Bulk process will be reported. All data and graphs about MG devices will be showed and analyzed later in the chapter (\ref{sec:multigate}).
+\noindent As Multi-Gate technology requires a different approach to scaling, in this part of the chapter only the tables related to the Bulk process will be reported. All data and graphs about MG devices will be showed and analyzed later in the chapter \ref{multigate}.
 
 \chapter{Scaling on Bulk process}
 
@@ -197,14 +197,14 @@ For high-performance logic, dynamic power dissipation is expected to become part
 \item \textbf{V}: here it is assumed equal to $V_{dd}$.
 \end{itemize}
 
-Historically, for the low-power family, devoted to the reduction of static power dissipation, hence the off-current, the main indicator had been the $I_{off}$ current: it has always been much lower than the $I_{off}$ for the HP technology. However, also the previous parameter, i.e. $CV^{2}$, is used to characterize the low-power family. A comparison between technological families tells us that for the HP family the obtained value is lower with respect to the LP family on account of a lower value of the total gate capacitance, while power supply voltage scales similarly both for HP and LP. As to understand this behavior in a more satisfactory way, let us consider to the following picture \ref{CV^2}:
+Historically, for the low-power family, devoted to the reduction of static power dissipation, hence the off-current, the main indicator had been the $I_{off}$ current: it has always been much lower than the $I_{off}$ for the HP technology. However, also the previous parameter, i.e. $CV^{2}$, is used to characterize the low-power family. A comparison between technological families tells us that for the HP family the obtained value is lower with respect to the LP family on account of a lower value of the total gate capacitance, while power supply voltage scales similarly both for HP and LP. As to understand this behavior in a more satisfactory way, let us consider to the following picture (\ref{CV2}):
 
 %inserire grafico CV^2 HPvsLP. FATTO!
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{figCV2}
+	\includegraphics[width=0.7\textwidth]{figCV2}
 	\caption{Dynamic power $CV^{2}$ analysis.}
-	\label{CV^2}
+	\label{CV2}
 	\end{figure}
 
 
@@ -247,14 +247,14 @@ In order to appreciate this small value, let us examine the transfer-characteris
 In an ideal transistor $I_{off}$ should be zero. However, source-drain tunnelling phenomena, as mentioned before, make the device harder to turn off and increase the subthreshold swing (SS). Since for the HP family transistor the off-current is fixed to 100 nA/$\mu$m for all years, the tunnelling current requires the threshold voltage to be higher in order to maintain $I_{off}$ constant, and consequently leads to a reduction in the inversion charge.
 In the case of low power devices this current is set to be four decades lower than that of HP, specifically 10 pA/$\mu m$. Note that to meet the leakage current requirement, the gate length scaling of LP logic lags behind that of HP logic.
 
-An important parameter is represented by the ratio between $I_{on}$ and $I_{off}$: it reveals how good the electrostatic control of the channel performed by the gate is; the larger the ratio, the more effective it is the control. In an ideal technology this ratio should be infinite. Referring to the data analyzed so far, for the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$, while in the LOP logic it is roughly $10^7$. It is clear that the higher the ratio the higher it is $I_{on}$, boosting performance, and the lower it is $I_{off}$, leading to low static power. A detailed view for this parameter is showed in the following figure: \ref{Ion-Ioff}
+An important parameter is represented by the ratio between $I_{on}$ and $I_{off}$: it reveals how good the electrostatic control of the channel performed by the gate is; the larger the ratio, the more effective it is the control. In an ideal technology this ratio should be infinite. Referring to the data analyzed so far, for the HP technology $\frac{I_{on}}{I_{off}} \approx 10^4$, while in the LOP logic it is roughly $10^7$. It is clear that the higher the ratio the higher it is $I_{on}$, boosting performance, and the lower it is $I_{off}$, leading to low static power. A detailed view for this parameter is showed in the Figure (\ref{OnOff}):
 
 %%AGGIORNARE FIGURA: I_on/I_off MATLAB. FATTO!
-	\begin{figure}[h]
+	\begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figOnOff}
+	\includegraphics[width=0.7\textwidth]{figOnOff}
 	\caption{Ion/Ioff ratio.}
-	\label{Ion-Ioff}
+	\label{OnOff}
 	\end{figure}
 
 An efficient method to measure the performance of a process is to evaluate the intrinsic time $\tau$: it can be seen as the time required to remove the charge stored in the gate capacitance of a transistor with $W=W_{ref}$ by mean of the $I_{on}$ current.
@@ -2255,7 +2255,7 @@ Finally, another phomenon that must be avoided is \textbf{punchthrough}. Punchth
 
 \newpage
 
-\chapter{Scaling on MultiGate process}
+\chapter{Scaling on MultiGate process} \label{multigate}
 
 
 \begin{table}[h]
