@@ -2000,7 +2000,7 @@ As we can observe from the Figure (\ref{figint}) below, there are different geom
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{interconnection}
+	\includegraphics[width=0.6\textwidth]{interconnection}
 	\caption{Geometrical quantities for interconnections.}
 	\label{figint}
 	\end{figure} 
@@ -2024,7 +2024,7 @@ Other important parameters that determine the good behavior of interconnects are
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{interconnection2}
+	\includegraphics[width=0.6\textwidth]{interconnection2}
 	\caption{Interconnects parameters.}
 	\label{figint2}
 	\end{figure}
@@ -2046,7 +2046,7 @@ As it has been said in the main introduction about scaling, there are three diff
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{interconnection3}
+	\includegraphics[width=0.85\textwidth]{interconnection3}
 	\caption{Interconnects Scaling strategies.}
 	\label{figint2}
 	\end{figure}
@@ -2076,7 +2076,7 @@ $\mathcal{R}_{int}*\mathcal{C_{IMD}}$ & $S^{2}$ & $S^{2}$ & $S^{2}$\\
 $\mathcal{R}_{int}*\mathcal{C_{ILD}}$ & $S^{2}$ & S & 1\\
 \hline
 \end{tabular} }
-\caption{Scaling policies for interconects}
+\caption{Scaling policies for interconnects}
 \end{center} }
 \end{table}
 
@@ -2283,6 +2283,61 @@ The kind of device that lead us into the MG era is the \emph{Silicon-On-Insulato
 %% inserire a questo punto l'immagine della struttura con i due back gate e l'andamento del potenziale all'interfaccia (slide FD-SOI e quaderno Ste) + discorsino
 
 %% Formule da slide (non tutta la dimostrazione; passi salienti)
+
+By integrating the charge distribution we obtain the surface potential \Phi(x), that can be expressed at the interface gate-oxide with the name \Phi_{S1} and at the interface BOX-substrate with the name \Phi_{S2}:
+
+\begin{eqnarray}
+\Phi(x) = \Phi_{S1} - \int_{0}^{x}\frac{q N_A}{\epsilon_s}(x_1 - x)\,dx \\
+		= \Phi_{S1} - \frac{q N_A}{\epsilon_s}(x_1 x) + \frac{q N_A}{2\epsilon_s}x^2 \\
+\Phi(T_{Si}) = \Phi_{S2} = \Phi_{S1} - \frac{q N_A}{\epsilon_s}(x_1 T_{Si}) + \frac{q N_A}{2\epsilon_s}T_{Si}^2
+\end{eqnarray}
+
+Then, \emph{x_1} can be obtained as a function of surface potentials \Phi_{S1} and \Phi_{S2}:
+
+\begin{eqnarray}
+\Phi_{S2} - \Phi_{S1} = \frac{q N_A}{\epsilon_s}(x_1 T_{Si}) + \frac{q N_A}{2\epsilon_s}T_{Si}^2 \\
+$\emph{x_1}$ = (\Phi_{S1} - \Phi_{S2}) \frac{C_{Si}}{q N_A} + \frac{T_{Si}}{2}
+\end{eqnarray}
+
+Knowing the two surface potential, in order to derive the threshold voltage $V_{Th}$, we have to take into account all possible condition for both front-gate and back-gate:
+
+\begin{enumerate}
+\item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$ \footnote{This condition tell us that the system is in strong inversion.}
+\item Back-gate accumulated $\Phi_{S2} = 0$
+\item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$
+\item Back-gate inverted $\Phi_{S2} = 2\Phi_$ (i.e. in strong inversion)
+\end{enumerate}
+
+Let's assume the first condition. $V_{Th,1}$ depends on the surface potential $\Phi_{S2}$, in particular if:
+\begin{itemize}
+\item the back-gate is accumulated, so the expression will be:
+	\begin{equation}
+	V_{Th,1} = -\Phi_{MS1} + (1 + \frac{C_{Si}}{C_{ox1}})2\Phi_P + \frac{q N_A T_{Si}}{2 C_{ox1}}
+	\end{equation}
+\item the back-gate is in strong inversion, so:
+	\begin{equation}
+	V_{Th,1} = -\Phi_{MS1} + 2\Phi_P + \frac{q N_A T_{Si}}{2 C_{ox1}}
+	\end{equation}
+\end{itemize}
+
+In the same manner, considering the back-gate and using $\Phi_{S2}$ as silicon potential, we are able to derive the two expressions of the threshold voltage $V_{Th,2}$ that will depend on the surface potential $\Phi_{S1}$ according to the possible state it can assume.\\
+To complete the analysis of the multi-gate device, it's mandatory to show how the source-drain current can be derived. Starting from the expression of the surface potentials, and choosing a particular condition that leads to an expression for $V_{Th,1}$, $I_{DS}$ is derived by integrating the total quantity of charge $Q_{n1}$ as in the following equation:
+
+	\begin{equation}
+	I_{DS} = - \frac{\mu_n W}{L}\int_{\Phi_{S1}(0)}^{\Phi_{S1}(L)}Q_{n1}(y)\,d\Phi_{S1}
+	\end{equation}
+
+After some computations the final result is obtained:
+
+	\begin{eqnarray}
+	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th,1})V_{DS} - \frac{m}{2}V_{DS}^2\Bigr]\\
+	where: & m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr) &
+	\end{eqnarray}
+
+In the last equation notice that both source and drain region are accumulated.
+
+
+
 
 \section{Analytical approach to MultiGate structure}
 %dimostrazione su front gate e back gate. Forse qualche immagine
