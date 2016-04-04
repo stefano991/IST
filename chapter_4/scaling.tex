@@ -2024,7 +2024,7 @@ Other important parameters that determine the good behavior of interconnects are
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{interconnection2}
+	\includegraphics[width=0.5\textwidth]{interconnection2}
 	\caption{Interconnects parameters.}
 	\label{figint2}
 	\end{figure}
@@ -2305,7 +2305,7 @@ Knowing the two surface potential, in order to derive the threshold voltage $V_{
 \item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$ \footnote{This condition tell us that the system is in strong inversion.}
 \item Back-gate accumulated $\Phi_{S2} = 0$
 \item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$
-\item Back-gate inverted $\Phi_{S2} = 2\Phi_$ (i.e. in strong inversion)
+\item Back-gate inverted $\Phi_{S2} = 2\Phi_P$ (i.e. in strong inversion)
 \end{enumerate}
 
 Let's assume the first condition. $V_{Th,1}$ depends on the surface potential $\Phi_{S2}$, in particular if:
@@ -2329,10 +2329,18 @@ To complete the analysis of the multi-gate device, it's mandatory to show how th
 
 After some computations the final result is obtained:
 
-	\begin{eqnarray}
-	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th,1})V_{DS} - \frac{m}{2}V_{DS}^2\Bigr]\\
-	where: & m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr) &
-	\end{eqnarray}
+%	\begin{eqnarray}
+%	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th,1})V_{DS} - \frac{m}{2}V_{DS}^2\Bigr]\\
+%	where: & m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr) 
+%	\end{eqnarray}
+
+	\begin{equation}
+	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th,1})V_{DS} - \frac{m}{2}V_{DS}^2\Bigr]
+	\end{equation}
+
+	\begin{equation}
+	m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr)
+	\end{equation}
 
 In the last equation notice that both source and drain region are accumulated.
 
