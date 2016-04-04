@@ -1195,6 +1195,7 @@ The maximum speed of carriers in the channel is limited by \textbf{velocity satu
 (\emph{\textbf{Note}: it is not requested to know the expression of $I_{DS}$ but just to remember what velocity saturation is.})
 
 
+\newpage
 \section{Scaling policies}
 
 So far we have considered the main features and the key parameters that are used to study, analyze and compare the different technological processes and families, and how they are affected by scaling as we get closer and closer to the limits of the Bulk process. Although the Bulk process is getting to its natural end as stated at the beginning of the chapter, it is still of great interest to study its behavior and the limits and problems related to the scaling policies applied to it. As a matter of fact, many ideas and solutions that belong to the Bulk legacy can be exported and exploited by the new Multi-Gate technological process. Independently from the policy adopted, in \textbf{planar technology} scaling means reducing dimensions.\\
@@ -1977,7 +1978,7 @@ In the table below is summarized how technological and electrical parameters cha
 }
 \end{table}
 
-Now should be clear how to deduce all these rules.
+Now it should be clear how to deduce all these rules.
 
 \end{enumerate}
 
@@ -1995,8 +1996,14 @@ Although we have mostly talked about device scaling and its effects so far, as t
 Power supply interconnects suffer the most from electro-migration phenomena among all types of interconnects, since the current always flows into the same direction and it can causes \textit{hillocks} or \textit{depletions} according to ion flux. Another problem that affects power supply is \textit{IR-drop}, which leads to an effective value of $V_{dd}$ or ground different from the nominal one.\\ Clock tree is another critical part of the circuit because of the unbalanced distribution over the IC area of the sequential elements, i.e. registers, flip-flops, and so on. That leads to an uneven load on the different branches of the tree and it can cause a worse clock skew. \\ Finally, logic signal interconnects are affected by different delays depending on their position in the interconnect \textbf{hierarchy}. Our attention will be focused on this last kind of interconnects, for which there will be explanation about the different approaches to their scaling. \\However, we will at first describe which are the electrical quantities that play a key role in interconnect scaling.
 
 \subsection{Electrical and geometrical parameters for interconnects}
-%%QUI SI PUO' COMINCIARE SUBUTO METTENDO UN DISEGNO DELLE INTERCONNESSIONI (DUE WIRE CON LE DISTANZE E I NOMI DELLE DIMENSIONI RIPORTATI --> vedi slide picci)
-As we can observe from the figure (MAGARI UNA LABEL QUI) above, there are different geometrical quantities involved: 
+As we can observe from the Figure (\ref{figint}) below, there are different geometrical quantities involved:
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{interconnection}
+	\caption{Geometrical quantities for interconnections.}
+	\label{figint}
+	\end{figure} 
 
 \begin{itemize}
 \item $W_{int}$: cross-section width;
@@ -2007,14 +2014,20 @@ As we can observe from the figure (MAGARI UNA LABEL QUI) above, there are differ
 \item $A/R$: it is the aspct ratio; it relates the vertical and the horizontal dimension of a wire and it is definied as $A/R=H_{int}/W_{int}$.
 \end{itemize}
 
-Other important parameters that determine the good behavior of interconnects are the dielectric constants $\epsilon_{ILD}$ (for Inter-Layer Dielectric) and $\epsilon_{IMD}$ (for Inter-Metal Dielectric). The former must have good thermal properties to dissipate heat in an efficient way from layer to layer, the latter must be very low in order to reduce \textit{cross-talk capacitance}.\\ Finally, the three main electrical quantities involved are:
+Other important parameters that determine the good behavior of interconnects are the dielectric constants $\epsilon_{ILD}$ (for Inter-Layer Dielectric) and $\epsilon_{IMD}$ (for Inter-Metal Dielectric). The former must have good thermal properties to dissipate heat in an efficient way from layer to layer, the latter must be very low in order to reduce \textit{cross-talk capacitance}.\\ Finally, the three main electrical quantities involved are indicated in Figure (\ref{figint2}):
 
 \begin{itemize}
 \item $R_{int}$=$\rho(\frac{L_{int}}{W_{int}H_{int}})$, where $\rho$ is the material resistivity;
 \item $C_{IMD}$=$\epsilon_{IMD}(\frac{L_{int}H_{int}}{W_{sp}})$;
 \item $C_{ILD}$=$\epsilon_{ILD}(\frac{L_{int}W_{int}}{T_{int}})$.
 \end{itemize}
-%%QUI CI STAREBBE BENE UN DISEGNO CHE FACCIA VEDERE DOVE SONO QUESTE TRE
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{interconnection2}
+	\caption{Interconnects parameters.}
+	\label{figint2}
+	\end{figure}
 
 It would be much simpler to define and compare the parameters above independently from the length of each wire. Therefore, we can define:
 \begin{itemize}
@@ -2023,14 +2036,20 @@ It would be much simpler to define and compare the parameters above independentl
 \item $\mathcal{C_{ILD}}$=$\epsilon_{ILD}(\frac{W_{int}}{T_{int}})$.
 \end{itemize}
 
-\subsection{Scaling policies for interconnects and their effect}
+\subsection{Scaling policies for interconnects and their effects}
 As it has been said in the main introduction about scaling, there are three different policies that can be followed:
 \begin{itemize}
 \item ideal scaling: all dimensions, both vertical and horizontal ones, are scaled using a factor S (constant aspect ratio);
 \item quasi-ideal scaling: horizontal quantities are scaled using S, while horizontal ones are scaled by $\sqrt(S)$ (aspect ratio slightly increased); 
 \item fixed-height scaling: only horizontal quantities are scaled by S, whereas the vertical dimension is \textbf{not scaled} at all (aspect ratio largely increased). 
 \end{itemize}
-%%MAGARI IL DISEGNO CHE C'E' SULLE SLIDE CHE MOSTRA LA DIFFERENZA TRA LE 3 COSE
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{interconnection3}
+	\caption{Interconnects Scaling strategies.}
+	\label{figint2}
+	\end{figure}
 
 \begin{table}[H] {
 \begin{center} {
@@ -2111,7 +2130,6 @@ The Fixed-Height policy has been applied to all hierarchical levels of interconn
 \textbf{Short Channel Effects (SCE)} is a general term that includes all the consequences and the effects that are visible in deeply-scaled devices. For scaling continues with years, SCE are getting more and more evident and difficult to deal with. As we are entering the age of nanoscale FET devices, where the channel length will be a few nanometers only, SCE are leading to the end of the Bulk planar process and into a new era of different solutions ranging from finFETs to Gate-All-Around (GAA) nanowire transistors. 
 
 \subsection{Roll-off} \label{subsec:roll_off}
-
 
 For a long channel device the threshold voltage can be written as:
 
@@ -2224,7 +2242,7 @@ Scaling $x_{d}$ and $x_{j}$ we are sure that the effect of the SCE on $V_{th}$ i
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{figrolloff}
+	\includegraphics[width=0.5\textwidth]{figrolloff}
 	\caption{Threshold voltage dependency from roll-off effect.}
 	\label{}
 	\end{figure}
@@ -2253,9 +2271,21 @@ Finally, another phomenon that must be avoided is \textbf{punchthrough}. Punchth
 
 %Because of process variations (the photolitography is not so accurate), the effective channel length can vary from a minimum value to a maximum one. 
 
-\newpage
+%\newpage
 
 \chapter{Scaling on MultiGate process} \label{multigate}
+
+\section{Introduction}
+%%scaling su SOI e come si è arrivati alla struttura asimmetrica con due gate
+Let us now broach a new and more interesting topic about \textbf{scaling of MultiGate devices}. As stated in the previous sections, non-planar processes are the future of technological evolution.\\
+The kind of device that lead us into the MG era is the \emph{Silicon-On-Insulator (SOI)} transistor. Although it has already been replaced and taken over by its successors, i.e. FinFETs, vertical and lateral Gate-All-Around (GAA) transistors etc\dots, it has allowed us to think of the \textbf{buried oxide (BOX)} as a secondary gate that is useful to tune the device or even behave as a main gate, for example in FinFET devices. 
+
+%% inserire a questo punto l'immagine della struttura con i due back gate e l'andamento del potenziale all'interfaccia (slide FD-SOI e quaderno Ste) + discorsino
+
+%% Formule da slide (non tutta la dimostrazione; passi salienti)
+
+\section{Analytical approach to MultiGate structure}
+%dimostrazione su front gate e back gate. Forse qualche immagine
 
 
 \begin{table}[h]
@@ -2417,8 +2447,10 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 	\centering
 	\includegraphics[width=0.75\textwidth]{figVddVtmg}
 	\caption{$V_{DD}/V_{T}$ in function of time.}
-	\label{tau}
+	\label{}
 	\end{figure}
 
+%% IMPORTANTE!
+%% Alla fine di tutta la descrizione del multi gate mettiamo due parole sul finfet con una introduzione generale alla geometria e ai diversi tipi noti in letteratura, come conclusione sul capitolo 3
 
 \end{document}
