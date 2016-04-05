@@ -2519,42 +2519,33 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 There are two main changes to highlight when comparing the values of the parameters of LP to HP. Firstly, the $I_{off}$ current differs from HP to LP by several orders of magnitude, and this behavior is consistent both for Bulk and MG technology. Secondly, the $I_{on}$ current is significantly higher in HP than it is in LP (both for MG and Bulk) even though it starts to gradually drop in 2015. In the future, lower drive current values will be determined by a higher threshold voltage, which would be required to keep SCE under control. Finally, the last important parameter $\tau$ will constantly decrease over the years, showing an even better behavior for the HP family in MG process\footnote{Consequently, the inverse of $\tau$ (i.e. speed parameter) will increase.}.\\
 Similarly to what has been done in the Bulk section, the graphs of the different parameters will be reported.
 
-\begin{center}
-\begin{figure}[ht]
-\def\tabularxcolumn#1{m{#1}}
-\begin{tabularx}{\linewidth}{@{}cXX@{}}
-\begin{tabular}{cc}
-
+\begin{figure}[htp]
+\centering 
 %inserire grafico CV^2 HPvsLP. FATTO!
-\subfloat[Dynamic power $CV^{2}$ analysis.]{
-	\includegraphics[width=0.4\textwidth]{figCV2mg} \label{CV^2}} &
-
+\subfloat[Dynamic power $CV^{2}$ analysis.]%
+{\includegraphics[width=0.4\textwidth]{figCV2mg} \label{CV^2}} 
+\qquad
 %%inserire grafico I_on MATLAB. FATTO!
 \subfloat[Ion current as a function of time.]{
-	\includegraphics[width=0.4\textwidth]{figIonmg} \label{}} \\
-
+	\includegraphics[width=0.4\textwidth]{figIonmg} \label{}} 
+\qquad
 %%inserire grafico I_off MATLAB. FATTO!
 \subfloat[Ioff current as a function of time.]{
-	\includegraphics[width=0.4\textwidth]{figIoffmg} \label{}} &
-
+	\includegraphics[width=0.4\textwidth]{figIoffmg} \label{}} 
+\qquad
 %%inserire grafico I_on/I_off MATLAB. FATTO!
 \subfloat[Ion/Ioff ratio.]{
-	\includegraphics[width=0.4\textwidth]{figOnOffmg} \label{Ion-Ioff}} \\
-
+	\includegraphics[width=0.43\textwidth]{figOnOffmg} \label{Ion-Ioff}} 
+\qquad
 %%inserire grafico tau MATLAB. FATTO!
 \subfloat[Intrinsic delay as a function of time.]{
-	\includegraphics[width=0.4\textwidth]{figtaumg} \label{tau}} &
-
+	\includegraphics[width=0.4\textwidth]{figtaumg} \label{tau}}  
+\qquad
 %%inserire grafico Vdd/Vth MATLAB. FATTO!
 \subfloat[$V_{DD}/V_{T}$ in function of time.]{
-	\includegraphics[width=0.4\textwidth]{figVddVtmg} \label{}} \\
-
-\end{tabular}
-\end{tabularx}
-
+	\includegraphics[width=0.4\textwidth]{figVddVtmg} \label{}} 
 \caption{Parameters for MG technology.}
 \end{figure}
-\end{center}
 
 %% IMPORTANTE!
 %% Alla fine di tutta la descrizione del multi gate mettiamo due parole sul finfet con una introduzione generale alla geometria e ai diversi tipi noti in letteratura, come conclusione sul capitolo 3
