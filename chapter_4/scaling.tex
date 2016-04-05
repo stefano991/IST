@@ -2399,9 +2399,11 @@ Notice that since both source and drain regions of the back-gate are depleted, w
 
 %%In the last equation notice that both source and drain region are accumulated.
 
+\newpage
 
 \section{Main parameters for MG scaling}
-Here they are the tables from the Roadmap for multi-gate technologies. As it can be observed, there are some parameters that are the same value as for Bulk process (section \ref{sec:bulk}). Once again, the color legend indicates for a certain parameter whether there exist manufacturing solutions or not. Please refer to Table \ref{tab:color}.
+The tables from the Roadmap for multi-gate technologies are listed below in this section. As it can be observed, there are some parameters that are the same value as for Bulk process (section \ref{sec:bulk}). Once again, the color legend indicates for a certain parameter whether there exist manufacturing solutions or not. Please refer to Table \ref{tab:color}.\\
+There are several changes to highlight when comparing the values of the parameters of LP to HP. Firstly, the $I_{off}$ current differs from HP to LP by several orders of magnitude, and this behavior is consistent both for Bulk and MG technology. Secondly, the $I_{on}$ current is significantly higher in HP than it is in LP (both for MG and Bulk) even though it starts to gradually drop in 2015. In the future, lower drive current values will be determined by a higher threshold voltage, which would be required to keep SCE under control. Another important parameter $\tau$ will constantly decrease over the years, showing an even better behavior for the HP family in MG process\footnote{Consequently, the inverse of $\tau$ (i.e. speed parameter) will increase.}. Finally, a last important difference to be underlined is the level of channel doping $Doping_{ch}$: in the past decades there was a trend that would forecast a continuous increase in the doping level of the channel. That was done with the aim to reduce the SCE in the device\footnote{Doping level almost reached the limit value of $10^{20} cm^{-3}$.}. Nowadays, MG technology does not require such a high level of doping, therefore it does not follow the traditional rules of scaling about this parameter.
 
 \begin{table}[h]
 \centering
@@ -2460,7 +2462,7 @@ $I_{d,satn}/I_{d,satp}$&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.14&1.13&1.
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{\begin{tabular}{||l||c|c|c|c|c|c|c|c|c|c|c|c||}
 \hline
@@ -2516,14 +2518,13 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 \caption{\textbf{MG process for LP (ITRS 2013)}}
 \end{table}
 
-There are two main changes to highlight when comparing the values of the parameters of LP to HP. Firstly, the $I_{off}$ current differs from HP to LP by several orders of magnitude, and this behavior is consistent both for Bulk and MG technology. Secondly, the $I_{on}$ current is significantly higher in HP than it is in LP (both for MG and Bulk) even though it starts to gradually drop in 2015. In the future, lower drive current values will be determined by a higher threshold voltage, which would be required to keep SCE under control. Finally, the last important parameter $\tau$ will constantly decrease over the years, showing an even better behavior for the HP family in MG process\footnote{Consequently, the inverse of $\tau$ (i.e. speed parameter) will increase.}.\\
-Similarly to what has been done in the Bulk section, the graphs of the different parameters will be reported.
+A common trend in both HP and LP families is given by the threshold voltage: it is predicted that the $V_{th}$ will slowly increase with years as to \textbf{limit subthreshold currents} that otherwise would become too large, causing more than one problem in terms of power consumption and heat dissipation. \\ Similarly to what has been done in the Bulk section, the graphs of the different parameters are reported in Figure (\ref{MGdiagrams}). Each graph shows for every parameter the evolution over the years both for HP and LP. Compared to the Bulk diagrams previously showed, the diagrams on MG technology are spread on a longer time range up to year 2024, as the MG process is supposed to be the technology of the next future.
 
-\begin{figure}[htp]
+\begin{figure}[htp] {
 \centering 
 %inserire grafico CV^2 HPvsLP. FATTO!
-\subfloat[Dynamic power $CV^{2}$ analysis.]%
-{\includegraphics[width=0.4\textwidth]{figCV2mg} \label{CV^2}} 
+\subfloat[Dynamic power $CV^{2}$ analysis.]{
+	\includegraphics[width=0.4\textwidth]{figCV2mg} \label{CV^2}} 
 \qquad
 %%inserire grafico I_on MATLAB. FATTO!
 \subfloat[Ion current as a function of time.]{
@@ -2545,7 +2546,62 @@ Similarly to what has been done in the Bulk section, the graphs of the different
 \subfloat[$V_{DD}/V_{T}$ in function of time.]{
 	\includegraphics[width=0.4\textwidth]{figVddVtmg} \label{}} 
 \caption{Parameters for MG technology.}
+\label{MGdiagrams} }
 \end{figure}
+
+\newpage
+\section{New devices and solutions}
+Among all new devices and structures that have been proposed in the past few years, the most important and successful transistor has been the \textbf{finFET} so far. The finFET is the very first 3D device, where the gate is wrapped around three sides of the channel. As a matter of fact, finFETs can be either \emph{dual-gate} or \emph{tri-gate} transistor. The main difference consists of a larger dielectric thickness on top of the fin for the dual-gate structure, so the gate voltage does not control the channel from the top. In tri-gate devices the thickness of the dielectric around the fin is uniform and the gate controls the channel conductivity from three different sides. The process for the tri-gate structure is simpler when reducing dimensions since the gate length scales as follows:
+
+\begin{itemize}
+\item $L_{g} < D_{fin}$ for tri-gate transistors;
+\item $L_{g} < D_{fin}/2$ for dual-gate transistors.
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.35\textwidth]{finFET_schema}
+\caption{Simple 3D schematic of a finFET device.}
+\label{fig:finFET}
+\end{figure} 
+%%SITO http://spie.org/newsroom/technical-articles/4743-directed-self-assembly-for-ever-smaller-printed-circuits
+
+$D_{fin}$ is the fin thickness as shown in Figure (\ref{fig:finFET}). The last geometrical quantity is the fin height $H_{fin}$, which allows us to define the aspect ratio for the fin. One of the most important differences between a standard planar process like Bulk or FD-SOI and a MG technology like finFET is that \textbf{width is no more an independent parameter} left to the designer's choice, but it is determined by the technology:
+
+\begin{itemize}
+\item $W_{fin}=2*H_{fin}+D_{fin}$ for tri-gate finFETs;
+\item $W_{fin}=2*H_{fin}$ for dual-gate finFETs.
+\end{itemize}
+
+
+According to the value of the aspect ratio, there are three different cross-sections that can be considered:
+
+\begin{enumerate}
+\item \textbf{tall} finFET that carries the advantage of having a large $W_{fin}$, thus permitting a greater drive current;
+\item \textbf{short} finFET that has the advantage of less challenging lithography and etching steps;
+\item \textbf{nanowire} finFET that gives the gate even more control on the channel by surrounding it.
+\end{enumerate}
+
+As it can be observed from Figure (\ref{fig:finFET}), the \textbf{channel region between source and drain is wrapped around by the gate: that is the reason why we can obtain a much better channel control even at very short gate length}.\\
+Since the fin structure tends to be characterized by a narrow cross-section and long S/D distance, the resistance of the channel is a critical aspect to consider. There are two solutions that are adopted in order to increase $I_{on}$: the \emph{Stress Memorization Technique (STM)} helps by increasing the carrier mobility, while the exploitation of larger number of fins per gate allows to increases the total current that flows between the source and drain regions (\emph{multi-fin structures}).
+Since scaling is supposed to continue over and over, the \emph{contacted gate pitch (CGP)} will be forced to scale endlessly. Continuous scaling cannot be achieved without a significant tradeoff between different quantities, namely: $L_{g}$, spacer thickness (spacers isolate S/D regions from the gate) and S/D contact dimesion. 
+%%%PAPER 0707886 sito IEEE
+Reliabilty requirements and/or capacitance between gate and S/D regions tell us what is the minimum value for the spacer thickness. Along with finFETs, the other two main structures that are being investigated and developed nowadays:
+
+\begin{itemize}
+\item \emph{lateral Gate-All-Around FETs (GAAFETs)} consisting of horizontally-stacked nanowires that allow more relaxed constraints on the channel length while still providing similar control on SCE and it is possible to avoid a large variability in the threshold voltage;
+\item \emph{vertical GAAFETs} have even more relaxed on the gate length since they are vertically oriented and show a better scalability. 
+\end{itemize}
+
+For the sake of clearness, a schematic of the different structures is showed below.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{finFET}
+\caption{3D schematics of finFET, lateral GAAFET and the vertical one.}
+\label{fig:finFET}
+\end{figure} 
+
+What has been stated above and in the whole chapter is an overview about scaling and how it has changed affected technological processes as new solutions have become necessary when old technologies could not improve anymore. While the Bulk process is reaching its natural death in 2017, new transistors like finFETs and GAAFETs bring us new challenges and problems. It will be our duty to come up with smart solutions that could give us better and more reliable technologies. 
 
 %% IMPORTANTE!
 %% Alla fine di tutta la descrizione del multi gate mettiamo due parole sul finfet con una introduzione generale alla geometria e ai diversi tipi noti in letteratura, come conclusione sul capitolo 3
