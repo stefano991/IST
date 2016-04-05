@@ -12,11 +12,18 @@
 %\usepackage{subscript}
 %\usepackage{empheq}
 \usepackage{ltxtable}
+\usepackage[table]{xcolor}
+\usepackage{array}
 \usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{tabularx}
 \graphicspath{{./}{Immagini/}}
 
 \newcommand{\sub}{\textsubscript}
 \newcommand{\super}{\textsuperscript}
+\newcommand{\gr}{\cellcolor{gray}}
+\newcommand{\ye}{\cellcolor{yellow}}
+\newcommand{\re}{\cellcolor{red}}
 \setlength{\topmargin}{-1.5cm}
 \setlength{\textheight}{24.5cm}
 \setlength{\textwidth}{17.5cm}
@@ -60,9 +67,25 @@ Nowadays, HP is becoming marginal with respect to the other process families, be
 \item \textbf{LP}: Low Power processes have aims at reducing the static power for low performance and low battery capacity applications.
 \end{itemize}
 
-The \textbf{ITRS} makes previsions on which direction research will proceed regarding to different areas of technology up to about 12 years into the future. Until now, these previsions have been really accurate. In the following four tables, two per each technological family, there are all predicted parameters. For some of them the manufacturable solutions are known and they are being optimized, some others already have manufacturable solution, whereas for a few parameters there are not any manufacturable solutions available so far. A color legend will be used to distinguish among the different cases:
+The \textbf{ITRS} makes previsions on which direction research will proceed regarding to different areas of technology up to about 12 years into the future. Until now, these previsions have been really accurate. In the following two tables, one per each technological family, there are all predicted parameters. For some of them the manufacturable solutions are known and they are being optimized, some others already have manufacturable solution, whereas for a few parameters there are not any manufacturable solutions available so far. A color legend will be used to distinguish among the different cases:
 
 %%INSERIRE LEGENDA A COLORI CON QUADRATINI
+\begin{table}[h]
+\centering
+\begin{tabular}{|m {2cm} |l|}
+\hline
+&Manufacturable solutions exist and they are being optimized\\
+\hline
+\cellcolor{yellow}&Manufacturable solutions are known\\
+\hline
+\cellcolor{red}&Manufacturable solutions are NOT known\\
+\hline
+\cellcolor{gray}&End of technology\\
+\hline
+\end{tabular}
+\caption{Color legend}
+\label{tab:color}
+\end{table}
 
 As already stated above, there are two tables per technological family. That is due to different technological processes that can be exploited to implement both HP and LP families, which consist of Bulk technology and Multi-Gate (MG) technology. The former is going to disappear by the end of 2017 and the latter has become dominant in the last few years, whereas SOI technology has already become out-of-date. As a matter of fact, all the major foundaries in the world have already switched to MG technology, focusing their production on finFET-on-Bulk devices.
 
@@ -71,7 +94,7 @@ As already stated above, there are two tables per technological family. That is 
 \newpage
 \chapter{Scaling on Bulk process}
 
-\section{Main parameters for scaling}
+\section{Main parameters for scaling} \label{sec:bulk}
 All the parameters listed below in the two tables have been obtained by the ITRS roadmap. For each physical quantity will we consider both the values for High-Performance and Low-Power families. Moreover, since we are especially interested in the drive and subthreshold currents\footnote{They tell us how good a device is in conduction and off-state respectively.} a brief section is dedicated to their mathematical derivation.
 
 
@@ -2275,15 +2298,20 @@ Finally, another phomenon that must be avoided is \textbf{punchthrough}. Punchth
 
 \chapter{Scaling on MultiGate process} \label{multigate}
 
-\section{Introduction}
-%%scaling su SOI e come si è arrivati alla struttura asimmetrica con due gate
+\section{Analytical approach to MultiGate structure}
+%%scaling su SOI e come si è arrivati alla struttura asimmetrica con due gate. %dimostrazione su front gate e back gate. Forse qualche immagine
 Let us now broach a new and more interesting topic about \textbf{scaling of MultiGate devices}. As stated in the previous sections, non-planar processes are the future of technological evolution.\\
 The kind of device that lead us into the MG era is the \emph{Silicon-On-Insulator (SOI)} transistor. Although it has already been replaced and taken over by its successors, i.e. FinFETs, vertical and lateral Gate-All-Around (GAA) transistors etc\dots, it has allowed us to think of the \textbf{buried oxide (BOX)} as a secondary gate that is useful to tune the device or even behave as a main gate, for example in FinFET devices. 
 
 %% inserire a questo punto l'immagine della struttura con i due back gate e l'andamento del potenziale all'interfaccia (slide FD-SOI e quaderno Ste) + discorsino
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{banddiagram}
+	\caption{Band diagram for a double gate structure.}
+	\label{band}
+	\end{figure}
 
 %% Formule da slide (non tutta la dimostrazione; passi salienti)
-
 By integrating the charge distribution we obtain the surface potential $\Phi(x)$, that can be expressed at the interface gate-oxide with the name $\Phi_{S1}$ and at the interface BOX-substrate with the name $\Phi_{S2}$:
 
 \begin{eqnarray}
@@ -2299,57 +2327,81 @@ Then, \emph{$x_{1}$} can be obtained as a function of surface potentials $\Phi_{
 \emph{$x_{1}$} = (\Phi_{S1} - \Phi_{S2}) \frac{C_{Si}}{q N_A} + \frac{T_{Si}}{2}
 \end{eqnarray}
 
+It is clear how the position of \emph{$x_{1}$} depends on the surface potential at both gates, as shown in Figure (\ref{band}) and in the equation above. In particular if $\Phi_{S1}$ is equal to $\Phi_{S2}$ then \emph{$x_{1}$} will be centered in $\frac{T_{Si}}{2}$; when $\Phi_{S1}$ is greater than $\Phi_{S2}$ then \emph{$x_{1}$} will move to the right. Finally, when $\Phi_{S1}$ is smaller than $\Phi_{S2}$ then \emph{$x_{1}$}will move to the left. It means that the greatest surface potential is the one that controls the most the behavior inside the silicon overlay.
 Knowing the two surface potential, in order to derive the threshold voltage $V_{Th}$, we have to take into account all possible condition for both front-gate and back-gate:
 
 \begin{enumerate}
-\item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$ \footnote{This condition tell us that the system is in strong inversion.}
-\item Back-gate accumulated $\Phi_{S2} = 0$
-\item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$
-\item Back-gate inverted $\Phi_{S2} = 2\Phi_P$ (i.e. in strong inversion)
+\item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$ \footnote{This condition tell us that the system is in strong inversion.};
+\item Back-gate accumulated $\Phi_{S2} = 0$;
+\item Front-gate inverted $Q_{n1} = 0$, $\Phi_{S1} = 2\Phi_P$;
+\item Back-gate inverted $\Phi_{S2} = 2\Phi_P$ (i.e. in strong inversion);
 \end{enumerate}
 
 Let's assume the first condition. $V_{Th,1}$ depends on the surface potential $\Phi_{S2}$, in particular if:
 \begin{itemize}
 \item the back-gate is accumulated, so the expression will be:
 	\begin{equation}
-	V_{Th,1} = -\Phi_{MS1} + (1 + \frac{C_{Si}}{C_{ox1}})2\Phi_P + \frac{q N_A T_{Si}}{2 C_{ox1}}
+	V_{Th1,acc2} = -\Phi_{MS1} + (1 + \frac{C_{Si}}{C_{ox1}})2\Phi_P + \frac{q N_A T_{Si}}{2 C_{ox1}}
+	\label{eq1}
 	\end{equation}
 \item the back-gate is in strong inversion, so:
 	\begin{equation}
-	V_{Th,1} = -\Phi_{MS1} + 2\Phi_P + \frac{q N_A T_{Si}}{2 C_{ox1}}
+	V_{Th1,dep2} = -\Phi_{MS1} + 2\Phi_P + \frac{q N_A T_{Si}}{2 C_{ox1}}
 	\end{equation}
 \end{itemize}
 
+As we can observe the value of $V_{Th,1}$ is larger when the back-gate is accumulated (eq.(\ref{eq1})) due to a significant value of silicon-overlay capacitance, whereas the threshold voltage is lower when the back-gate is in strong inversion, therefore, the device has a better on/off behavior.
 In the same manner, considering the back-gate and using $\Phi_{S2}$ as silicon potential, we are able to derive the two expressions of the threshold voltage $V_{Th,2}$ that will depend on the surface potential $\Phi_{S1}$ according to the possible state it can assume.\\
-To complete the analysis of the multi-gate device, it's mandatory to show how the source-drain current can be derived. Starting from the expression of the surface potentials, and choosing a particular condition that leads to an expression for $V_{Th,1}$, $I_{DS}$ is derived by integrating the total quantity of charge $Q_{n1}$ as in the following equation:
+To complete the analysis of the multi-gate device, it is mandatory to show how the source-drain current can be derived. Starting from the expression of the surface potentials, and choosing a particular condition that leads to an expression for $V_{Th,1}$, $I_{DS}$ is derived by integrating the total quantity of charge $Q_{n1}$:
 
 	\begin{equation}
 	I_{DS} = - \frac{\mu_n W}{L}\int_{\Phi_{S1}(0)}^{\Phi_{S1}(L)}Q_{n1}(y)\,d\Phi_{S1}
 	\end{equation}
 
-After some computations the final result is obtained:
+ As it has been done before, we have to distinguish two cases while solving the integral, to derive the final result:
 
-%	\begin{eqnarray}
+\begin{itemize}
+\item when the back-gate is accumulated:
+	\begin{equation}
+	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th1,acc2})V_{DS} - \frac{m_{acc2}}{2}V_{DS}^2\Bigr]
+	\end{equation}
+
+	\begin{equation}
+	m = m_{acc2} = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr)
+	\end{equation}
+Notice that since both source and drain regions of the back-gate are accumulated, we refer to correction term $m$ as $m_{acc2}$. The same subscript it is used for the threshold voltage expression.
+
+\item When the back-gate is inverted:
+	\begin{equation}
+	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th1,dep2})V_{DS} - \frac{m_{dep2}}{2}V_{DS}^2\Bigr]
+	\end{equation}
+
+	\begin{equation}
+	m = m_{dep2} = \Bigl(1 + \frac{1}{C_{ox1}}\frac{C_{Si} C_{ox2}}{C_{Si} + C_{ox2}}\Bigr)
+	\end{equation}
+Notice that since both source and drain regions of the back-gate are depleted, we refer to correction term $m$ as $m_{dep2}$. The same subscript it is used for the threshold voltage expression.
+
+\end{itemize}
+
+% Here the silicon-overlay capacitance $C_{Si}=\frac{\epsilon_s}{T_{Si}}$
+
+%	\begin{eqnarray*}
 %	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th,1})V_{DS} - \frac{m}{2}V_{DS}^2\Bigr]\\
-%	where: & m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr) 
-%	\end{eqnarray}
+%	m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr) 
+%	\end{eqnarray*}
 
-	\begin{equation}
-	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th,1})V_{DS} - \frac{m}{2}V_{DS}^2\Bigr]
-	\end{equation}
+%	\begin{equation}
+%	I_{DS} = \frac{\mu_n W C_{ox1}}{L}\Bigl[(V_{G1} - V_{Th,1})V_{DS} - \frac{m}{2}V_{DS}^2\Bigr]
+%	\end{equation}
+%%	\begin{equation}
+%	m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr)
+%	\end{equation}
 
-	\begin{equation}
-	m = \Bigl(1 + \frac{C_{Si}}{C_{ox1}}\Bigr)
-	\end{equation}
-
-In the last equation notice that both source and drain region are accumulated.
-
+%%In the last equation notice that both source and drain region are accumulated.
 
 
-
-\section{Analytical approach to MultiGate structure}
-%dimostrazione su front gate e back gate. Forse qualche immagine
-
+\section{Main parameters for MG scaling}
+Here they are the tables from the Roadmap for multi-gate technologies. As it can be observed, there are some parameters that are the same value as for Bulk process (section \ref{sec:bulk}). Once again, the color legend indicates for a certain parameter whether there exist manufacturing solutions or not. Please refer to Table \ref{tab:color}.
 
 \begin{table}[h]
 \centering
@@ -2464,54 +2516,45 @@ $I_{d,satn}/I_{d,satp}$&1.27&1.26&1.25&1.24&1.22&1.21&1.2&1.19&1.18&1.16&1.15&1.
 \caption{\textbf{MG process for LP (ITRS 2013)}}
 \end{table}
 
+There are two main changes to highlight when comparing the values of the parameters of LP to HP. Firstly, the $I_{off}$ current differs from HP to LP by several orders of magnitude, and this behavior is consistent both for Bulk and MG technology. Secondly, the $I_{on}$ current is significantly higher in HP than it is in LP (both for MG and Bulk) even though it starts to gradually drop in 2015. In the future, lower drive current values will be determined by a higher threshold voltage, which would be required to keep SCE under control. Finally, the last important parameter $\tau$ will constantly decrease over the years, showing an even better behavior for the HP family in MG process\footnote{Consequently, the inverse of $\tau$ (i.e. speed parameter) will increase.}.\\
+Similarly to what has been done in the Bulk section, the graphs of the different parameters will be reported.
+
+\begin{center}
+\begin{figure}[ht]
+\def\tabularxcolumn#1{m{#1}}
+\begin{tabularx}{\linewidth}{@{}cXX@{}}
+\begin{tabular}{cc}
 
 %inserire grafico CV^2 HPvsLP. FATTO!
-	\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\textwidth]{figCV2mg}
-	\caption{Dynamic power $CV^{2}$ analysis.}
-	\label{CV^2}
-	\end{figure}
+\subfloat[Dynamic power $CV^{2}$ analysis.]{
+	\includegraphics[width=0.4\textwidth]{figCV2mg} \label{CV^2}} &
 
 %%inserire grafico I_on MATLAB. FATTO!
-	\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.85\textwidth]{figIonmg}
-	\caption{Ion current as a function of time.}
-	\label{}
-	\end{figure}
+\subfloat[Ion current as a function of time.]{
+	\includegraphics[width=0.4\textwidth]{figIonmg} \label{}} \\
 
 %%inserire grafico I_off MATLAB. FATTO!
-	\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{figIoffmg}
-	\caption{Ioff current as a function of time.}
-	\label{}
-	\end{figure}
+\subfloat[Ioff current as a function of time.]{
+	\includegraphics[width=0.4\textwidth]{figIoffmg} \label{}} &
 
 %%inserire grafico I_on/I_off MATLAB. FATTO!
-	\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.85\textwidth]{figOnOffmg}
-	\caption{Ion/Ioff ratio.}
-	\label{Ion-Ioff}
-	\end{figure}
+\subfloat[Ion/Ioff ratio.]{
+	\includegraphics[width=0.4\textwidth]{figOnOffmg} \label{Ion-Ioff}} \\
 
 %%inserire grafico tau MATLAB. FATTO!
-	\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.85\textwidth]{figtaumg}
-	\caption{Intrinsic delay as a function of time.}
-	\label{tau}
-	\end{figure}
+\subfloat[Intrinsic delay as a function of time.]{
+	\includegraphics[width=0.4\textwidth]{figtaumg} \label{tau}} &
 
 %%inserire grafico Vdd/Vth MATLAB. FATTO!
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\textwidth]{figVddVtmg}
-	\caption{$V_{DD}/V_{T}$ in function of time.}
-	\label{}
-	\end{figure}
+\subfloat[$V_{DD}/V_{T}$ in function of time.]{
+	\includegraphics[width=0.4\textwidth]{figVddVtmg} \label{}} \\
+
+\end{tabular}
+\end{tabularx}
+
+\caption{Parameters for MG technology.}
+\end{figure}
+\end{center}
 
 %% IMPORTANTE!
 %% Alla fine di tutta la descrizione del multi gate mettiamo due parole sul finfet con una introduzione generale alla geometria e ai diversi tipi noti in letteratura, come conclusione sul capitolo 3
