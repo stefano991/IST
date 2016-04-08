@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, twoside, openright]{report}
+\documentclass[a4paper, 12pt, twoside, openany]{report}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -17,6 +17,7 @@
 \usepackage{booktabs}
 \usepackage{subfig}
 \usepackage{tabularx}
+\usepackage{cite}
 \graphicspath{{./}{Immagini/}}
 
 \newcommand{\sub}{\textsubscript}
@@ -38,8 +39,9 @@
 
 \chapter{Introduction to Scaling}
 
-\section{Introduction}
-In this report it will be analyzed how technology should be modified to allow scaling of devices and deeper integration. In Figure (\ref{confronto}) a comparison between a very old process (3 um channel length) with a relatively newer one (250 nm channel length) is shown and it is possible to notice that device dimensions have become smaller and this fact introduces a lot of issues.
+\section{Continuing Moore's Law}
+Over the last decades, \textbf{Moore's Law} has represented the guideline for the evolution of \emph{Integrated Circuits (ICs)} as it predicts how the key features of ICs will behave in the following years. Moore's Law is based on the empirical observation of data related to ICs and it states that the number of transistors in a VLSI chip approximately doubles every two years; furthermore, it also predicts a reduction of cost per transistor, a growth in terms of die area and an overall greater integration on the chip.\\
+In this report it will be analyzed how technology should be modified to allow an effective scaling of devices that can lead to \textbf{deeper integration}. In Figure (\ref{confronto}) a comparison between a very old process (3 um channel length) with a relatively newer one (250 nm channel length) is shown and it is possible to notice that device dimensions have become smaller and this fact introduces a lot of issues.
 
 	\begin{figure}[h]
 	\centering
@@ -343,11 +345,19 @@ So, the followed sequence is:
 
 Besides the effort of reducing $t_{ox}$ as to obtain a better electrostatic control of the channel to switch the device on and off more efficiently, there are other reasons why the gate oxide thickness has been reduced over and over with years. Two of them are the most significant:
 
-%%IN QUESTO ITEMIZE POTREMMO INTRODURRE DEI GRAFICI [12/11/15 quaderno (grafico capacità)]
+
 \begin{itemize}
 \item QM effects. For deeply-scaled devices the classical model that has been used for many year to describe the distribution of the inversion charge in the channel is not accurate any more. The inversion charge does \textbf{not} concentrate at the surface between gate oxide and channel, but it is pushed further away from the oxide, into the silicon. The distance between the silicon-oxide surface and the maximum concentration of carriers in the silicon is called \textbf{Dark Space (DS)}. As a consequence, there exists a new capacitance $C_{DS}=\epsilon_{s}/ DS$ that is in series with $C_{ox}$ and the total capacitance will be: \\ $C_{tot}=C_{ox}*C_{DS}/(C_{ox}+C_{DS})$.\\ It is straight-forward to notice that the gate electrostatic control will worsen on account of dark space.
 \item Polydepletion effect. A similar phenomenon occurs in devices with polysilicon gates, since there exists a depletion layer in the gate itself due to the applied voltage. Once again, a second capacitance can be inserted in series to $C_{ox}$, thus reducing the total capacitance and worsening the device performance. However, the polydepletion effect has been resolved by replacing polysilicon with metals. Nowadays, metal-gate technology has completely taken over polysilicon-gate technology.
 \end{itemize} 
+
+%from http://www.electrical4u.com/mos-capacitor-mos-capacitance-c-v-curve/
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{c_ox_vs_vg}
+\caption{Polydepletion and quantum mechanics effects reduce $C_{ox}$ significantly.}
+\label{fig:Cox-reduction}
+\end{figure}
 
 As it has been stated at the beginning of the paragraph, the main drawback of the reduction of $t_{ox}$ consists of the strong increase of the \textbf{gate leakage} current: in order to avoid this undesired consequence, the gate structure and materials should be completely changed. Independently from the technological family \textbf{scaling means higher $I_{off}$} as long as the bulk planar process is concerned. New processes try to maintain limited, under control, $I_{off}$. For the moment we consider $I_{off}=I_{subV_{th}}$ for a n-MOS transistor whose drain is tied to $V_{dd}$ and its source, gate and body are tied to ground (dual condition for a p-MOS)\label{ioff_config}; therefore, we are not considering other leakage sources as junction leakages, gate leakages, etc\dots.
 
@@ -468,7 +478,6 @@ As a matter of fact, $m = 1+ \frac{C_{dep}}{C_{OX}}$ and its value can be minimi
 
 In the graph below are shown different curves related to SS: 
 
-%%AGGIORNARE FIGURA! questa è quella che già c'era
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figsubvt6}
@@ -2247,10 +2256,37 @@ Scaling $x_{d}$ and $x_{j}$ we are sure that the effect of the SCE on $V_{th}$ i
 
 \subsection{Drain-Induced Barrier Lowering (DIBL) effect}
 
-As technology scales and the channel gets shorter, source and drain regions get closer to each other. When they become sufficiently close, an electrostatic coupling occurs between source and drain. When $V_{DS}=V_{dd}$ the energy barrier that prevents the flow of carriers through the channel becomes very low. At this point, even a small value of the gate-source voltage, with $0 < V_{GS} < V_{dd}$, can completely flatten the energy barrier and allow a free flow of carriers in the channel. \\
-%%QUI CI STAREBBERO BENE DEI DIAGRAMMI A BANDE RIGUARDANTI IL DIBL
-Finally, another phomenon that must be avoided is \textbf{punchthrough}. Punchthrough consists of the union of the source and drain depletion regions on account of the enlargement towards the source terminal of the depletion region at drain. This is another problem that can be solved by increasing the level of doping at drain (since it reduces the depletion width), even though it causes some drawbacks as it is explained in the \ref{subsec:roll_off}.\\
-%%ANCHE QUI UN GRAFICO DEL PUNCHTHROUGH CON LA PROPRIA FORMULA NON CI STAREBBE MALE
+As technology scales and the channel gets shorter, source and drain regions get closer to each other. When they become sufficiently close, an electrostatic coupling occurs between source and drain. When $V_{DS}=V_{dd}$ the energy barrier that prevents the flow of carriers through the channel becomes very low. At this point, even a small value of the gate-source voltage, with $0 < V_{GS} < V_{th}$, can completely flatten the energy barrier and allow a free flow of carriers in the channel. DIBL worsens as the doping level of the extensions increases, whereas it gets less dramatic by using LDD structures. As a matter of fact, low doping level at the extensions allows to absorb part of the drain potential, so that the energy barrier in the channel is not lowered as much as it would be with high doping.
+
+\begin{equation}
+\Delta V_{th,DIBL} = V_{th,V_{DS} \simeq 0} - V_{th,V_{DS} \simeq V_{DD}}
+\end{equation}
+
+DIBL is expressed in terms of $mV/V$ as we want it independent from power supply voltage values when comparing different technological nodes. For deeply scaled devices DIBL can account up to 50\% of the threshold voltage. It is obvious that DIBL can be a critical aspect in modern devices.
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{dibl_band_diagram}
+	\caption{We can appreciate how short-channel devices are sensitive to even small values of $V_{GS}$ for triggering a free flow of electrons.}
+	\label{}
+	\end{figure}
+
+Finally, another phomenon that must be avoided is \textbf{punchthrough}, which is showed in Fig. (\ref{fig:punch}). Punchthrough consists of the union of the source and drain depletion regions on account of the enlargement towards the source terminal of the depletion region at drain. If the channel between source and drain is analyzed as the base of a parasitic BJT structure\footnote{In fact, a channel length smaller than $1 \mu m$ is a typical base width for a BJT transistor.}, a full depletion will lead to an \textbf{uncontrolled current}. This is another problem that can be solved by increasing the level of doping at drain (since it reduces the depletion width), even though it causes some drawbacks as it is explained in the \ref{subsec:roll_off}.\\
+	
+From the formula
+
+\begin{equation}
+x_{d, n^{+}-p} = \sqrt{\frac{2 \epsilon_s (\Phi_i + V_D)}{q N_A}}
+\end{equation}
+
+it is straight-forward to see that the depletion width $x_{d, n^{+}-p}$ decreases as the doping level $N_A$ increases.
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{punchthrough}
+	\caption{Punchthrough. As $V_D$ increases, source and drain depletion regions tend to merge together.}
+	\label{fig:punch}
+	\end{figure}
 
 
 \chapter{Scaling on MultiGate process} \label{multigate}
@@ -2261,7 +2297,7 @@ The kind of device that lead us into the MG era is the \emph{Silicon-On-Insulato
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{banddiagram}
+	\includegraphics[width=0.6\textwidth]{banddiagram}
 	\caption{Band diagram for a double gate structure.}
 	\label{band}
 	\end{figure}
@@ -2505,7 +2541,7 @@ A common trend in both HP and LP families is given by the threshold voltage: it 
 
 \newpage
 \section{New devices and solutions}
-Among all new devices and structures that have been proposed in the past few years, the most important and successful transistor has been the \textbf{finFET} so far. The finFET is the very first 3D device, where the gate is wrapped around three sides of the channel. As a matter of fact, finFETs can be either \emph{dual-gate} or \emph{tri-gate} transistor. The main difference consists of a larger dielectric thickness on top of the fin for the dual-gate structure, so the gate voltage does not control the channel from the top. In tri-gate devices the thickness of the dielectric around the fin is uniform and the gate controls the channel conductivity from three different sides. The process for the tri-gate structure is simpler when reducing dimensions since the gate length scales as follows:
+In order to maintain the historical trend described by Moore's Law, the requirement for new architectures of devices is to keep up with aggressive, continuous scaling. As EUV lithography is far from its cost-effective, mass-production utilization, new integration techniques (e.g., self-aligned contacts, new materials, etc\dots) are needed for technology nodes beyond a gate length of 10 nm\cite{7153333}. Among all new devices and structures that have been proposed in the past few years, so far the most important and successful transistor has been the \textbf{finFET}. The finFET is the very first 3D device, where the gate is wrapped around three sides of the channel. As a matter of fact, finFETs can be either \emph{dual-gate} or \emph{tri-gate} transistor. The main difference consists of a larger dielectric thickness on top of the fin for the dual-gate structure, so the gate voltage does not control the channel from the top. In tri-gate devices the thickness of the dielectric around the fin is uniform and the gate controls the channel conductivity from three different sides. The process for the tri-gate structure is simpler when reducing dimensions since the gate length scales as follows:
 
 \begin{itemize}
 \item $L_{g} < D_{fin}$ for tri-gate transistors;
@@ -2527,6 +2563,14 @@ $D_{fin}$ is the fin thickness as shown in Figure (\ref{fig:finFET}). The last g
 \item $W_{fin}=2*H_{fin}$ for dual-gate finFETs.
 \end{itemize}
 
+\textbf{The electrostatic control of the channel is largely dependent on $W_{fin}$}: thus, there must exist an \emph{optimum value} of $W_{fin}$ that minimizes variability: the \textbf{optimum $L_{g}/W_{fin}$ ratio is about 0.33} for technology nodes ranging from 6nm to 14nm\cite{7175588} as it is also showed in Fig. (\ref{fig:Wfin_Lg}):
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.42\textwidth]{optimum_Wfin_Lg}
+\caption{The graph shows both optimum $W_{fin}$ and $L_{g}/W_{fin}$ vs technology node.}
+\label{fig:Wfin_Lg}
+\end{figure} 
 
 According to the value of the aspect ratio, there are three different cross-sections that can be considered:
 
@@ -2538,7 +2582,7 @@ According to the value of the aspect ratio, there are three different cross-sect
 
 As it can be observed from Figure (\ref{fig:finFET}), the \textbf{channel region between source and drain is wrapped around by the gate: that is the reason why we can obtain a much better channel control even at very short gate length}.\\
 Since the fin structure tends to be characterized by a narrow cross-section and long S/D distance, the resistance of the channel is a critical aspect to consider. There are two solutions that are adopted in order to increase $I_{on}$: the \emph{Stress Memorization Technique (STM)} helps by increasing the carrier mobility, while the exploitation of larger number of fins per gate allows to increases the total current that flows between the source and drain regions (\emph{multi-fin structures}).
-Since scaling is supposed to continue over and over, the \emph{contacted gate pitch (CGP)} will be forced to scale endlessly. Continuous scaling cannot be achieved without a significant tradeoff between different quantities, namely: $L_{g}$, spacer thickness (spacers isolate S/D regions from the gate) and S/D contact dimesion. In particular, $L_{g}$ can be continuously scaled only by reducing $D_{fin}$, leading to a very large aspect ratio. High aspect ratio fins are difficult to manufacture as tall fins with straight profiles are necessary to reach a good control of the channel. It is straight-forward that procces costs are likely to increase as these structures become smaller and smaller. New solutions that could be implemented as a low-cost alternative are at study, e.g. \emph{Ultra-Shallow Junction Extensions (USEJ)} and \emph{recessed-channel (U-channel)} devices that have proved to be effective in controlling DIBL and lowering SS in scaling length to the 18-20 nm range.
+Since scaling is supposed to continue over and over, the \emph{contacted gate pitch (CGP)} will be forced to scale endlessly. Continuous scaling cannot be achieved without a significant tradeoff between different quantities, namely: $L_{g}$, spacer thickness (spacers isolate S/D regions from the gate) and S/D contact dimesion. In particular, $L_{g}$ can be continuously scaled only by reducing $D_{fin}$, leading to a very large aspect ratio. High aspect ratio fins are difficult to manufacture as tall fins with straight profiles are necessary to reach a good control of the channel. It is straight-forward that procces costs are likely to increase as these structures become smaller and smaller. New solutions that could be implemented as a low-cost alternative are at study, e.g. \emph{Ultra-Shallow Junction Extensions (USEJ)} and \emph{recessed-channel (U-channel)} devices that have proved to be effective in controlling DIBL and lowering SS in scaling length to the 18-20 nm range\cite{7339689}.
 %% PAPER 0707886 sito IEEE
 Reliabilty requirements and/or capacitance between gate and S/D regions tell us what is the minimum value for the spacer thickness. Along with finFETs, the other two main structures that are being investigated and developed nowadays:
 
@@ -2551,11 +2595,12 @@ For the sake of clearness, a schematic of the different structures is showed bel
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{finFET}
-\caption{3D schematics of finFET, lateral GAAFET and the vertical one.}
+\caption{3D schematics of finFET, lateral GAAFET and the vertical one as reported from\cite{7078860}.}
 \label{fig:finFET}
 \end{figure} 
 
 What has been stated above and in the whole chapter is an overview about scaling and how it has changed affected technological processes as new solutions have become necessary when old technologies could not improve anymore. While the Bulk process is reaching its natural death in 2017, new transistors like finFETs and GAAFETs bring us new challenges and problems. It will be our duty to come up with smart solutions that could give us better and more reliable technologies. 
 
-
+\bibliographystyle{plain}
+\bibliography{scaling_bib}
 \end{document}
