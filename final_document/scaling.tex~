@@ -2636,7 +2636,6 @@ Once again, as new technologies start to appear and take over the ICs market the
 \item $W_{fin}$ is determined by the technology rather than being a designer's choice.
 \item The power supply voltage $V_{DD}$ scales like it does in the Bulk process. 
 \item In order to limit the subthreshold current, over the years the threshold voltage \textbf{$V_{th}$ is supposed to be constantly increased}. $V_{th}$ is defined as the voltage between gate and source that has to be applied to get a drain current \emph{per fin height} $I_{DS}=10^{-5} A/ \mu m$ when $V_{DS}=V_{DD}$\cite{5236062}. As we can observe in Fig. (\ref{MGdiagrams}) in Section (\ref{sec:MGscaling}), the consequences are \emph{more evident for HP processes} and they turn out to be a reduction of the $V_{DD}/V_{th}$ ratio and a lower $I_{on}$.
-\item In order to increase $I_{on}$ a large number of fins (nanowires in GAAFETs) per transistor is used, leading to \textbf{multi-fin} finFETs.
 \item Doping for multi-gate structures is in general much lower compared to the levels of doping in the Bulk process. That is since channel doping is not so relevant in the correct operation of the device when considering MG devices.
 \end{enumerate}
 
